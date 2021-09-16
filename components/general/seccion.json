@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_general_seccions",
+  "info": {
+    "name": "Seccion",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "contenido": {
+      "type": "richtext"
+    },
+    "galeria": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "titulo": {
+      "type": "string"
+    }
+  }
+}
