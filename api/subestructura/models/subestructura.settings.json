@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "subestructuras",
   "info": {
-    "name": "Subestructura"
+    "name": "Subestructura",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -29,8 +30,13 @@
       "pluginOptions": {}
     },
     "estructura": {
-      "model": "estructura",
-      "via": "subestructuras"
+      "via": "subestructuras",
+      "model": "estructura"
+    },
+    "secciones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.seccion"
     }
   }
 }

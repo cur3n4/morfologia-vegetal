@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "caracteristicas",
   "info": {
-    "name": "caracteristica"
+    "name": "caracteristica",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -31,6 +32,11 @@
     "estructura": {
       "via": "caracteristicas",
       "model": "estructura"
+    },
+    "secciones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.seccion"
     }
   }
 }

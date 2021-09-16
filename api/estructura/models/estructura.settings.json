@@ -36,6 +36,11 @@
     "subestructuras": {
       "via": "estructura",
       "collection": "subestructura"
+    },
+    "secciones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.seccion"
     }
   }
 }
