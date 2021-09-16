@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "adaptacions",
+  "collectionName": "adaptaciones",
   "info": {
-    "name": "Adaptacion"
+    "name": "Adaptacion",
+    "description": ""
   },
   "options": {
     "increments": true,
