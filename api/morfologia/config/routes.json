@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/morfologias",
+      "handler": "morfologia.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/morfologias/count",
+      "handler": "morfologia.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/morfologias/:id",
+      "handler": "morfologia.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/morfologias",
+      "handler": "morfologia.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/morfologias/:id",
+      "handler": "morfologia.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/morfologias/:id",
+      "handler": "morfologia.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

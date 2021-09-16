@@ -1,13 +1,19 @@
 {
-  "collectionName": "components_general_seccions",
+  "kind": "collectionType",
+  "collectionName": "adaptacions",
   "info": {
-    "name": "Seccion",
-    "icon": "align-justify",
-    "description": ""
+    "name": "Adaptacion"
   },
-  "options": {},
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
   "attributes": {
-    "contenido": {
+    "titulo": {
+      "type": "string"
+    },
+    "descripcion": {
       "type": "richtext"
     },
     "galeria": {
@@ -22,13 +28,10 @@
       "required": false,
       "pluginOptions": {}
     },
-    "titulo": {
-      "type": "string"
-    },
-    "subsecciones": {
+    "secciones": {
       "type": "component",
       "repeatable": true,
-      "component": "general.subseccion"
+      "component": "general.seccion"
     }
   }
 }

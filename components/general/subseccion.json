@@ -1,12 +1,14 @@
 {
-  "collectionName": "components_general_seccions",
+  "collectionName": "components_general_subseccions",
   "info": {
-    "name": "Seccion",
-    "icon": "align-justify",
-    "description": ""
+    "name": "Subseccion",
+    "icon": "align-left"
   },
   "options": {},
   "attributes": {
+    "titulo": {
+      "type": "string"
+    },
     "contenido": {
       "type": "richtext"
     },
@@ -21,14 +23,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "titulo": {
-      "type": "string"
-    },
-    "subsecciones": {
-      "type": "component",
-      "repeatable": true,
-      "component": "general.subseccion"
     }
   }
 }

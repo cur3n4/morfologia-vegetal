@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "caracteristicas",
   "info": {
-    "name": "caracteristica",
+    "name": "caracteristica general",
     "description": ""
   },
   "options": {

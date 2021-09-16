@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/adaptacions",
+      "handler": "adaptacion.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/adaptacions/count",
+      "handler": "adaptacion.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/adaptacions/:id",
+      "handler": "adaptacion.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/adaptacions",
+      "handler": "adaptacion.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/adaptacions/:id",
+      "handler": "adaptacion.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/adaptacions/:id",
+      "handler": "adaptacion.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
