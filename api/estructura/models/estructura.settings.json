@@ -49,6 +49,10 @@
     "funcions": {
       "via": "estructura",
       "collection": "funcion"
+    },
+    "adaptacions": {
+      "via": "estructura",
+      "collection": "adaptacion"
     }
   }
 }
