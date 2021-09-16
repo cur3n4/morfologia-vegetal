@@ -29,8 +29,8 @@
       "pluginOptions": {}
     },
     "estructura": {
-      "model": "estructura",
-      "via": "caracteristicas"
+      "via": "caracteristicas",
+      "model": "estructura"
     }
   }
 }
