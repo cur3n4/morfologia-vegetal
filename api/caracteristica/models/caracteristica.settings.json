@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "caracteristicas",
+  "info": {
+    "name": "caracteristica"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "richtext"
+    },
+    "galeria": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "estructura": {
+      "model": "estructura",
+      "via": "caracteristicas"
+    }
+  }
+}

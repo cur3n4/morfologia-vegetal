@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/estructuras",
+      "handler": "estructura.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/estructuras/count",
+      "handler": "estructura.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/estructuras/:id",
+      "handler": "estructura.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/estructuras",
+      "handler": "estructura.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/estructuras/:id",
+      "handler": "estructura.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/estructuras/:id",
+      "handler": "estructura.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

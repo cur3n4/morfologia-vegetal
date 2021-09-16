@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "estructuras",
+  "info": {
+    "name": "estructura"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "titulo": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "richtext"
+    },
+    "galeria": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "caracteristicas": {
+      "via": "estructura",
+      "collection": "caracteristica"
+    }
+  }
+}
