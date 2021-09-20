@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "morfologias",
   "info": {
-    "name": "Morfologia",
+    "name": "Tipo",
     "description": ""
   },
   "options": {
@@ -37,6 +37,10 @@
     "estructura": {
       "model": "estructura",
       "via": "morfologias"
+    },
+    "subestructura": {
+      "model": "subestructura",
+      "via": "tipos"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "caracteristicas",
+  "collectionName": "subcaracteristica_generals",
   "info": {
-    "name": "caracteristica general",
+    "name": "Subcaracteristica General",
     "description": ""
   },
   "options": {
@@ -14,7 +14,7 @@
     "nombre": {
       "type": "string"
     },
-    "descripcion": {
+    "description": {
       "type": "richtext"
     },
     "galeria": {
@@ -29,18 +29,14 @@
       "required": false,
       "pluginOptions": {}
     },
-    "estructura": {
-      "via": "caracteristicas",
-      "model": "estructura"
-    },
     "secciones": {
       "type": "component",
       "repeatable": true,
       "component": "general.seccion"
     },
-    "subcaracteristicas_generales": {
-      "via": "caracteristica_general",
-      "collection": "subcaracteristica-general"
+    "caracteristica_general": {
+      "model": "caracteristica",
+      "via": "subcaracteristicas_generales"
     }
   }
 }

@@ -37,6 +37,10 @@
     "estructura": {
       "model": "estructura",
       "via": "adaptacions"
+    },
+    "subestructura": {
+      "model": "subestructura",
+      "via": "adaptacions"
     }
   }
 }

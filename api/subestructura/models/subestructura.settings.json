@@ -37,6 +37,18 @@
       "type": "component",
       "repeatable": true,
       "component": "general.seccion"
+    },
+    "tipos": {
+      "via": "subestructura",
+      "collection": "morfologia"
+    },
+    "funcions": {
+      "via": "subestructura",
+      "collection": "funcion"
+    },
+    "adaptacions": {
+      "via": "subestructura",
+      "collection": "adaptacion"
     }
   }
 }

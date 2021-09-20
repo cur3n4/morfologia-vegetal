@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/subcaracteristica-generals",
+      "handler": "subcaracteristica-general.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/subcaracteristica-generals/count",
+      "handler": "subcaracteristica-general.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/subcaracteristica-generals/:id",
+      "handler": "subcaracteristica-general.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/subcaracteristica-generals",
+      "handler": "subcaracteristica-general.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/subcaracteristica-generals/:id",
+      "handler": "subcaracteristica-general.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/subcaracteristica-generals/:id",
+      "handler": "subcaracteristica-general.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
