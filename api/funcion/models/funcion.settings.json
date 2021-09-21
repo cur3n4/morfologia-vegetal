@@ -41,6 +41,10 @@
     "subestructura": {
       "model": "subestructura",
       "via": "funcions"
+    },
+    "sub_subestructura": {
+      "via": "funcions",
+      "model": "sub-subestructura"
     }
   }
 }

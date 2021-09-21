@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "subestructuras",
+  "collectionName": "sub_subestructuras",
   "info": {
-    "name": "Subestructura",
+    "name": "Sub Subestructura",
     "description": ""
   },
   "options": {
@@ -29,30 +29,26 @@
       "required": false,
       "pluginOptions": {}
     },
-    "estructura": {
-      "via": "subestructuras",
-      "model": "estructura"
-    },
     "secciones": {
       "type": "component",
       "repeatable": true,
       "component": "general.seccion"
     },
-    "tipos": {
-      "via": "subestructura",
-      "collection": "morfologia"
+    "subestructura": {
+      "model": "subestructura",
+      "via": "sub_subestructuras"
     },
     "funcions": {
-      "via": "subestructura",
-      "collection": "funcion"
+      "collection": "funcion",
+      "via": "sub_subestructura"
     },
     "adaptacions": {
-      "via": "subestructura",
-      "collection": "adaptacion"
+      "collection": "adaptacion",
+      "via": "sub_subestructura"
     },
-    "sub_subestructuras": {
-      "via": "subestructura",
-      "collection": "sub-subestructura"
+    "tipos": {
+      "collection": "morfologia",
+      "via": "sub_subestructura"
     }
   }
 }

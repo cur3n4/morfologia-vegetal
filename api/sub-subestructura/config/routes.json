@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/sub-subestructuras",
+      "handler": "sub-subestructura.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sub-subestructuras/count",
+      "handler": "sub-subestructura.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sub-subestructuras/:id",
+      "handler": "sub-subestructura.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/sub-subestructuras",
+      "handler": "sub-subestructura.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/sub-subestructuras/:id",
+      "handler": "sub-subestructura.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/sub-subestructuras/:id",
+      "handler": "sub-subestructura.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -41,6 +41,10 @@
     "subestructura": {
       "model": "subestructura",
       "via": "tipos"
+    },
+    "sub_subestructura": {
+      "via": "tipos",
+      "model": "sub-subestructura"
     }
   }
 }
