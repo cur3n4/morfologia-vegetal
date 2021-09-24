@@ -41,6 +41,14 @@
     "subcaracteristicas_generales": {
       "via": "caracteristica_general",
       "collection": "subcaracteristica-general"
+    },
+    "subestructura": {
+      "model": "subestructura",
+      "via": "caracteristica_generals"
+    },
+    "sub_subestructura": {
+      "model": "sub-subestructura",
+      "via": "caracteristica_generals"
     }
   }
 }

@@ -35,8 +35,8 @@
       "component": "general.seccion"
     },
     "caracteristica_general": {
-      "model": "caracteristica",
-      "via": "subcaracteristicas_generales"
+      "via": "subcaracteristicas_generales",
+      "model": "caracteristica"
     }
   }
 }

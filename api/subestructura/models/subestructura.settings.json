@@ -53,6 +53,10 @@
     "sub_subestructuras": {
       "via": "subestructura",
       "collection": "sub-subestructura"
+    },
+    "caracteristica_generals": {
+      "via": "subestructura",
+      "collection": "caracteristica"
     }
   }
 }
