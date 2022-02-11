@@ -47,8 +47,8 @@
       "via": "sub_subestructura"
     },
     "tipos": {
-      "collection": "morfologia",
-      "via": "sub_subestructura"
+      "via": "sub_subestructura",
+      "collection": "morfologia"
     },
     "caracteristica_generals": {
       "via": "sub_subestructura",

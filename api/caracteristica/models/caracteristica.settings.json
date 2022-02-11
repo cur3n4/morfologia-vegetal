@@ -50,9 +50,9 @@
       "model": "sub-subestructura",
       "via": "caracteristica_generals"
     },
-    "funcions": {
+    "tipos": {
       "via": "caracteristica_generals",
-      "collection": "funcion"
+      "collection": "morfologia"
     }
   }
 }

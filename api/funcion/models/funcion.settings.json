@@ -45,11 +45,6 @@
     "sub_subestructura": {
       "via": "funcions",
       "model": "sub-subestructura"
-    },
-    "caracteristica_generals": {
-      "collection": "caracteristica",
-      "via": "funcions",
-      "dominant": true
     }
   }
 }

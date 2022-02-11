@@ -45,6 +45,11 @@
     "sub_subestructura": {
       "via": "tipos",
       "model": "sub-subestructura"
+    },
+    "caracteristica_generals": {
+      "collection": "caracteristica",
+      "via": "tipos",
+      "dominant": true
     }
   }
 }
