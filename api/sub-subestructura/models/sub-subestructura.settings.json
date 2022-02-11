@@ -39,8 +39,8 @@
       "via": "sub_subestructuras"
     },
     "funcions": {
-      "collection": "funcion",
-      "via": "sub_subestructura"
+      "via": "sub_subestructura",
+      "collection": "funcion"
     },
     "adaptacions": {
       "collection": "adaptacion",
