@@ -50,6 +50,14 @@
       "collection": "caracteristica",
       "via": "tipos",
       "dominant": true
+    },
+    "subtipos": {
+      "via": "tipo",
+      "collection": "subtipo"
+    },
+    "adaptacion": {
+      "model": "adaptacion",
+      "via": "tipos"
     }
   }
 }

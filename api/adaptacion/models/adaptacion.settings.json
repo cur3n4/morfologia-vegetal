@@ -45,6 +45,14 @@
     "sub_subestructura": {
       "via": "adaptacions",
       "model": "sub-subestructura"
+    },
+    "subtipos": {
+      "via": "adaptacion",
+      "collection": "subtipo"
+    },
+    "tipos": {
+      "via": "adaptacion",
+      "collection": "morfologia"
     }
   }
 }
