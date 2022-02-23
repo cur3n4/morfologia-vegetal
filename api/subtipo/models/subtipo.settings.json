@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subtipos",
+  "info": {
+    "name": "Subtipo",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "galeria": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "secciones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.seccion"
+    }
+  }
+}
