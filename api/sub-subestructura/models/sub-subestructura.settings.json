@@ -42,16 +42,16 @@
       "via": "sub_subestructura",
       "collection": "funcion"
     },
-    "adaptacions": {
-      "collection": "adaptacion",
-      "via": "sub_subestructura"
-    },
     "tipos": {
       "via": "sub_subestructura",
       "collection": "morfologia"
     },
+    "adaptacions": {
+      "via": "sub_subestructuras",
+      "collection": "adaptacion"
+    },
     "caracteristica_generals": {
-      "via": "sub_subestructura",
+      "via": "sub_subestructuras",
       "collection": "caracteristica"
     }
   }

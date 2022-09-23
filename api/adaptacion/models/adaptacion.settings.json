@@ -34,25 +34,30 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "estructura": {
-      "model": "estructura",
-      "via": "adaptacions"
-    },
-    "subestructura": {
-      "model": "subestructura",
-      "via": "adaptacions"
-    },
-    "sub_subestructura": {
+    "estructuras": {
+      "collection": "estructura",
       "via": "adaptacions",
-      "model": "sub-subestructura"
+      "dominant": true
+    },
+    "subestructuras": {
+      "collection": "subestructura",
+      "via": "adaptacions",
+      "dominant": true
+    },
+    "sub_subestructuras": {
+      "collection": "sub-subestructura",
+      "via": "adaptacions",
+      "dominant": true
     },
     "subtipos": {
-      "via": "adaptacion",
-      "collection": "subtipo"
+      "via": "adaptacions",
+      "collection": "subtipo",
+      "dominant": true
     },
     "tipos": {
-      "via": "adaptacion",
-      "collection": "morfologia"
+      "via": "adaptacions",
+      "collection": "morfologia",
+      "dominant": true
     }
   }
 }

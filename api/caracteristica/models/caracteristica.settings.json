@@ -29,9 +29,10 @@
       "required": false,
       "pluginOptions": {}
     },
-    "estructura": {
+    "estructuras": {
+      "collection": "estructura",
       "via": "caracteristicas",
-      "model": "estructura"
+      "dominant": true
     },
     "secciones": {
       "type": "component",
@@ -39,16 +40,19 @@
       "component": "general.seccion"
     },
     "subcaracteristicas_generales": {
-      "via": "caracteristica_general",
-      "collection": "subcaracteristica-general"
+      "via": "caracteristica_generals",
+      "collection": "subcaracteristica-general",
+      "dominant": true
     },
-    "subestructura": {
-      "model": "subestructura",
-      "via": "caracteristica_generals"
+    "subestructuras": {
+      "collection": "subestructura",
+      "via": "caracteristica_generals",
+      "dominant": true
     },
-    "sub_subestructura": {
-      "model": "sub-subestructura",
-      "via": "caracteristica_generals"
+    "sub_subestructuras": {
+      "collection": "sub-subestructura",
+      "via": "caracteristica_generals",
+      "dominant": true
     },
     "tipos": {
       "via": "caracteristica_generals",

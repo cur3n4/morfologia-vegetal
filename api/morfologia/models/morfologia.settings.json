@@ -47,17 +47,17 @@
       "model": "sub-subestructura"
     },
     "caracteristica_generals": {
-      "collection": "caracteristica",
       "via": "tipos",
+      "collection": "caracteristica",
       "dominant": true
     },
     "subtipos": {
       "via": "tipo",
       "collection": "subtipo"
     },
-    "adaptacion": {
-      "model": "adaptacion",
-      "via": "tipos"
+    "adaptacions": {
+      "via": "tipos",
+      "collection": "adaptacion"
     }
   }
 }

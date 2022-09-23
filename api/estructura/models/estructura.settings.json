@@ -29,10 +29,6 @@
       "required": false,
       "pluginOptions": {}
     },
-    "caracteristicas": {
-      "via": "estructura",
-      "collection": "caracteristica"
-    },
     "subestructuras": {
       "via": "estructura",
       "collection": "subestructura"
@@ -51,8 +47,12 @@
       "collection": "funcion"
     },
     "adaptacions": {
-      "via": "estructura",
+      "via": "estructuras",
       "collection": "adaptacion"
+    },
+    "caracteristicas": {
+      "via": "estructuras",
+      "collection": "caracteristica"
     }
   }
 }

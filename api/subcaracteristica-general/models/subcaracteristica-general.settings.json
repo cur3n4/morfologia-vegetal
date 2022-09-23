@@ -34,9 +34,9 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "caracteristica_general": {
+    "caracteristica_generals": {
       "via": "subcaracteristicas_generales",
-      "model": "caracteristica"
+      "collection": "caracteristica"
     }
   }
 }

@@ -38,9 +38,9 @@
       "via": "subtipos",
       "model": "morfologia"
     },
-    "adaptacion": {
-      "model": "adaptacion",
-      "via": "subtipos"
+    "adaptacions": {
+      "via": "subtipos",
+      "collection": "adaptacion"
     }
   }
 }
