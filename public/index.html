@@ -44,10 +44,22 @@
       return marked.parse(subrender(text))
     }
 
+    let sectionClassIndex = 0;
+    let sectionClasses = ['section-gray', 'section-brown', 'section-dark']
+    function sectionClass(test) {
+      return sectionClasses[sectionClassIndex++];
+    }
+
     let Context = Mustache.Context
     Context.prototype._lookup = Context.prototype.lookup
     Context.prototype.lookup = function mdLoopup(name) {
-      return name === 'md' ? md : this._lookup(name);
+      if (name === 'md') {
+        return md;
+      }
+      else if (name === 'sectionClass') {
+        return sectionClass;
+      }
+      return this._lookup(name);
     }
   </script>
 </head>
@@ -83,9 +95,7 @@
     </div>
   </div>
   <div class="main">
-    <div class="container">
-      <div id="estructurasContent"></div>
-    </div>
+    <div id="estructurasContent"></div>
 
     <div hx-ext="client-side-templates">
       <div hx-get="https://www.morfologia-vegetal.info/estructuras"
@@ -113,43 +123,88 @@
 
   <template id="estructuras">
     {{#.}}
-    <div class="section">
-      <h1>{{nombre}}</h1>
-      <p>{{#md}}{{descripcion}}{{/md}}</p>
+    <div class="section {{#sectionClass}}{{/sectionClass}}">
+      <div class="container">
 
-      {{#secciones.length}}
-        {{#secciones}}
-        <h3>{{titulo}}</h3>
-        <p>{{contenido}}</p>
+        <h1>{{nombre}}</h1>
+        <p>{{#md}}{{descripcion}}{{/md}}</p>
 
-        {{#subsecciones}}
-        <h5>{{titulo}}</h5>
-        <p>{{#md}}{{contenido}}{{/md}}</p>
-        {{/subsecciones}}
+        {{#secciones.length}}
+          {{#secciones}}
+            <h3>{{titulo}}</h3>
+            <p>{{contenido}}</p>
 
-        {{#galeria}}
-        <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
-        {{/galeria}}
-        {{/secciones}}
-      {{/secciones.length}}
+            {{#subsecciones}}
+            <h5>{{titulo}}</h5>
+            <p>{{#md}}{{contenido}}{{/md}}</p>
+            {{/subsecciones}}
 
-      {{#galeria.length}}
-        <h4>Galeria</h4>
-        {{#galeria}}
-        <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
-        {{/galeria}}
-      {{/galeria.length}}
+            {{#galeria}}
+            <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+            {{/galeria}}
+          {{/secciones}}
+        {{/secciones.length}}
 
-      {{#subestructuras.length}}
-        <h4>Subestructuras</h4>
-        {{#subestructuras}}
-          <h5>{{nombre}}</h5>
-          <p>{{#md}}{{descripcion}}{{/md}}</p>
-          {{#galeria}}
-          <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
-          {{/galeria}}
-        {{/subestructuras}}
-      {{/subestructuras.length}}
+        {{#galeria.length}}
+          <h3>Galeria</h3>
+          <div class="row">
+            {{#galeria}}
+              <div class="col-md-3">
+                  <div class="card">
+                    <img class="card-img-top" src="https://www.morfologia-vegetal.info{{formats.medium.url}}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">{{caption}}</p>
+                    </div>
+                  </div>
+              </div>
+            {{/galeria}}
+          </div>
+        {{/galeria.length}}
+
+        {{#caracteristicas.length}}
+          <h3>Características</h3>
+          {{#caracteristicas}}
+            <h5>{{nombre}}</h5>
+            <p>{{#md}}{{descripcion}}{{/md}}</p>
+            {{#galeria}}
+            <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+            {{/galeria}}
+          {{/caracteristicas}}
+        {{/caracteristicas.length}}
+
+        {{#funciones.length}}
+          <h3>Funciones</h3>
+          {{#funciones}}
+            <h5>{{nombre}}</h5>
+            <p>{{#md}}{{descripcion}}{{/md}}</p>
+            {{#galeria}}
+            <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+            {{/galeria}}
+          {{/funciones}}
+        {{/funciones.length}}
+
+        {{#adaptaciones.length}}
+          <h3>Adaptaciones</h3>
+          {{#adaptaciones}}
+            <h5>{{nombre}}</h5>
+            <p>{{#md}}{{descripcion}}{{/md}}</p>
+            {{#galeria}}
+            <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+            {{/galeria}}
+          {{/adaptaciones}}
+        {{/adaptaciones.length}}
+
+        {{#subestructuras.length}}
+          <h4>Subestructuras</h4>
+          {{#subestructuras}}
+            <h5>{{nombre}}</h5>
+            <p>{{#md}}{{descripcion}}{{/md}}</p>
+            {{#galeria}}
+            <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+            {{/galeria}}
+          {{/subestructuras}}
+        {{/subestructuras.length}}
+      </div>
     </div>
     {{/.}}
   </template>
