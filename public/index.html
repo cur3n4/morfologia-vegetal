@@ -10,7 +10,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/assets/css/paper-kit.min.css"/>
+  <link rel="stylesheet" href="/assets/css/paper-kit.css"/>
 
   <!--   Core JS Files   -->
   <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
@@ -83,7 +83,7 @@
     </div>
   </nav>
 
-  <div class="page-header section-dark" style="background-image: url('./assets/img/antoine-barres.jpg')">
+  <div class="page-header section-dark" style="background-image: url('https://morfologia-vegetal.onrender.com/uploads/Anemone_narcissiflora_02_1100_ed30fa4911.jpg')">
     <div class="filter"></div>
     <div class="content-center">
       <div class="container">
@@ -126,7 +126,7 @@
     <div class="section {{#sectionClass}}{{/sectionClass}}">
       <div class="container">
 
-        <h1>{{nombre}}</h1>
+        <div class="title"><h1>{{nombre}}</h1></div>
         <p>{{#md}}{{descripcion}}{{/md}}</p>
 
         {{#secciones.length}}
@@ -146,7 +146,7 @@
         {{/secciones.length}}
 
         {{#galeria.length}}
-          <h3>Galeria</h3>
+        <div class="title"><h3>Galeria</h3></div>
           <div class="row">
             {{#galeria}}
               <div class="col-md-3">
@@ -160,20 +160,22 @@
             {{/galeria}}
           </div>
         {{/galeria.length}}
-
+      </div>
+      <div class="container tim-container">
         {{#caracteristicas.length}}
-          <h3>Características</h3>
-          {{#caracteristicas}}
-            <h5>{{nombre}}</h5>
+          <div class="title"><h3>Características</h3></div>
+        {{#caracteristicas}}
+            <div class="title" ><h5>{{nombre}}</h5></div>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
             {{#galeria}}
             <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
             {{/galeria}}
+            <br/>
           {{/caracteristicas}}
         {{/caracteristicas.length}}
 
         {{#funciones.length}}
-          <h3>Funciones</h3>
+        <div class="title"><h3>Funciones</h3></div>
           {{#funciones}}
             <h5>{{nombre}}</h5>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
@@ -184,7 +186,7 @@
         {{/funciones.length}}
 
         {{#adaptaciones.length}}
-          <h3>Adaptaciones</h3>
+        <div class="title"><h3>Adaptaciones</h3></div>
           {{#adaptaciones}}
             <h5>{{nombre}}</h5>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
@@ -195,7 +197,7 @@
         {{/adaptaciones.length}}
 
         {{#subestructuras.length}}
-          <h4>Subestructuras</h4>
+        <div class="title"><h3>Subestructuras</h3></div>
           {{#subestructuras}}
             <h5>{{nombre}}</h5>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
