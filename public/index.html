@@ -131,7 +131,7 @@
 
         {{#secciones.length}}
           {{#secciones}}
-            <h3>{{titulo}}</h3>
+        <div class="title"><h3>{{titulo}}</h3></div>
             <p>{{contenido}}</p>
 
             {{#subsecciones}}
@@ -161,14 +161,14 @@
           </div>
         {{/galeria.length}}
       </div>
-      <div class="container tim-container">
+      <div class="container">
         {{#caracteristicas.length}}
           <div class="title"><h3>Características</h3></div>
         {{#caracteristicas}}
-            <div class="title" ><h5>{{nombre}}</h5></div>
+            <div class="title"><h5>{{nombre}}</h5></div>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
             {{#galeria}}
-            <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+            <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}" alt="{{caption}}">
             {{/galeria}}
             <br/>
           {{/caracteristicas}}
@@ -177,7 +177,7 @@
         {{#funciones.length}}
         <div class="title"><h3>Funciones</h3></div>
           {{#funciones}}
-            <h5>{{nombre}}</h5>
+        <div class="title"><h5>{{nombre}}</h5></div>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
             {{#galeria}}
             <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
@@ -188,7 +188,7 @@
         {{#adaptaciones.length}}
         <div class="title"><h3>Adaptaciones</h3></div>
           {{#adaptaciones}}
-            <h5>{{nombre}}</h5>
+        <div class="title"><h5>{{nombre}}</h5></div>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
             {{#galeria}}
             <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
@@ -199,7 +199,7 @@
         {{#subestructuras.length}}
         <div class="title"><h3>Subestructuras</h3></div>
           {{#subestructuras}}
-            <h5>{{nombre}}</h5>
+        <div class="title"><h5>{{nombre}}</h5></div>
             <p>{{#md}}{{descripcion}}{{/md}}</p>
             {{#galeria}}
             <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
