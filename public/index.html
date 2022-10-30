@@ -1,5 +1,28 @@
 <html>
+<head>
+  <script src="https://unpkg.com/mustache@latest"></script>
+  <script src="https://unpkg.com/htmx.org"></script>
+  <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
+</head>
 <body>
   Bienvenidos a morfologia vegetal.
+
+  <div hx-ext="client-side-templates">
+    <button hx-get="/estructuras"
+            hx-swap="innerHTML"
+            hx-target="#content"
+            mustache-template="foo">
+      Click Me
+    </button>
+
+    <p id="content">Start</p>
+
+    <template id="foo">
+      {{#.}}
+        <p> {{nombre}} and  </p>
+      {{/.}}
+    </template>
+  </div>
 </body>
 </html>
+
