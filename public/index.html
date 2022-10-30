@@ -10,42 +10,60 @@
       evt.detail.headers = [];
     });
 
-    function md (text, subrender) {
+    function md(text, subrender) {
       return marked.parse(subrender(text))
     }
 
     let Context = Mustache.Context
     Context.prototype._lookup = Context.prototype.lookup
-    Context.prototype.lookup = function mdLoopup (name) {
+    Context.prototype.lookup = function mdLoopup(name) {
       return name === 'md' ? md : this._lookup(name);
     }
   </script>
 </head>
 <body>
-  Bienvenidos a morfologia vegetal.
+Bienvenidos a morfologia vegetal.
 
-  <div hx-ext="client-side-templates">
-    <div hx-get="https://www.morfologia-vegetal.info/estructuras"
-         hx-trigger="load"
-            hx-swap="innerHTML"
-            hx-target="#content"
-            mustache-template="foo">
-    </div>
-
-    <p id="content">Start</p>
-
-    <template id="foo">
-      {{#.}}
-        <h1>{{nombre}}</h1>
-        <p>{{#md}}{{descripcion}}{{/md}}</p>
-        <h4>Secciones</h4>
-        {{#secciones}}
-          <h5>{{titulo}}</h5>
-          <p>{{contenido}}</p>
-        {{/secciones}}
-      {{/.}}
-    </template>
+<div hx-ext="client-side-templates">
+  <div hx-get="https://www.morfologia-vegetal.info/estructuras"
+       hx-trigger="load"
+       hx-swap="innerHTML"
+       hx-target="#content"
+       mustache-template="foo">
   </div>
+
+  <p id="content">Start</p>
+
+  <template id="foo">
+    {{#.}}
+    <h1>{{nombre}}</h1>
+    <p>{{#md}}{{descripcion}}{{/md}}</p>
+
+    <h4>Secciones</h4>
+
+    {{#secciones}}
+      <h3>{{titulo}}</h3>
+      <p>{{contenido}}</p>
+
+      {{#subsecciones}}
+      <h5>{{titulo}}</h5>
+      <p>{{contenido}}</p>
+      {{/subsecciones}}
+
+      {{#galeria}}
+        <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+      {{/galeria}}
+    {{/secciones}}
+
+
+    <h4>Galeria</h4>
+    {{#galeria}}
+      <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+    {{/galeria}}
+
+    {{/.}}
+  </template>
+</div>
 </body>
 </html>
 
