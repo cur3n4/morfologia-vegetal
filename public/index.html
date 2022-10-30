@@ -4,6 +4,11 @@
   <script src="https://unpkg.com/htmx.org"></script>
   <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="/assets/css/paper-kit.min.css"/>
 
@@ -112,27 +117,39 @@
       <h1>{{nombre}}</h1>
       <p>{{#md}}{{descripcion}}{{/md}}</p>
 
-      <h4>Secciones</h4>
+      {{#secciones.length}}
+        {{#secciones}}
+        <h3>{{titulo}}</h3>
+        <p>{{contenido}}</p>
 
-      {{#secciones}}
-      <h3>{{titulo}}</h3>
-      <p>{{contenido}}</p>
+        {{#subsecciones}}
+        <h5>{{titulo}}</h5>
+        <p>{{#md}}{{contenido}}{{/md}}</p>
+        {{/subsecciones}}
 
-      {{#subsecciones}}
-      <h5>{{titulo}}</h5>
-      <p>{{contenido}}</p>
-      {{/subsecciones}}
+        {{#galeria}}
+        <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+        {{/galeria}}
+        {{/secciones}}
+      {{/secciones.length}}
 
-      {{#galeria}}
-      <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
-      {{/galeria}}
-      {{/secciones}}
+      {{#galeria.length}}
+        <h4>Galeria</h4>
+        {{#galeria}}
+        <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+        {{/galeria}}
+      {{/galeria.length}}
 
-
-      <h4>Galeria</h4>
-      {{#galeria}}
-      <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
-      {{/galeria}}
+      {{#subestructuras.length}}
+        <h4>Subestructuras</h4>
+        {{#subestructuras}}
+          <h5>{{nombre}}</h5>
+          <p>{{#md}}{{descripcion}}{{/md}}</p>
+          {{#galeria}}
+          <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+          {{/galeria}}
+        {{/subestructuras}}
+      {{/subestructuras.length}}
     </div>
     {{/.}}
   </template>
