@@ -64,6 +64,7 @@
   </script>
 </head>
 <body class="index-page sidebar-collapse">
+  <input type="hidden" id="id" name="id"/>
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
     <div class="container">
       <div class="navbar-translate">
@@ -99,6 +100,7 @@
 
     <div hx-ext="client-side-templates">
       <div hx-get="https://www.morfologia-vegetal.info/estructuras"
+           hx-include="[name='id']"
            hx-trigger="load"
            hx-swap="innerHTML"
            hx-target="#estructurasContent"
@@ -196,6 +198,17 @@
           {{/adaptaciones}}
         {{/adaptaciones.length}}
 
+        {{#morfologias.length}}
+        <div class="title"><h3>Tipos</h3></div>
+        {{#morfologias}}
+        <div class="title"><h5>{{nombre}}</h5></div>
+        <p>{{#md}}{{descripcion}}{{/md}}</p>
+        {{#galeria}}
+        <img src="https://www.morfologia-vegetal.info{{formats.thumbnail.url}}">
+        {{/galeria}}
+        {{/morfologias}}
+        {{/morfologias.length}}
+
         {{#subestructuras.length}}
         <div class="title"><h3>Subestructuras</h3></div>
           {{#subestructuras}}
@@ -211,5 +224,11 @@
     {{/.}}
   </template>
 </body>
+<script>
+  if (location.hash) {
+    $('#id').val(location.hash.substring(1));
+  }
+
+</script>
 </html>
 
