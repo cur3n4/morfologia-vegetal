@@ -1,0 +1,40 @@
+<div
+  x-data="{contenido: {}}"
+  x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
+  @push-state.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
+>
+  <div class="section section-gray">
+    <div class="container">
+      <div class="title"><h1 x-text="contenido.titulo"></h1></div>
+      <p x-markdown="contenido.descripcion"></p>
+      <template x-for="seccion in contenido.secciones">
+        <div>
+          <div class="title"><h3 x-text="seccion.titulo"></h3></div>
+          <p x-markdown="seccion.contenido"></p>
+
+          <template x-for="subseccion in seccion.subsecciones">
+            <div>
+              <h5 x-text="subseccion.titulo"></h5>
+              <p x-markdown="subseccion.contenido"></p>
+              <template x-for="imagen in subseccion.galeria">
+                <img :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+            </div>
+          </template>
+
+          <template x-for="imagen in seccion.galeria">
+            <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+          </template>
+        </div>
+      </template>
+      <template x-if="contenido.galeria != null && contenido.galeria.length > 0">
+        <div>
+          <div class="title"><h3>Galeria</h3></div>
+          <template x-for="imagen in contenido.galeria">
+            <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+          </template>
+        </div>
+      </template>
+    </div>
+  </div>
+</div>

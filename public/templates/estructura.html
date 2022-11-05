@@ -1,0 +1,122 @@
+<div
+  x-data="{estructura: {}}"
+  x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`)"
+  @push-state.window="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`)"
+>
+  <div class="section section-gray">
+    <div class="container">
+      <div class="title"><h1 x-text="estructura.nombre"></h1></div>
+      <p x-markdown="estructura.descripcion"></p>
+      <template x-for="seccion in estructura.secciones">
+        <div>
+          <div class="title"><h3 x-text="seccion.titulo"></h3></div>
+          <p x-markdown="seccion.contenido"></p>
+
+          <template x-for="subseccion in seccion.subsecciones">
+            <div>
+              <h5 x-text="subseccion.titulo"></h5>
+              <p x-markdown="subseccion.contenido"></p>
+              <template x-for="imagen in subseccion.galeria">
+                <img :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+            </div>
+          </template>
+
+          <template x-for="imagen in seccion.galeria">
+            <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+          </template>
+        </div>
+      </template>
+      <template x-if="estructura.galeria != null && estructura.galeria.length > 0">
+        <div>
+          <div class="title"><h3>Galeria</h3></div>
+          <template x-for="imagen in estructura.galeria">
+            <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+          </template>
+        </div>
+      </template>
+    </div>
+    <div class="container">
+      <template x-if="estructura.caracteristicas != null && estructura.caracteristicas.length > 0">
+        <div>
+          <div class="title"><h3>Características</h3></div>
+          <template x-for="caracteristica in estructura.caracteristicas">
+            <div>
+              <div class="title"><h5 x-text="caracteristica.nombre"></h5></div>
+              <p x-markdown="caracteristica.descripcion"></p>
+              <template x-for="imagen in caracteristica.galeria">
+                <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+              <br/>
+            </div>
+          </template>
+        </div>
+      </template>
+
+      <template x-if="estructura.funciones != null && estructura.funciones.length > 0">
+        <div>
+          <div class="title"><h3>Funciones</h3></div>
+          <template x-for="funcion in estructura.funciones">
+            <div>
+              <div class="title"><h5 x-text="funcion.nombre"></h5></div>
+              <p x-markdown="funcion.descripcion"></p>
+              <template x-for="imagen in funcion.galeria">
+                <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+              <br/>
+            </div>
+          </template>
+        </div>
+      </template>
+
+      <template x-if="estructura.adaptaciones != null && estructura.adaptaciones.length > 0">
+        <div>
+          <div class="title"><h3>Adaptaciones</h3></div>
+          <template x-for="adaptacion in estructura.adaptaciones">
+            <div>
+              <div class="title"><h5 x-text="adaptacion.nombre"></h5></div>
+              <p x-markdown="adaptacion.descripcion"></p>
+              <template x-for="imagen in adaptacion.galeria">
+                <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+              <br/>
+            </div>
+          </template>
+        </div>
+      </template>
+
+      <template x-if="estructura.morfologias != null && estructura.morfologias.length > 0">
+        <div>
+          <div class="title"><h3>Tipos</h3></div>
+          <template x-for="morfologia in estructura.morfologias">
+            <div>
+              <div class="title"><h5 x-text="morfologia.nombre"></h5></div>
+              <p x-markdown="morfologia.descripcion"></p>
+              <template x-for="imagen in morfologia.galeria">
+                <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+              <br/>
+            </div>
+          </template>
+        </div>
+      </template>
+
+      <template x-if="estructura.subestructuras != null && estructura.subestructuras.length > 0">
+        <div>
+          <div class="title"><h3>Subestructuras</h3></div>
+          <template x-for="subestructura in estructura.subestructuras">
+            <div>
+              <div class="title"><h5 x-text="subestructura.nombre"></h5></div>
+              <p x-markdown="subestructura.descripcion"></p>
+              <template x-for="imagen in subestructura.galeria">
+                <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+              <br/>
+            </div>
+          </template>
+        </div>
+      </template>
+
+    </div>
+  </div>
+</div>
