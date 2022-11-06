@@ -3,18 +3,14 @@
   x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`)"
   @push-state.window="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`)"
 >
-  <template x-for="(imagen, index) in estructura.galeria">
-    <template x-if="index == 2">
-      <div class="page-header page-header-xs"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${imagen.formats.large.url}')`" >
-        <div class="content-center">
-          <div class="container">
-            <div class="title-brand"><h1 x-text="estructura.nombre"></h1></div>
-          </div>
-        </div>
+  <div class="page-header page-header-xs"
+       :style="`background-image: url('https://www.morfologia-vegetal.info${estructura.imagen.formats.large.url}')`" >
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand"><h1 x-text="estructura.nombre"></h1></div>
       </div>
-    </template>
-  </template>
+    </div>
+  </div>
   <div class="section section-gray">
     <div class="container">
       <div class="title"><h1 x-text="estructura.nombre"></h1></div>

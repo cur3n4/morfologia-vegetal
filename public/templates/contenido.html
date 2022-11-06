@@ -4,18 +4,14 @@
   x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
   @push-state.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
 >
-  <template x-for="(imagen, index) in contenido.galeria">
-    <template x-if="index == 0">
-      <div class="page-header page-header-xs"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${imagen.formats.large.url}')`" >
-        <div class="content-center">
-          <div class="container">
-            <div class="title-brand"><h1 x-text="contenido.titulo"></h1></div>
-          </div>
-        </div>
+  <div class="page-header page-header-xs"
+       :style="`background-image: url('https://www.morfologia-vegetal.info${contenido.imagen.formats.large.url}')`" >
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand"><h1 x-text="contenido.titulo"></h1></div>
       </div>
-    </template>
-  </template>
+    </div>
+  </div>
 
   <div class="section section-dark">
     <div class="container">
