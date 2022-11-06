@@ -16,7 +16,7 @@
     <div  class="container">
       <div  >
         <a x-link href="/" class="text-white">Inicio</a> <i class="fa fa-chevron-right align-middle" ></i>
-        <a x-link x-bind:href="'/estructura/' + subestructura.estructura.id" class="text-white" x-text="subestructura.estructura.nombre"></a> <i class="fa fa-chevron-right align-middle" ></i>
+        <a x-link x-bind:href="`/#/estructura/${subestructura.estructura.id}`" class="text-white" x-text="subestructura.estructura.nombre"></a> <i class="fa fa-chevron-right align-middle" ></i>
         <a class="text-white active"><b x-text="subestructura.nombre"></b></a>
       </div>
       <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link">&nbsp;</a></li></ul>
