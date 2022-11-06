@@ -1,3 +1,41 @@
 <div>
+  <div class="page-header section-dark" style="background-image: url('https://morfologia-vegetal.onrender.com/uploads/Anemone_narcissiflora_02_1100_ed30fa4911.jpg')">
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand">
+          <h1 class="presentation-title">Morfología Vegetal</h1>
+        </div>
+        <h2 class="presentation-subtitle text-center">La página de la morfología vegetal!! </h2>
+      </div>
+    </div>
+  </div>
+  <div class="section section-dark">
+    <div class="container">
+      <div class="row"
+           x-data="{estructuras: {}}"
+           x-init="estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`)"
+      >
+        <template x-for="estructura in estructuras">
+          <div class="col-sm-3">
+            <a x-link :href="'/estructura/' + estructura.id">
+
+              <div class="card ">
+                <div class="card-img-top">
+                  <img class="img" :src="menuEntry.thumbnailImage" />
+
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title" x-text="estructura.nombre"></h4>
+                  <p class="card-description" x-text="estructura.nombre"></p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </template>
+      </div>
+    </div>
+  </div>
 
 </div>

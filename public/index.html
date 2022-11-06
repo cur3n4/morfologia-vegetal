@@ -41,35 +41,6 @@
   <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/paper-kit.min.js" type="text/javascript"></script>
 
-
-  <script>
-    // Remove unnecessary headers
-    document.addEventListener('htmx:configRequest', (evt) => {
-      evt.detail.headers = [];
-    });
-
-    function md(text, subrender) {
-      return marked.parse(subrender(text))
-    }
-
-    let sectionClassIndex = 0;
-    let sectionClasses = ['section-gray', 'section-brown', 'section-dark']
-    function sectionClass(test) {
-      return sectionClasses[sectionClassIndex++];
-    }
-
-    let Context = Mustache.Context
-    Context.prototype._lookup = Context.prototype.lookup
-    Context.prototype.lookup = function mdLoopup(name) {
-      if (name === 'md') {
-        return md;
-      }
-      else if (name === 'sectionClass') {
-        return sectionClass;
-      }
-      return this._lookup(name);
-    }
-  </script>
 </head>
 <body class="index-page sidebar-collapse" x-data x-init="$router.config({ mode: 'hash' })"  hx-ext="client-side-templates">
 
@@ -99,17 +70,6 @@
     </div>
   </nav>
 
-  <div class="page-header section-dark" style="background-image: url('https://morfologia-vegetal.onrender.com/uploads/Anemone_narcissiflora_02_1100_ed30fa4911.jpg')">
-    <div class="filter"></div>
-    <div class="content-center">
-      <div class="container">
-        <div class="title-brand">
-          <h1 class="presentation-title">Morfología Vegetal</h1>
-        </div>
-        <h2 class="presentation-subtitle text-center">La página de la morfología vegetal! </h2>
-      </div>
-    </div>
-  </div>
   <div class="main">
     <template x-route="/" template="/templates/home.html">
     </template>
