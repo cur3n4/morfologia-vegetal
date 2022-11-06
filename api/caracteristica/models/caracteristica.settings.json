@@ -45,8 +45,8 @@
       "dominant": true
     },
     "subestructuras": {
-      "collection": "subestructura",
       "via": "caracteristica_generals",
+      "collection": "subestructura",
       "dominant": true
     },
     "sub_subestructuras": {

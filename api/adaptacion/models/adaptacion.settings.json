@@ -40,8 +40,8 @@
       "dominant": true
     },
     "subestructuras": {
-      "collection": "subestructura",
       "via": "adaptacions",
+      "collection": "subestructura",
       "dominant": true
     },
     "sub_subestructuras": {

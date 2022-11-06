@@ -17,7 +17,7 @@
            x-init="estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`)"
       >
         <template x-for="estructura in estructuras">
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <a x-link :href="'/estructura/' + estructura.id">
 
               <div class="card ">

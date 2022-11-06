@@ -71,12 +71,10 @@
   </nav>
 
   <div class="main">
-    <template x-route="/" template="/templates/home.html">
-    </template>
-    <template x-route="/estructura/:id" template="/templates/estructura.html">
-    </template>
-    <template x-route="/contenido/:id" template="/templates/contenido.html">
-    </template>
+    <template x-route="/" template="/templates/home.html"></template>
+    <template x-route="/estructura/:id" template="/templates/estructura.html"></template>
+    <template x-route="/subestructura/:id" template="/templates/subestructura.html"></template>
+    <template x-route="/contenido/:id" template="/templates/contenido.html"></template>
     <template x-route.notfound>
       <div>Error 404 not found</div>
     </template>

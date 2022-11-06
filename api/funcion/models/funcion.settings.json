@@ -39,8 +39,8 @@
       "model": "estructura"
     },
     "subestructura": {
-      "model": "subestructura",
-      "via": "funcions"
+      "via": "funcions",
+      "model": "subestructura"
     },
     "sub_subestructura": {
       "via": "funcions",
