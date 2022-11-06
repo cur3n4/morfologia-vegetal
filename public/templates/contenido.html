@@ -4,7 +4,7 @@
   x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
   @push-state.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
 >
-  <div class="page-header page-header-xs"
+  <div class="page-header page-header-xs section-dark"
        :style="`background-image: url('https://www.morfologia-vegetal.info${contenido.imagen.formats.large.url}')`" >
     <div class="filter"></div>
     <div class="content-center">
