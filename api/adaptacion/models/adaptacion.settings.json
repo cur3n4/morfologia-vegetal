@@ -35,8 +35,8 @@
       "component": "general.seccion"
     },
     "estructuras": {
-      "collection": "estructura",
       "via": "adaptacions",
+      "collection": "estructura",
       "dominant": true
     },
     "subestructuras": {

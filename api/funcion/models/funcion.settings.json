@@ -35,8 +35,8 @@
       "component": "general.seccion"
     },
     "estructura": {
-      "model": "estructura",
-      "via": "funcions"
+      "via": "funcions",
+      "model": "estructura"
     },
     "subestructura": {
       "model": "subestructura",

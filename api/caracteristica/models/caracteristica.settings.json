@@ -30,8 +30,8 @@
       "pluginOptions": {}
     },
     "estructuras": {
-      "collection": "estructura",
       "via": "caracteristicas",
+      "collection": "estructura",
       "dominant": true
     },
     "secciones": {

@@ -35,8 +35,8 @@
       "component": "general.seccion"
     },
     "estructura": {
-      "model": "estructura",
-      "via": "morfologias"
+      "via": "morfologias",
+      "model": "estructura"
     },
     "subestructura": {
       "model": "subestructura",
