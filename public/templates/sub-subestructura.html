@@ -1,16 +1,16 @@
 <div
-  x-data="{subestructura: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
-  x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`)"
-  @push-state.window="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`)"
+  x-data="{subsubestructura: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
+  x-init="subsubestructura = await $fetch(`https://www.morfologia-vegetal.info/sub-subestructuras/${$router.params.id}`)"
+  @push-state.window="subsubestructura = await $fetch(`https://www.morfologia-vegetal.info/sub-subestructuras/${$router.params.id}`)"
 >
-  <template x-if="subestructura.nombre">
+  <template x-if="subsubestructura.nombre">
     <div>
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${subestructura.imagen.formats.large.url}')`" >
+           :style="`background-image: url('https://www.morfologia-vegetal.info${subsubestructura.imagen.formats.large.url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">
-            <div class="title-brand"><h1 x-text="subestructura.nombre"></h1></div>
+            <div class="title-brand"><h1 x-text="subsubestructura.nombre"></h1></div>
           </div>
         </div>
       </div>
@@ -18,18 +18,9 @@
         <div  class="container">
           <div  >
             <a x-link href="/" class="text-white">Inicio</a> <i class="fa fa-chevron-right align-middle" ></i>
-            <a x-link x-bind:href="`/#/estructura/${subestructura.estructura.id}`" class="text-white" x-text="subestructura.estructura.nombre"></a> <i class="fa fa-chevron-right align-middle" ></i>
-            <a class="text-white active"><b x-text="subestructura.nombre"></b></a><template x-if="subestructura.sub_subestructuras.length > 0">  <i class="fa fa-chevron-right align-middle" ></i></template>
-            <template x-if="subestructura.sub_subestructuras.length > 0">
-              <div class="dropdown" style="display: inline">
-                <a class="nav-link dropdown-toggle text-white pl-0" data-toggle="dropdown" style="cursor:pointer; display:inline;">Partes</a>
-                <ul class="dropdown-menu ">
-                  <template x-for="subsubestructura in subestructura.sub_subestructuras">
-                    <li><a class="dropdown-item" x-link :href="`/sub-subestructura/${subsubestructura.id}`" x-text="subsubestructura.nombre"></a></li>
-                  </template>
-                </ul>
-              </div>
-            </template>
+            <a x-link x-bind:href="`/#/estructura/${subsubestructura.subestructura.estructura.id}`" class="text-white" x-text="subsubestructura.subestructura.estructura.nombre"></a> <i class="fa fa-chevron-right align-middle" ></i>
+            <a x-link x-bind:href="`/#/estructura/${subsubestructura.subestructura.id}`" class="text-white" x-text="subsubestructura.subestructura.nombre"></a> <i class="fa fa-chevron-right align-middle" ></i>
+            <a class="text-white active"><b x-text="subestructura.nombre"></b></a>
 
           </div>
           <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link">&nbsp;</a></li></ul>
@@ -40,7 +31,7 @@
           <div class="row">
             <div class="col-sm-2">
               <div x-init="$nextTick(() => $('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                <template x-for="(imagen, index) in subestructura.galeria" >
+                <template x-for="(imagen, index) in subsubestructura.galeria" >
                   <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + imagen.formats.large.url" :title="imagen.caption">
                     <img width="100" style="max-height: 30vh" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.thumbnail.url" />
                   </a>
@@ -49,8 +40,8 @@
             </div>
             <div class="col-md-10">
               <h2 class="title">Descripción</h2>
-              <p x-markdown="subestructura.descripcion"></p>
-              <template x-for="seccion in subestructura.secciones">
+              <p x-markdown="subsubestructura.descripcion"></p>
+              <template x-for="seccion in subsubestructura.secciones">
                 <div>
                   <div class="title"><h3 x-text="seccion.titulo"></h3></div>
                   <p x-markdown="seccion.contenido"></p>
@@ -82,21 +73,21 @@
                   </template>
                 </div>
               </template>
-              <template x-if="subestructura.caracteristicas != null && subestructura.caracteristicas.length > 0">
+              <template x-if="subsubestructura.caracteristicas != null && subsubestructura.caracteristicas.length > 0">
                 <div>
                   <h2 class="title margin-top">
                     <div class="nav-item dropdown">
                       Características<a class="dropdown-toggle" data-toggle="dropdown" id="caracteristicasDropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"></a>
                       <ul class="dropdown-menu dropdown-info" aria-labelledby="caracteristicasDropdownMenuButton">
                         <li class="dropdown-header">Características</li>
-                        <template x-for="caracteristica in subestructura.caracteristicas">
+                        <template x-for="caracteristica in subsubestructura.caracteristicas">
                           <a class="dropdown-item" data-toggle="tab" :href="'#caracteristicas' + caracteristica.id" role="tab" x-text="caracteristica.nombre">Action</a>
                         </template>
                       </ul>
                     </div>
                   </h2>
                   <div class="tab-content text-left">
-                    <template x-for="(caracteristica, index) in subestructura.caracteristicas">
+                    <template x-for="(caracteristica, index) in subsubestructura.caracteristicas">
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'caracteristicas' + caracteristica.id" role="tabpanel">
                         <div class="title"><h3 x-text="caracteristica.nombre"></h3></div>
                         <p x-markdown="caracteristica.descripcion"></p>
@@ -114,21 +105,21 @@
                   </div>
                 </div>
               </template>
-              <template x-if="subestructura.funcions != null && subestructura.funcions.length > 0">
+              <template x-if="subsubestructura.funcions != null && subsubestructura.funcions.length > 0">
                 <div>
                   <h2 class="title margin-top">
                     <div class="nav-item dropdown">
                       Funciones<a class="dropdown-toggle" data-toggle="dropdown" id="funcionesDropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"></a>
                       <ul class="dropdown-menu dropdown-info" aria-labelledby="funcionesDropdownMenuButton">
                         <li class="dropdown-header">Funciones</li>
-                        <template x-for="funcion in subestructura.funcions">
+                        <template x-for="funcion in subsubestructura.funcions">
                           <a class="dropdown-item" data-toggle="tab" :href="'#funciones' + funcion.id" role="tab" x-text="funcion.titulo">Action</a>
                         </template>
                       </ul>
                     </div>
                   </h2>
                   <div  class="tab-content text-left">
-                    <template x-for="(funcion, index) in subestructura.funcions">
+                    <template x-for="(funcion, index) in subsubestructura.funcions">
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'funciones' + funcion.id" role="tabpanel">
                         <div class="title"><h3 x-text="funcion.titulo"></h3></div>
                         <p x-markdown="funcion.description"></p>
@@ -146,21 +137,21 @@
                   </div>
                 </div>
               </template>
-              <template x-if="subestructura.adaptaciones != null && subestructura.adaptaciones.length > 0">
+              <template x-if="subsubestructura.adaptaciones != null && subsubestructura.adaptaciones.length > 0">
                 <div>
                   <h2 class="title margin-top">
                     <div class="nav-item dropdown">
                       Adaptaciones<a class="dropdown-toggle" data-toggle="dropdown" id="adaptacionesDropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"></a>
                       <ul class="dropdown-menu dropdown-info" aria-labelledby="adaptacionesDropdownMenuButton">
                         <li class="dropdown-header">Adaptaciones</li>
-                        <template x-for="adaptacion in subestructura.adaptaciones">
+                        <template x-for="adaptacion in subsubestructura.adaptaciones">
                           <a class="dropdown-item" data-toggle="tab" :href="'#adaptaciones' + adaptacion.id" role="tab" x-text="adaptacion.titulo">Action</a>
                         </template>
                       </ul>
                     </div>
                   </h2>
                   <div class="tab-content text-left">
-                    <template x-for="(adaptacion, index) in subestructura.adaptaciones">
+                    <template x-for="(adaptacion, index) in subsubestructura.adaptaciones">
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'adaptaciones' + adaptacion.id" role="tabpanel">
                         <div class="title"><h3 x-text="adaptacion.titulo"></h3></div>
                         <p x-markdown="adaptacion.descripcion"></p>
@@ -178,21 +169,21 @@
                   </div>
                 </div>
               </template>
-              <template x-if="subestructura.morfologias != null && subestructura.morfologias.length > 0">
+              <template x-if="subsubestructura.morfologias != null && subsubestructura.morfologias.length > 0">
                 <div>
                   <h2 class="title margin-top">
                     <div class="nav-item dropdown">
                       Tipos<a class="dropdown-toggle" data-toggle="dropdown" id="morfologiasDropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"></a>
                       <ul class="dropdown-menu dropdown-info" aria-labelledby="morfologiasDropdownMenuButton">
                         <li class="dropdown-header">Tipos</li>
-                        <template x-for="morfologia in subestructura.morfologias">
+                        <template x-for="morfologia in subsubestructura.morfologias">
                           <a class="dropdown-item" data-toggle="tab" :href="'#morfologias' + morfologia.id" role="tab" x-text="morfologia.titulo">Action</a>
                         </template>
                       </ul>
                     </div>
                   </h2>
                   <div class="tab-content text-left">
-                    <template x-for="(morfologia, index) in subestructura.morfologias">
+                    <template x-for="(morfologia, index) in subsubestructura.morfologias">
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'morfologias' + morfologia.id" role="tabpanel">
                         <div class="title"><h3 x-text="morfologia.titulo"></h3></div>
                         <p x-markdown="morfologia.descripcion"></p>
