@@ -139,9 +139,26 @@
           </template>
         </div>
         <div class="tab-pane" id="galeria" role="tabpanel">
-          <template x-for="imagen in estructura.galeria">
-            <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
-          </template>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <template x-for="(imagen, index) in estructura.galeria">
+                <div :class="index === 0 ? 'carousel-item active' : 'carousel-item'">
+                  <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" class="d-block img-fluid" src="https://www.morfologia-vegetal.info/uploads/thumbnail_Bryum_capillare_003_cf_1100_a58e3b9fe1.jpg">
+                  <div class="carousel-caption d-none d-md-block">
+                    <p x-text="imagen.caption">Ejemplares de musgos (Bryum capillare) con las dos generaciones visibles.</p>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Siguiente</span>
+            </a>
+          </div>
         </div>
       </div>
 
