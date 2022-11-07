@@ -1,11 +1,11 @@
 
 <div
   x-data="{contenido: {}}"
-  x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
+  x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`); await $nextTick();"
   @push-state.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
 >
   <div class="page-header page-header-xs section-dark"
-       :style="`background-image: url('https://www.morfologia-vegetal.info${contenido.imagen.formats.large.url}')`" >
+       :style="`background-image: url('https://www.morfologia-vegetal.info${contenido.imagen.formats.medium.url}')`" >
     <div class="filter"></div>
     <div class="content-center">
       <div class="container">
@@ -16,52 +16,83 @@
 
   <div class="section section-dark">
     <div class="container">
-      <div class="title"><h1 x-text="contenido.titulo"></h1></div>
-      <p x-markdown="contenido.descripcion"></p>
-      <template x-for="seccion in contenido.secciones">
-        <div>
-          <div class="title"><h3 x-text="seccion.titulo"></h3></div>
-          <p x-markdown="seccion.contenido"></p>
-
-          <template x-for="subseccion in seccion.subsecciones">
-            <div>
-              <h5 x-text="subseccion.titulo"></h5>
-              <p x-markdown="subseccion.contenido"></p>
-              <template x-for="imagen in subseccion.galeria">
-                <img :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
-              </template>
-            </div>
-          </template>
-
-          <template x-for="imagen in seccion.galeria">
-            <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
-          </template>
-        </div>
-      </template>
-      <template x-if="contenido.galeria != null && contenido.galeria.length > 0">
-        <div class="margin-top">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <template x-for="(imagen, index) in contenido.galeria">
-                <div :class="index === 0 ? 'carousel-item active' : 'carousel-item'">
-                  <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" class="d-block img-fluid" src="https://www.morfologia-vegetal.info/uploads/thumbnail_Bryum_capillare_003_cf_1100_a58e3b9fe1.jpg">
-                  <div class="carousel-caption d-none d-md-block">
-                    <p x-text="imagen.caption">Ejemplares de musgos (Bryum capillare) con las dos generaciones visibles.</p>
-                  </div>
-                </div>
-              </template>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Siguiente</span>
-            </a>
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="chocolat-parent">
+            <template x-for="(imagen, index) in contenido.galeria" >
+              <div  x-init="$nextTick(() => Chocolat(document.querySelectorAll('.chocolat-parent .chocolat-image')))">
+                <template x-if="imagen.formats.large">
+                  <a class="chocolat-image" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                    <img width="100" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                  </a>
+                </template>
+                <template x-if="!imagen.formats.large && imagen.formats.medium">
+                  <a class="chocolat-image" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.medium.url}`" :title="imagen.caption">
+                    <img width="100" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                  </a>
+                </template>
+                <template x-if="!imagen.formats.large && !imagen.formats.medium">
+                  <a class="chocolat-image" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.small.url}`" :title="imagen.caption">
+                    <img width="100" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                  </a>
+                </template>
+              </div>
+            </template>
           </div>
         </div>
-      </template>
+        <div class="col-sm-10">
+          <div class="title"><h1 x-text="contenido.titulo"></h1></div>
+          <p x-markdown="contenido.descripcion"></p>
+          <template x-for="seccion in contenido.secciones">
+            <div>
+              <div class="title"><h3 x-text="seccion.titulo"></h3></div>
+              <p x-markdown="seccion.contenido"></p>
+
+              <template x-for="subseccion in seccion.subsecciones">
+                <div>
+                  <h5 x-text="subseccion.titulo"></h5>
+                  <p x-markdown="subseccion.contenido"></p>
+                  <template x-for="imagen in subseccion.galeria">
+                    <img :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+                  </template>
+                </div>
+              </template>
+
+              <template x-for="imagen in seccion.galeria" >
+                <img  :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`">
+              </template>
+            </div>
+          </template>
+        </div>
+      </div>
+<!--
+
+      <template x-if="contenido.galeria != null && contenido.galeria.length > 0">
+        <div class="margin-top">
+          <div class="chocolat-parent" x-init="$nextTick(() => Chocolat(document.querySelectorAll('.chocolat-parent .chocolat-image')))">
+            <template x-for="(imagen, index) in contenido.galeria">
+              <div>
+              <template x-if="imagen.formats.large">
+                <a class="chocolat-image" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                  <img width="100" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                </a>
+              </template>
+              <template x-if="!imagen.formats.large && imagen.formats.medium">
+                <a class="chocolat-image" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.medium.url}`" :title="imagen.caption">
+                  <img width="100" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                </a>
+              </template>
+              <template x-if="!imagen.formats.large && !imagen.formats.medium">
+                <a class="chocolat-image" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.small.url}`" :title="imagen.caption">
+                  <img width="100" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                </a>
+              </template>
+              </div>
+
+            </template>
+          </div>
+        </div>
+      </template>-->
     </div>
   </div>
 </div>

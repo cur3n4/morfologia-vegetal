@@ -208,3 +208,6 @@ div.cdk-overlay-pane {
   vertical-align: middle;
 }
 
+.chocolat-open .navbar {
+  display: none;
+}
