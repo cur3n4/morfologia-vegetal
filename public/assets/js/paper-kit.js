@@ -15,6 +15,17 @@
 
  */
 
+$(document).ready(function() {
+  $('.image-link').magnificPopup({type:'image'});
+
+  $('.gallery-item').magnificPopup({
+    type: 'image',
+    gallery:{
+      enabled:true
+    }
+  });
+});
+
 var transparent = true;
 var big_image;
 

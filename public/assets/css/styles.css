@@ -12,6 +12,12 @@ div.cdk-overlay-pane {
   z-index: 1050;
 }
 
+p {
+  font-size: 16px;
+  line-height: 1.5em;
+  margin-bottom: 5px;
+}
+
 /* To avoid issue with lightbox and this one */
 .fixed-top {
   z-index: 900;
@@ -208,6 +214,6 @@ div.cdk-overlay-pane {
   vertical-align: middle;
 }
 
-.chocolat-open .navbar {
-  display: none;
+img.mfp-img {
+  max-height: 100vh !important
 }
