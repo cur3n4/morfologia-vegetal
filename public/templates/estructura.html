@@ -18,15 +18,17 @@
         <div  class="container">
           <div  >
             <a x-link href="/" class="text-white">Inicio</a> <i class="fa fa-chevron-right align-middle" ></i>
-            <a class="text-white active"><b x-text="estructura.nombre"></b></a> <i class="fa fa-chevron-right align-middle" ></i>
-            <div class="dropdown" style="display: inline">
-              <a class="nav-link dropdown-toggle text-white pl-0" data-toggle="dropdown" style="cursor:pointer; display:inline;">Partes</a>
-              <ul class="dropdown-menu ">
-                <template x-for="subestructura in estructura.subestructuras">
-                  <li><a class="dropdown-item" x-link :href="`/subestructura/${subestructura.id}`" x-text="subestructura.nombre"></a></li>
-                </template>
-              </ul>
-            </div>
+            <a class="text-white active"><b x-text="estructura.nombre"></b></a><template x-if="estructura.subestructuras.length > 0">  <i class="fa fa-chevron-right align-middle" ></i></template>
+            <template x-if="estructura.subestructuras.length > 0">
+              <div class="dropdown" style="display: inline">
+                <a class="nav-link dropdown-toggle text-white pl-0" data-toggle="dropdown" style="cursor:pointer; display:inline;">Partes</a>
+                <ul class="dropdown-menu ">
+                  <template x-for="subestructura in estructura.subestructuras">
+                    <li><a class="dropdown-item" x-link :href="`/subestructura/${subestructura.id}`" x-text="subestructura.nombre"></a></li>
+                  </template>
+                </ul>
+              </div>
+            </template>
 
           </div>
           <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link">&nbsp;</a></li></ul>
@@ -36,14 +38,12 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3">
-              <div class="col-sm-3">
-                <div x-init="$nextTick(() => $('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                  <template x-for="(imagen, index) in estructura.galeria" >
-                    <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + imagen.formats.large.url" :title="imagen.caption">
-                      <img width="200" style="max-height: 30vh" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.thumbnail.url" />
-                    </a>
-                  </template>
-                </div>
+              <div x-init="$nextTick(() => $('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
+                <template x-for="(imagen, index) in estructura.galeria" >
+                  <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + imagen.formats.large.url" :title="imagen.caption">
+                    <img width="200" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.medium.url" />
+                  </a>
+                </template>
               </div>
             </div>
             <div class="col-md-9">
@@ -62,7 +62,7 @@
                         <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                           <template x-for="imagen in subseccion.galeria">
                             <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
-                              <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                              <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.medium.url}`" />
                             </a>
                           </template>
                         </div>
@@ -181,9 +181,9 @@
                 <div>
                   <h2 class="title margin-top">
                     <div class="nav-item dropdown">
-                      Morfologías<a class="dropdown-toggle" data-toggle="dropdown" id="morfologiasDropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                      Tipos<a class="dropdown-toggle" data-toggle="dropdown" id="morfologiasDropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"></a>
                       <ul class="dropdown-menu dropdown-info" aria-labelledby="morfologiasDropdownMenuButton">
-                        <li class="dropdown-header">Morfologías</li>
+                        <li class="dropdown-header">Tipos</li>
                         <template x-for="morfologia in estructura.morfologias">
                           <a class="dropdown-item" data-toggle="tab" :href="'#morfologias' + morfologia.id" role="tab" x-text="morfologia.titulo">Action</a>
                         </template>
@@ -199,7 +199,7 @@
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in morfologia.galeria">
                               <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
-                                <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                                <img width="200" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
                           </div>
