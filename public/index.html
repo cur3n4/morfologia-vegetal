@@ -57,9 +57,11 @@
             x-data="{contenidos: {}}"
             x-init="contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`)">
           <template x-for="contenido in contenidos">
-            <li class="nav-item">
-              <a x-link x-bind:href="`/contenido/${contenido.id}`" class="nav-link" x-text="contenido.titulo"></a>
-            </li>
+            <template x-if="contenido.id != 1 && contenido.id != 7">
+              <li class="nav-item">
+                <a x-link x-bind:href="`/contenido/${contenido.id}`" class="nav-link" x-text="contenido.titulo"></a>
+              </li>
+            </template>
           </template>
         </ul>
       </div>
@@ -77,6 +79,24 @@
     </template>
 
   </div>
+
+  <footer class="footer" >
+    <div class="container">
+      <div class="row">
+        <nav class="footer-nav">
+          <ul>
+            
+          </ul>
+        </nav>
+        <div class="credits ml-auto">
+            <span class="copyright">
+                &copy; Fotos, contenido y diseño Morfología Vegetal 2022
+            </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 
 </body>
 </html>
