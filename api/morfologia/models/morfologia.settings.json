@@ -34,17 +34,20 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "estructura": {
+    "estructuras": {
+      "collection": "estructura",
       "via": "morfologias",
-      "model": "estructura"
+      "dominant": true
     },
-    "subestructura": {
+    "subestructuras": {
+      "collection": "subestructura",
       "via": "tipos",
-      "model": "subestructura"
+      "dominant": true
     },
-    "sub_subestructura": {
+    "sub_subestructuras": {
+      "collection": "sub-subestructura",
       "via": "tipos",
-      "model": "sub-subestructura"
+      "dominant": true
     },
     "caracteristica_generals": {
       "via": "tipos",

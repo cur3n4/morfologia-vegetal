@@ -38,14 +38,6 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "morfologias": {
-      "via": "estructura",
-      "collection": "morfologia"
-    },
-    "funcions": {
-      "via": "estructura",
-      "collection": "funcion"
-    },
     "adaptacions": {
       "via": "estructuras",
       "collection": "adaptacion"
@@ -65,6 +57,14 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "funcions": {
+      "via": "estructuras",
+      "collection": "funcion"
+    },
+    "morfologias": {
+      "via": "estructuras",
+      "collection": "morfologia"
     }
   }
 }

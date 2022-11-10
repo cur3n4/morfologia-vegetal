@@ -38,14 +38,6 @@
       "via": "sub_subestructuras",
       "model": "subestructura"
     },
-    "funcions": {
-      "via": "sub_subestructura",
-      "collection": "funcion"
-    },
-    "tipos": {
-      "via": "sub_subestructura",
-      "collection": "morfologia"
-    },
     "adaptacions": {
       "via": "sub_subestructuras",
       "collection": "adaptacion"
@@ -65,6 +57,14 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "funcions": {
+      "via": "sub_subestructuras",
+      "collection": "funcion"
+    },
+    "tipos": {
+      "via": "sub_subestructuras",
+      "collection": "morfologia"
     }
   }
 }

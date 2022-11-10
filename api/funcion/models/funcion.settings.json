@@ -34,17 +34,20 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "estructura": {
+    "estructuras": {
+      "collection": "estructura",
       "via": "funcions",
-      "model": "estructura"
+      "dominant": true
     },
-    "subestructura": {
+    "subestructuras": {
+      "collection": "subestructura",
       "via": "funcions",
-      "model": "subestructura"
+      "dominant": true
     },
-    "sub_subestructura": {
+    "sub_subestructuras": {
+      "collection": "sub-subestructura",
       "via": "funcions",
-      "model": "sub-subestructura"
+      "dominant": true
     }
   }
 }

@@ -38,14 +38,6 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "tipos": {
-      "via": "subestructura",
-      "collection": "morfologia"
-    },
-    "funcions": {
-      "via": "subestructura",
-      "collection": "funcion"
-    },
     "sub_subestructuras": {
       "via": "subestructura",
       "collection": "sub-subestructura"
@@ -69,6 +61,14 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "funcions": {
+      "via": "subestructuras",
+      "collection": "funcion"
+    },
+    "tipos": {
+      "via": "subestructuras",
+      "collection": "morfologia"
     }
   }
 }
