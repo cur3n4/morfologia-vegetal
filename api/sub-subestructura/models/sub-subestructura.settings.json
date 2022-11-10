@@ -53,6 +53,18 @@
     "caracteristica_generals": {
       "via": "sub_subestructuras",
       "collection": "caracteristica"
+    },
+    "imagen": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }
