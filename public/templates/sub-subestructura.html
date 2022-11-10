@@ -69,7 +69,7 @@
               <div x-init="$nextTick(() => $('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in subsubestructura.galeria" >
                   <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + imagen.formats.large.url" :title="imagen.caption">
-                    <img width="200" style="max-height: 30vh" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.thumbnail.url" />
+                    <img width="200" style="max-height: 30vh" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.medium.url" />
                   </a>
                 </template>
               </div>
