@@ -67,19 +67,22 @@ document.addEventListener('alpine:init', () => {
     window.addEventListener('popstate', () => state.href = location.href)
 
     function push (path, options = {}) {
+      window.dispatchEvent(new CustomEvent('route-started', { detail: path }))
       if (!path.startsWith(location.origin)) {
         if (state.mode === 'hash') {
           path = location.origin + (state.base || '/') + '#' + path
         } else {
           path = location.origin + state.base + path
         }
+      } else {
+        if (state.mode === 'hash' && !path.startsWith(location.origin + (state.base || '/') + '#')) {
+          path = path.replace(location.origin + '/', location.origin + '/#/')
+        }
       }
       if (location.href !== path) {
         history[options.replace ? 'replaceState' : 'pushState']({}, '', path)
         state.href = path;
-        window.setTimeout(() => window.dispatchEvent(new CustomEvent('push-state', { detail: path })))
-        // console.log(router.resolve())
-        // window.dispatchEvent(new CustomEvent('push-state', { detail: path }));
+        window.setTimeout(() => window.dispatchEvent(new CustomEvent('route-loaded', { detail: path })))
       }
     }
 

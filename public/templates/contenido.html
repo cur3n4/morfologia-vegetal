@@ -2,7 +2,7 @@
 <div
   x-data="{contenido: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
   x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`);"
-  @push-state.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
+  @route-loaded.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
 >
   <template x-if="contenido.titulo">
     <div>
