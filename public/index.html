@@ -41,7 +41,7 @@
 <body class="index-page sidebar-collapse"
       x-data="{contenidos: {}, estructuras: {}, loading: false}"
       x-init="loading = true; $router.config({ mode: 'hash' }); contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`); estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`); loading = false;"
-      @route-started.window="loading: true" @route-loaded.window="loading: false">
+      @route-started.window="loading = true" @route-loaded.window="loading = false">
 
   <template x-if="loading">
     <div class="spinner-overlay"><div class="spinner-spin"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
@@ -82,13 +82,13 @@
   </nav>
 
   <div class="main">
-    <template x-route="/" template="/templates/home.html"></template>
-    <template x-route="/estructura/:id" template="/templates/estructura.html"></template>
-    <template x-route="/subestructura/:id" template="/templates/subestructura.html"></template>
-    <template x-route="/sub-subestructura/:id" template="/templates/sub-subestructura.html"></template>
-    <template x-route="/contenido/:id" template="/templates/contenido.html"></template>
+    <template x-route="/" template.preload="/templates/home.html"></template>
+    <template x-route="/estructura/:id" template.preload="/templates/estructura.html"></template>
+    <template x-route="/subestructura/:id" template.preload="/templates/subestructura.html"></template>
+    <template x-route="/sub-subestructura/:id" template.preload="/templates/sub-subestructura.html"></template>
+    <template x-route="/contenido/:id" template.preload="/templates/contenido.html"></template>
     <template x-route.notfound>
-      <div>Error 404 not found</div>
+      <div>Página no encontrada</div>
     </template>
 
   </div>
