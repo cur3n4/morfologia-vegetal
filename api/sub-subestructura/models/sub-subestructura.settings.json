@@ -46,8 +46,8 @@
       "via": "sub_subestructuras",
       "collection": "caracteristica"
     },
-    "imagen": {
-      "model": "file",
+    "cabecera": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",

@@ -1,12 +1,12 @@
 <div
-  x-data="{subestructura: { galeria: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } }} }"
-  x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`)"
-  @route-loaded.window="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`)"
+  x-data="{subestructura: { galeria: [], cabecera: [] }, index: 0 }"
+  x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.imagen.length)"
+  @route-loaded.window="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.imagen.length)"
 >
   <template x-if="subestructura.nombre">
     <div>
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${subestructura.imagen.formats.large?.url ?? subestructura.imagen.formats.medium?.url}')`" >
+           :style="`background-image: url('https://www.morfologia-vegetal.info${subestructura.cabecera[index].formats.large?.url ?? subestructura.cabecera[index].formats.medium?.url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">

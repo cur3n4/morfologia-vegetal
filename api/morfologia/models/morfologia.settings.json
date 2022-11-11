@@ -35,18 +35,18 @@
       "component": "general.seccion"
     },
     "estructuras": {
-      "collection": "estructura",
       "via": "morfologias",
+      "collection": "estructura",
       "dominant": true
     },
     "subestructuras": {
-      "collection": "subestructura",
       "via": "tipos",
+      "collection": "subestructura",
       "dominant": true
     },
     "sub_subestructuras": {
-      "collection": "sub-subestructura",
       "via": "tipos",
+      "collection": "sub-subestructura",
       "dominant": true
     },
     "caracteristica_generals": {

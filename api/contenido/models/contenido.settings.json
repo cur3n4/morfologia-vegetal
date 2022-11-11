@@ -34,8 +34,8 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "imagen": {
-      "model": "file",
+    "cabecera": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
