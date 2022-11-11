@@ -1,8 +1,8 @@
 
 <div
   x-data="{contenido: { galeria: [], cabecera: [] }, index: 0 }"
-  x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`); index = Math.floor(Math.random() * contenido.imagen.length)"
-  @route-loaded.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
+  x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`); index = Math.floor(Math.random() * contenido.cabecera.length)"
+  @route-loaded.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`); index = Math.floor(Math.random() * contenido.cabecera.length)"
 >
   <template x-if="contenido.titulo">
     <div>

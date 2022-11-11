@@ -1,7 +1,7 @@
 <div
   x-data="{ subestructura: { galeria: [], cabecera: [] }, index: 0 }"
-  x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.imagen.length)"
-  @route-loaded.window="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.imagen.length)"
+  x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.cabecera.length)"
+  @route-loaded.window="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.cabecera.length)"
 >
   <template x-if="subestructura.nombre">
     <div>

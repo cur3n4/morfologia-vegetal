@@ -1,7 +1,7 @@
 <div
   x-data="{estructura: { galeria: [], cabecera: [] }, index: 0 }"
-  x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`); index = Math.floor(Math.random() * estructura.imagen.length)"
-  @route-loaded.window="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`); index = Math.floor(Math.random() * estructura.imagen.length)"
+  x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`); index = Math.floor(Math.random() * estructura.cabecera.length)"
+  @route-loaded.window="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`); index = Math.floor(Math.random() * estructura.cabecera.length)"
 >
   <template x-if="estructura.nombre">
     <div>
