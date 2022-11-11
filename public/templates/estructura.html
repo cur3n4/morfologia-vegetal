@@ -6,7 +6,7 @@
   <template x-if="estructura.nombre">
     <div>
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${estructura.(imagen.formats.large?.url ?? imagen.formats.medium?.url)}')`" >
+           :style="`background-image: url('https://www.morfologia-vegetal.info${estructura.imagen.formats.large?.url ?? estructura.imagen.formats.medium?.url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">

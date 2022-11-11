@@ -9,7 +9,7 @@
   <template x-if="subsubestructura.nombre">
     <div>
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${subsubestructura.(imagen.formats.large?.url ?? imagen.formats.medium?.url)}')`" >
+           :style="`background-image: url('https://www.morfologia-vegetal.info${subsubestructura.imagen.formats.large?.url ?? subsubestructura.imagen.formats.medium?.url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">

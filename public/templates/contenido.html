@@ -7,7 +7,7 @@
   <template x-if="contenido.titulo">
     <div>
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${contenido.(imagen.formats.large?.url ?? imagen.formats.medium?.url)}')`" >
+           :style="`background-image: url('https://www.morfologia-vegetal.info${contenido.imagen.formats.large?.url ?? contenido.imagen.formats.medium?.url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">
