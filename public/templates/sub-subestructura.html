@@ -1,5 +1,5 @@
 <div
-  x-data="{ subsubestructura: { galeria: [], cabecera: [] }, index: 0,
+  x-data="{ subsubestructura: { galeria: [], cabecera: [] }, index: -1,
   subestructura : { cabecera: [] } }"
   x-init="subsubestructura = await $fetch(`https://www.morfologia-vegetal.info/sub-subestructuras/${$router.params.id}`);
   subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${subsubestructura.subestructura.id}`);

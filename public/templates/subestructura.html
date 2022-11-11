@@ -1,5 +1,5 @@
 <div
-  x-data="{ subestructura: { galeria: [], cabecera: [] }, index: 0 }"
+  x-data="{ subestructura: { galeria: [], cabecera: [] }, index: -1 }"
   x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.cabecera.length)"
   @route-loaded.window="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.cabecera.length)"
 >

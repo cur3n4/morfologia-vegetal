@@ -1,6 +1,6 @@
 
 <div
-  x-data="{contenido: { galeria: [], cabecera: [] }, index: 0 }"
+  x-data="{contenido: { galeria: [], cabecera: [] }, index: -1 }"
   x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`); index = Math.floor(Math.random() * contenido.cabecera.length)"
   @route-loaded.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`); index = Math.floor(Math.random() * contenido.cabecera.length)"
 >
