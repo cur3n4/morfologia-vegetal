@@ -9,7 +9,7 @@
   <template x-if="subsubestructura.nombre">
     <div>
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${subsubestructura.imagen.formats.large.url}')`" >
+           :style="`background-image: url('https://www.morfologia-vegetal.info${subsubestructura.(imagen.formats.large?.url ?? imagen.formats.medium?.url)}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">
@@ -68,7 +68,7 @@
             <div class="col-md-3">
               <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in subsubestructura.galeria" >
-                  <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + imagen.formats.large.url" :title="imagen.caption">
+                  <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + (imagen.formats.large?.url ?? imagen.formats.medium?.url)" :title="imagen.caption">
                     <img width="200" style="max-height: 30vh" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.medium.url" />
                   </a>
                 </template>
@@ -89,7 +89,7 @@
                       <template x-if="subseccion.galeria != null && subseccion.galeria.length > 0">
                         <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                           <template x-for="imagen in subseccion.galeria">
-                            <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                            <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
                               <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                             </a>
                           </template>
@@ -101,7 +101,7 @@
                   <template x-if="seccion.galeria != null && seccion.galeria.length > 0">
                     <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                       <template x-for="imagen in seccion.galeria">
-                        <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                        <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
                           <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                         </a>
                       </template>
@@ -130,7 +130,7 @@
                         <template x-if="caracteristica.galeria != null && caracteristica.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in caracteristica.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
                                 <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
@@ -162,7 +162,7 @@
                         <template x-if="funcion.galeria != null && funcion.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in funcion.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
                                 <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
@@ -194,7 +194,7 @@
                         <template x-if="adaptacion.galeria != null && adaptacion.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in adaptacion.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
                                 <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
@@ -226,7 +226,7 @@
                         <template x-if="morfologia.galeria != null && morfologia.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in morfologia.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${imagen.formats.large.url}`" :title="imagen.caption">
+                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
                                 <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
