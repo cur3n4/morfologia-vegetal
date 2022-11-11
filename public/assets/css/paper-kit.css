@@ -6662,7 +6662,11 @@ License - nucleoapp.com/license/
 
 .page-header .title-brand > h1 {
   font-weight: normal;
-  font-size: 4.2em;
+  font-size: 4.3em;
+}
+
+.page-header h5 {
+  font-size: 1.65em;
 }
 
 .landing-section {
