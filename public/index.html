@@ -40,8 +40,7 @@
 </head>
 <body class="index-page sidebar-collapse"
       x-data="{contenidos: {}, estructuras: {}, loading: false}"
-      x-init="loading = true; $router.config({ mode: 'hash' }); contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`); estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`); loading = false;"
-      @route-started.window="loading = true" @route-loaded.window="loading = false">
+      x-init="loading = true; $router.config({ mode: 'hash' }); contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`); estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`); loading = false;">
 
   <template x-if="loading">
     <div class="spinner-overlay"><div class="spinner-spin"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>

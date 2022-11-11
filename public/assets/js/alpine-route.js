@@ -171,7 +171,7 @@ document.addEventListener('alpine:init', () => {
       }
 
       function show () {
-        if (el._x_currentIfEl) return el._x_currentIfEl
+        // if (el._x_currentIfEl) return el._x_currentIfEl
 
         const make = () => {
           if (inMakeProgress.has(expression)) return
@@ -225,10 +225,15 @@ document.addEventListener('alpine:init', () => {
       }
 
       effect(() => {
+        hide();
         if (modifiers.includes('notfound')) {
-          is({ paths: ['notfound'] }) ? show() : hide()
+          if (is({ paths: ['notfound'] })) {
+            show();
+          }
         } else {
-          is({ paths: [expression], parseParams: true }) ? show() : hide()
+          if (is({ paths: [expression], parseParams: true })) {
+            show();
+          }
         }
       })
 
