@@ -6645,7 +6645,7 @@ License - nucleoapp.com/license/
 }
 
 .page-header.page-header-xs {
-  min-height: 45vh !important;
+  min-height: 60vh !important;
 }
 
 .page-header.section-dark .content-center,
@@ -6658,6 +6658,11 @@ License - nucleoapp.com/license/
   z-index: 3;
   color: #fff;
   position: relative;
+}
+
+.page-header .title-brand > h1 {
+  font-weight: normal;
+  font-size: 4.2em;
 }
 
 .landing-section {
