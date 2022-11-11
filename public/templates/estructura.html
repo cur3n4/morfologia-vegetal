@@ -5,7 +5,7 @@
 >
   <template x-if="estructura.nombre">
     <div>
-      <div class="page-header page-header-xs section-dark"
+      <div class="page-header page-header-xs section-dark" data-parallax="true"
            :style="`background-image: url('https://www.morfologia-vegetal.info${estructura.imagen.formats.large?.url ?? estructura.imagen.formats.medium?.url}')`" >
         <div class="filter"></div>
         <div class="content-center">
@@ -51,7 +51,7 @@
               <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in estructura.galeria" >
                   <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + (imagen.formats.large?.url ?? imagen.formats.medium?.url)" :title="imagen.caption">
-                    <img width="200" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.medium.url" />
+                    <img width="200" class="" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.medium.url" />
                   </a>
                 </template>
               </div>
@@ -72,7 +72,7 @@
                         <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                           <template x-for="imagen in subseccion.galeria">
                             <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                              <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.medium.url}`" />
+                              <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.medium.url}`" />
                             </a>
                           </template>
                         </div>
@@ -84,7 +84,7 @@
                     <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                       <template x-for="imagen in seccion.galeria">
                         <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                          <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                          <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                         </a>
                       </template>
                     </div>
@@ -113,7 +113,7 @@
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in caracteristica.galeria">
                               <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                                <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
                           </div>
@@ -145,7 +145,7 @@
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in funcion.galeria">
                               <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                                <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
                           </div>
@@ -177,7 +177,7 @@
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in adaptacion.galeria">
                               <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                                <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
                           </div>
@@ -209,7 +209,7 @@
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in morfologia.galeria">
                               <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img width="200" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                                <img width="200" class="img-thumbnail" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
                               </a>
                             </template>
                           </div>

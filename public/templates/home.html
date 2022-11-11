@@ -1,5 +1,8 @@
 <div>
-  <div class="page-header section-dark" style="background-image: url('https://morfologia-vegetal.onrender.com/uploads/Anemone_narcissiflora_02_1100_ed30fa4911.jpg')">
+  <div x-data="{ index: 0, headerImages : []}"
+       x-init="headerImages = await $fetch(`https://www.morfologia-vegetal.info/upload/files?caption=Portada`); index = Math.floor(Math.random() * headerImages.length)"
+      class="page-header section-dark" data-parallax="true"
+       :style="`background-image: url(https://www.morfologia-vegetal.info${headerImages[index].formats.large.url})`">
     <div class="filter"></div>
     <div class="content-center">
       <div class="container">

@@ -1,12 +1,12 @@
 
 <div
-  x-data="{contenido: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
+  x-data="{contenido: { galeria: [], imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } }, index: 0 }"
   x-init="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`);"
   @route-loaded.window="contenido = await $fetch(`https://www.morfologia-vegetal.info/contenidos/${$router.params.id}`)"
 >
   <template x-if="contenido.titulo">
     <div>
-      <div class="page-header page-header-xs section-dark"
+      <div class="page-header page-header-xs section-dark" data-parallax="true"
            :style="`background-image: url('https://www.morfologia-vegetal.info${contenido.imagen.formats.large?.url ?? contenido.imagen.formats.medium?.url}')`" >
         <div class="filter"></div>
         <div class="content-center">
