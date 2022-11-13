@@ -1,10 +1,7 @@
 <div
   x-data="{ subsubestructura: { galeria: [], cabecera: [] }, index: -1,
-  subestructura : { cabecera: [] } }"
+  subestructura : { cabecera: [], estructura: {}, sub_subestructuras: [] } }"
   x-init="subsubestructura = await $fetch(`https://www.morfologia-vegetal.info/sub-subestructuras/${$router.params.id}`);
-  subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${subsubestructura.subestructura.id}`);
-  index = Math.floor(Math.random() * subsubestructura.cabecera.length)"
-  @route-loaded.window="subsubestructura = await $fetch(`https://www.morfologia-vegetal.info/sub-subestructuras/${$router.params.id}`);
   subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${subsubestructura.subestructura.id}`);
   index = Math.floor(Math.random() * subsubestructura.cabecera.length)"
 >
@@ -80,36 +77,9 @@
               <h2 class="title">Descripción</h2>
               <p x-markdown="subsubestructura.descripcion"></p>
               <template x-for="seccion in subsubestructura.secciones">
-                <div>
-                  <div class="title"><h3 x-text="seccion.titulo"></h3></div>
-                  <p x-markdown="seccion.contenido"></p>
-
-                  <template x-for="subseccion in seccion.subsecciones">
-                    <div>
-                      <h5 x-text="subseccion.titulo"></h5>
-                      <p x-markdown="subseccion.contenido"></p>
-                      <template x-if="subseccion.galeria != null && subseccion.galeria.length > 0">
-                        <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                          <template x-for="imagen in subseccion.galeria">
-                            <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                              <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
-                            </a>
-                          </template>
-                        </div>
-                      </template>
-                    </div>
-                  </template>
-
-                  <template x-if="seccion.galeria != null && seccion.galeria.length > 0">
-                    <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                      <template x-for="imagen in seccion.galeria">
-                        <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                          <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
-                        </a>
-                      </template>
-                    </div>
-                  </template>
-                </div>
+                <x-component-wrapper x-component url="/templates/components/secciones.html"
+                                     x-data="{ seccion: seccion }" >
+                </x-component-wrapper>
               </template>
               <template x-if="subsubestructura.caracteristicas != null && subsubestructura.caracteristicas.length > 0">
                 <div>
@@ -129,6 +99,11 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'caracteristicas' + caracteristica.id" role="tabpanel">
                         <div class="title"><h3 x-text="caracteristica.nombre"></h3></div>
                         <p x-markdown="caracteristica.descripcion"></p>
+                        <template x-for="seccion in caracteristica.secciones">
+                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                                               x-data="{ seccion: seccion }" >
+                          </x-component-wrapper>
+                        </template>
                         <template x-if="caracteristica.galeria != null && caracteristica.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in caracteristica.galeria">
@@ -161,6 +136,11 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'funciones' + funcion.id" role="tabpanel">
                         <div class="title"><h3 x-text="funcion.titulo"></h3></div>
                         <p x-markdown="funcion.description"></p>
+                        <template x-for="seccion in function.secciones">
+                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                                               x-data="{ seccion: seccion }" >
+                          </x-component-wrapper>
+                        </template>
                         <template x-if="funcion.galeria != null && funcion.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in funcion.galeria">
@@ -193,6 +173,11 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'adaptaciones' + adaptacion.id" role="tabpanel">
                         <div class="title"><h3 x-text="adaptacion.titulo"></h3></div>
                         <p x-markdown="adaptacion.descripcion"></p>
+                        <template x-for="seccion in adaptacion.secciones">
+                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                                               x-data="{ seccion: seccion }" >
+                          </x-component-wrapper>
+                        </template>
                         <template x-if="adaptacion.galeria != null && adaptacion.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in adaptacion.galeria">
@@ -225,6 +210,11 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'morfologias' + morfologia.id" role="tabpanel">
                         <div class="title"><h3 x-text="morfologia.titulo"></h3></div>
                         <p x-markdown="morfologia.descripcion"></p>
+                        <template x-for="seccion in morfologia.secciones">
+                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                                               x-data="{ seccion: seccion }" >
+                          </x-component-wrapper>
+                        </template>
                         <template x-if="morfologia.galeria != null && morfologia.galeria.length > 0">
                           <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                             <template x-for="imagen in morfologia.galeria">
