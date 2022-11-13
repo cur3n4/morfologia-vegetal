@@ -183,7 +183,7 @@
                   </div>
                 </div>
               </template>
-              <template x-if="subestructura.morfologias != null && subestructura.morfologias.length > 0">
+              <template x-if="subestructura.tipos != null && subestructura.tipos.length > 0">
                 <div>
                   <h2 class="title margin-top">
                     <div class="nav-item dropdown">
@@ -197,7 +197,7 @@
                     </div>
                   </h2>
                   <div class="tab-content text-left">
-                    <template x-for="(morfologia, index) in subestructura.morfologias">
+                    <template x-for="(morfologia, index) in subestructura.tipos">
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'morfologias' + morfologia.id" role="tabpanel">
                         <div class="title"><h3 x-text="morfologia.titulo"></h3></div>
                         <p x-markdown="morfologia.descripcion"></p>
