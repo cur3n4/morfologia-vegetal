@@ -199,7 +199,7 @@
                       Tipos<a class="dropdown-toggle" data-toggle="dropdown" id="morfologiasDropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"></a>
                       <ul class="dropdown-menu dropdown-info" aria-labelledby="morfologiasDropdownMenuButton">
                         <li class="dropdown-header">Tipos</li>
-                        <template x-for="morfologia in subsubestructura.morfologias">
+                        <template x-for="morfologia in subsubestructura.tipos">
                           <a class="dropdown-item" data-toggle="tab" :href="'#morfologias' + morfologia.id" role="tab" x-text="morfologia.titulo">Action</a>
                         </template>
                       </ul>
