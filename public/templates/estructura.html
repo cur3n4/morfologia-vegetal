@@ -59,11 +59,7 @@
             <div class="col-md-9">
               <h2 class="title">Descripción</h2>
               <p x-markdown="estructura.descripcion"></p>
-              <template x-for="seccion in estructura.secciones">
-                <x-component-wrapper x-component url="/templates/components/seccion.html"
-                                     x-data="{ seccion: seccion }" >
-                </x-component-wrapper>
-              </template>
+              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: estructura.secciones }" ></x-component-wrapper>
               <template x-if="estructura.caracteristicas != null && estructura.caracteristicas.length > 0">
                 <div>
                   <h2 class="title margin-top">
@@ -82,20 +78,8 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'caracteristicas' + caracteristica.id" role="tabpanel">
                         <div class="title"><h3 x-text="caracteristica.nombre"></h3></div>
                         <p x-markdown="caracteristica.descripcion"></p>
-                        <template x-for="seccion in caracteristica.secciones">
-                          <x-component-wrapper x-component url="/templates/components/seccion.html"
-                                               x-data="{ seccion: seccion }" >
-                          </x-component-wrapper>
-                        </template>
-                        <template x-if="caracteristica.galeria != null && caracteristica.galeria.length > 0">
-                          <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                            <template x-for="imagen in caracteristica.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
-                              </a>
-                            </template>
-                          </div>
-                        </template>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: caracteristica.galeria }" ></x-component-wrapper>
                       </div>
                     </template>
                   </div>
@@ -119,20 +103,8 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'funciones' + funcion.id" role="tabpanel">
                         <div class="title"><h3 x-text="funcion.titulo"></h3></div>
                         <p x-markdown="funcion.description"></p>
-                        <template x-for="seccion in funcion.secciones">
-                          <x-component-wrapper x-component url="/templates/components/seccion.html"
-                                               x-data="{ seccion: seccion }" >
-                          </x-component-wrapper>
-                        </template>
-                        <template x-if="funcion.galeria != null && funcion.galeria.length > 0">
-                          <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                            <template x-for="imagen in funcion.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
-                              </a>
-                            </template>
-                          </div>
-                        </template>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: funcion.galeria }" ></x-component-wrapper>
                       </div>
                     </template>
                   </div>
@@ -156,20 +128,8 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'adaptaciones' + adaptacion.id" role="tabpanel">
                         <div class="title"><h3 x-text="adaptacion.titulo"></h3></div>
                         <p x-markdown="adaptacion.descripcion"></p>
-                        <template x-for="seccion in adaptacion.secciones">
-                          <x-component-wrapper x-component url="/templates/components/seccion.html"
-                                               x-data="{ seccion: seccion }" >
-                          </x-component-wrapper>
-                        </template>
-                        <template x-if="adaptacion.galeria != null && adaptacion.galeria.length > 0">
-                          <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                            <template x-for="imagen in adaptacion.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img x-bind class="img-thumbnail" :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
-                              </a>
-                            </template>
-                          </div>
-                        </template>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
                       </div>
                     </template>
                   </div>
@@ -193,20 +153,8 @@
                       <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'morfologias' + morfologia.id" role="tabpanel">
                         <div class="title"><h3 x-text="morfologia.titulo"></h3></div>
                         <p x-markdown="morfologia.descripcion"></p>
-                        <template x-for="seccion in morfologia.secciones">
-                          <x-component-wrapper x-component url="/templates/components/seccion.html"
-                                               x-data="{ seccion: seccion }" >
-                          </x-component-wrapper>
-                        </template>
-                        <template x-if="morfologia.galeria != null && morfologia.galeria.length > 0">
-                          <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                            <template x-for="imagen in morfologia.galeria">
-                              <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                                <img width="200" class="img-thumbnail" x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
-                              </a>
-                            </template>
-                          </div>
-                        </template>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
                       </div>
                     </template>
                   </div>

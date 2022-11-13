@@ -19,7 +19,6 @@
           <template x-for="caracteristica in caracteristicas">
             <a class="dropdown-item" data-toggle="tab" :href="'#caracteristicas' + caracteristica.id" x-text="caracteristica.nombre"
                x-init="await $nextTick(); $($el).on('click', function (e) {
-  e.preventDefault();
   console.log($(this).attr('href'));
   $($(this).attr('href')).show();
 })"
@@ -35,7 +34,7 @@
           <div class="title"><h3 x-text="caracteristica.nombre"></h3></div>
           <p x-markdown="caracteristica.descripcion"></p>
           <template x-for="seccion in caracteristica.secciones">
-            <x-component-wrapper x-component url="/templates/components/seccion.html"
+            <x-component-wrapper x-component url="/templates/components/secciones.html"
                                  x-data="{ seccion: seccion }" >
             </x-component-wrapper>
           </template>

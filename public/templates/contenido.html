@@ -30,38 +30,7 @@
             </div>
             <div class="col-sm-9">
               <p x-markdown="contenido.descripcion"></p>
-              <template x-for="seccion in contenido.secciones">
-                <div>
-                  <div class="title"><h3 x-text="seccion.titulo"></h3></div>
-                  <p x-markdown="seccion.contenido"></p>
-
-                  <template x-for="subseccion in seccion.subsecciones">
-                    <div>
-                      <h5 x-text="subseccion.titulo"></h5>
-                      <p x-markdown="subseccion.contenido"></p>
-                      <template x-if="subseccion.galeria != null && subseccion.galeria.length > 0">
-                        <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                          <template x-for="imagen in subseccion.galeria">
-                            <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                              <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
-                            </a>
-                          </template>
-                        </div>
-                      </template>
-                    </div>
-                  </template>
-
-                  <template x-if="seccion.galeria != null && seccion.galeria.length > 0">
-                    <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
-                      <template x-for="imagen in seccion.galeria">
-                        <a class="gallery-item" x-bind :href="`https://www.morfologia-vegetal.info${(imagen.formats.large?.url ?? imagen.formats.medium?.url)}`" :title="imagen.caption">
-                          <img x-bind :src="`https://www.morfologia-vegetal.info${imagen.formats.medium.url}`" />
-                        </a>
-                      </template>
-                    </div>
-                  </template>
-                </div>
-              </template>
+              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: contenido.secciones }" ></x-component-wrapper>
             </div>
           </div>
 
