@@ -60,7 +60,7 @@
               <h2 class="title">Descripción</h2>
               <p x-markdown="estructura.descripcion"></p>
               <template x-for="seccion in estructura.secciones">
-                <x-component-wrapper x-component url="/templates/components/secciones.html"
+                <x-component-wrapper x-component url="/templates/components/seccion.html"
                                      x-data="{ seccion: seccion }" >
                 </x-component-wrapper>
               </template>
@@ -83,7 +83,7 @@
                         <div class="title"><h3 x-text="caracteristica.nombre"></h3></div>
                         <p x-markdown="caracteristica.descripcion"></p>
                         <template x-for="seccion in caracteristica.secciones">
-                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                          <x-component-wrapper x-component url="/templates/components/seccion.html"
                                                x-data="{ seccion: seccion }" >
                           </x-component-wrapper>
                         </template>
@@ -120,7 +120,7 @@
                         <div class="title"><h3 x-text="funcion.titulo"></h3></div>
                         <p x-markdown="funcion.description"></p>
                         <template x-for="seccion in funcion.secciones">
-                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                          <x-component-wrapper x-component url="/templates/components/seccion.html"
                                                x-data="{ seccion: seccion }" >
                           </x-component-wrapper>
                         </template>
@@ -157,7 +157,7 @@
                         <div class="title"><h3 x-text="adaptacion.titulo"></h3></div>
                         <p x-markdown="adaptacion.descripcion"></p>
                         <template x-for="seccion in adaptacion.secciones">
-                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                          <x-component-wrapper x-component url="/templates/components/seccion.html"
                                                x-data="{ seccion: seccion }" >
                           </x-component-wrapper>
                         </template>
@@ -194,7 +194,7 @@
                         <div class="title"><h3 x-text="morfologia.titulo"></h3></div>
                         <p x-markdown="morfologia.descripcion"></p>
                         <template x-for="seccion in morfologia.secciones">
-                          <x-component-wrapper x-component url="/templates/components/secciones.html"
+                          <x-component-wrapper x-component url="/templates/components/seccion.html"
                                                x-data="{ seccion: seccion }" >
                           </x-component-wrapper>
                         </template>

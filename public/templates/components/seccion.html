@@ -1,6 +1,6 @@
 <body>
     <div>
-      <!-- Need to include all the styles in here -->
+      <!-- BEGIN: Need to include all the styles in here -->
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
@@ -8,12 +8,10 @@
       <link rel="stylesheet" href="/assets/css/paper-kit.css"/>
       <link rel="stylesheet" href="/assets/css/styles.css"/>
       <link rel="stylesheet" href="/assets/css/magnific-popup.css"/>
+      <!-- END : Need to include all the styles in here -->
 
       <div class="title"><h3 x-text="seccion.titulo"></h3></div>
       <p x-markdown="seccion.contenido"></p>
-      <x-component-wrapper x-component url="/templates/components/subsecciones.html"
-                           x-data="{ subsecciones: seccion.subsecciones }" >
-      </x-component-wrapper>
       <template x-for="subseccion in seccion.subsecciones">
         <div>
           <h5 x-text="subseccion.titulo"></h5>
