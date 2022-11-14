@@ -34,16 +34,6 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "subtipos": {
-      "via": "adaptacions",
-      "collection": "subtipo",
-      "dominant": true
-    },
-    "tipos": {
-      "via": "adaptacions",
-      "collection": "morfologia",
-      "dominant": true
-    },
     "estructuras": {
       "via": "adaptaciones",
       "collection": "estructura",
@@ -57,6 +47,16 @@
     "sub_subestructuras": {
       "via": "adaptaciones",
       "collection": "sub-subestructura",
+      "dominant": true
+    },
+    "tipos": {
+      "via": "adaptaciones",
+      "collection": "morfologia",
+      "dominant": true
+    },
+    "subtipos": {
+      "via": "adaptaciones",
+      "collection": "subtipo",
       "dominant": true
     }
   }

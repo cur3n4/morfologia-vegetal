@@ -44,22 +44,27 @@
       "collection": "sub-subestructura",
       "dominant": true
     },
-    "caracteristica_generals": {
-      "via": "tipos",
+    "caracteristicas": {
       "collection": "caracteristica",
+      "via": "tipos",
       "dominant": true
     },
     "subtipos": {
       "via": "tipo",
       "collection": "subtipo"
     },
-    "adaptacions": {
-      "via": "tipos",
-      "collection": "adaptacion"
+    "adaptaciones": {
+      "collection": "adaptacion",
+      "via": "tipos"
     },
     "estructuras": {
       "via": "tipos",
       "collection": "estructura",
+      "dominant": true
+    },
+    "funciones": {
+      "collection": "funcion",
+      "via": "tipos",
       "dominant": true
     }
   }

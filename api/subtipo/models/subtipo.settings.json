@@ -38,9 +38,19 @@
       "via": "subtipos",
       "model": "morfologia"
     },
-    "adaptacions": {
+    "adaptaciones": {
+      "collection": "adaptacion",
+      "via": "subtipos"
+    },
+    "caracteristicas": {
+      "collection": "caracteristica",
       "via": "subtipos",
-      "collection": "adaptacion"
+      "dominant": true
+    },
+    "funciones": {
+      "collection": "funcion",
+      "via": "subtipos",
+      "dominant": true
     }
   }
 }

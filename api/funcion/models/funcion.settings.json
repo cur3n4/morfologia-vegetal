@@ -48,6 +48,14 @@
       "via": "funciones",
       "collection": "sub-subestructura",
       "dominant": true
+    },
+    "tipos": {
+      "via": "funciones",
+      "collection": "morfologia"
+    },
+    "subtipos": {
+      "via": "funciones",
+      "collection": "subtipo"
     }
   }
 }
