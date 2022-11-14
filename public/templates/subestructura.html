@@ -58,7 +58,7 @@
             <div class="col-md-3">
               <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in subestructura.galeria" >
-                  <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + (imagen.formats.large?.url ?? imagen.formats.medium?.url)" :title="imagen.caption">
+                  <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + (imagen.url)" :title="imagen.caption">
                     <img width="200" style="max-height: 30vh" x-bind :src="'https://www.morfologia-vegetal.info' + imagen.formats.medium.url" />
                   </a>
                 </template>
