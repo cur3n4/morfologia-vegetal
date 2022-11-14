@@ -59,14 +59,14 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
-          <div class="nav-item dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Estructuras</a>
-            <ul class="dropdown-menu dropdown-info">
+            <ul class="dropdown-menu">
               <template x-for="estructura in estructuras">
                 <a class="dropdown-item" x-link :href="'/estructura/' + estructura.id" x-text="estructura.nombre"></a>
               </template>
             </ul>
-          </div>
+          </li>
           <template x-for="contenido in contenidos">
             <template x-if="contenido.id != 1 && contenido.id != 7">
               <li class="nav-item">

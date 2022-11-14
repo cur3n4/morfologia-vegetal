@@ -38,13 +38,13 @@
       "via": "sub_subestructuras",
       "model": "subestructura"
     },
-    "adaptacions": {
-      "via": "sub_subestructuras",
-      "collection": "adaptacion"
+    "adaptaciones": {
+      "collection": "adaptacion",
+      "via": "sub_subestructuras"
     },
-    "caracteristica_generals": {
-      "via": "sub_subestructuras",
-      "collection": "caracteristica"
+    "caracteristicas": {
+      "collection": "caracteristica",
+      "via": "sub_subestructuras"
     },
     "cabecera": {
       "collection": "file",
@@ -58,9 +58,9 @@
       "required": false,
       "pluginOptions": {}
     },
-    "funcions": {
-      "via": "sub_subestructuras",
-      "collection": "funcion"
+    "funciones": {
+      "collection": "funcion",
+      "via": "sub_subestructuras"
     },
     "tipos": {
       "via": "sub_subestructuras",

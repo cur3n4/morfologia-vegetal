@@ -35,17 +35,17 @@
       "component": "general.seccion"
     },
     "estructuras": {
-      "via": "funcions",
+      "via": "funciones",
       "collection": "estructura",
       "dominant": true
     },
     "subestructuras": {
-      "via": "funcions",
+      "via": "funciones",
       "collection": "subestructura",
       "dominant": true
     },
     "sub_subestructuras": {
-      "via": "funcions",
+      "via": "funciones",
       "collection": "sub-subestructura",
       "dominant": true
     }

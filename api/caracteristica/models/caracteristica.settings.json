@@ -44,19 +44,19 @@
       "collection": "subcaracteristica-general",
       "dominant": true
     },
-    "subestructuras": {
+    "tipos": {
       "via": "caracteristica_generals",
+      "collection": "morfologia"
+    },
+    "subestructuras": {
+      "via": "caracteristicas",
       "collection": "subestructura",
       "dominant": true
     },
     "sub_subestructuras": {
-      "via": "caracteristica_generals",
+      "via": "caracteristicas",
       "collection": "sub-subestructura",
       "dominant": true
-    },
-    "tipos": {
-      "via": "caracteristica_generals",
-      "collection": "morfologia"
     }
   }
 }

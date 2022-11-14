@@ -38,9 +38,9 @@
       "repeatable": true,
       "component": "general.seccion"
     },
-    "adaptacions": {
-      "via": "estructuras",
-      "collection": "adaptacion"
+    "adaptaciones": {
+      "collection": "adaptacion",
+      "via": "estructuras"
     },
     "caracteristicas": {
       "via": "estructuras",
@@ -58,13 +58,13 @@
       "required": false,
       "pluginOptions": {}
     },
-    "funcions": {
-      "via": "estructuras",
-      "collection": "funcion"
+    "funciones": {
+      "collection": "funcion",
+      "via": "estructuras"
     },
-    "morfologias": {
-      "via": "estructuras",
-      "collection": "morfologia"
+    "tipos": {
+      "collection": "morfologia",
+      "via": "estructuras"
     }
   }
 }
