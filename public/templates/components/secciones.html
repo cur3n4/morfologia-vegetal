@@ -11,8 +11,8 @@
       <!-- END : Need to include all the styles in here -->
 
       <template x-for="seccion in secciones">
-        <div>
-          <div class="title"><h3 x-text="seccion.titulo"></h3></div>
+        <div class="pb-3">
+          <div class="title"><h4 x-text="seccion.titulo"></h4></div>
           <p x-markdown="seccion.contenido"></p>
           <template x-for="subseccion in seccion.subsecciones">
             <div>

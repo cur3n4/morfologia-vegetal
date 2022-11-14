@@ -31,7 +31,7 @@
       <template x-for="(caracteristica, index) in caracteristicas">
         <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'caracteristicas' + caracteristica.id" role="tabpanel"
              x-init="await $nextTick(); $($el).tab()">
-          <div class="title"><h3 x-text="caracteristica.nombre"></h3></div>
+          <div class="title"><h4 x-text="caracteristica.nombre"></h4></div>
           <p x-markdown="caracteristica.descripcion"></p>
           <template x-for="seccion in caracteristica.secciones">
             <x-component-wrapper x-component url="/templates/components/secciones.html"
