@@ -60,8 +60,8 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Estructuras</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Estructuras</a>
+            <ul class="dropdown-menu dropdown-info">
               <template x-for="estructura in estructuras">
                 <a class="dropdown-item" x-link :href="'/estructura/' + estructura.id" x-text="estructura.nombre"></a>
               </template>
