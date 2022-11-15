@@ -215,5 +215,7 @@ p {
 }
 
 img.mfp-img {
-  max-height: 100vh !important
+  max-height: 100vh !important;
+  pointer-events: none
 }
+
