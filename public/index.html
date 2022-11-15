@@ -38,7 +38,6 @@
 
 </head>
 <body class="index-page sidebar-collapse"
-      oncontextmenu="return false" onselectstart="return false" ondragstart="return false"
       x-data="{contenidos: {}, estructuras: {}, loading: false}"
       x-init="loading = true; $router.config({ mode: 'hash' }); contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`); estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`); loading = false;">
 
