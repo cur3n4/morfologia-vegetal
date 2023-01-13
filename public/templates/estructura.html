@@ -195,7 +195,7 @@
                           <div x-data="{ unaMorfologia: { subtipos: [] } }"
                                     x-init="unaMorfologia = await $fetch(`https://www.morfologia-vegetal.info/morfologias/${morfologia.id}`);">
                             <template x-for="subtipo in unaMorfologia.subtipos">
-                              <div class="pb-3">
+                              <div class="pt-5 pb-3">
                                 <div class="title"><h4 x-text="subtipo.titulo"></h4></div>
                                 <p x-markdown="subtipo.description"></p>
                                 <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: subtipo.galeria }" ></x-component-wrapper>
