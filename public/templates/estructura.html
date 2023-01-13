@@ -193,7 +193,8 @@
                           <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
                           <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
                           <div x-data="{ unaMorfologia: { subtipos: [] } }"
-                                    x-init="unaMorfologia = await $fetch(`https://www.morfologia-vegetal.info/morfologias/${morfologia.id}`);">
+                                    x-init="unaMorfologia = await $fetch(`https://www.morfologia-vegetal.info/morfologias/${morfologia.id}`);
+                                            unaMorfologia.subtipos.sort((a, b) => { if(a.titulo < b.titulo) return -1; if(a.titulo > b.titulo) return 1; return 0; });">
                             <template x-for="subtipo in unaMorfologia.subtipos">
                               <div class="pt-5 pb-3">
                                 <div class="title"><h4 x-text="subtipo.titulo"></h4></div>
