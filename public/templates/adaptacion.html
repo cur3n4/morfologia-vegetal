@@ -1,13 +1,13 @@
 
 <div
-  x-data="{adaptacion: { galeria: [] }, index: -1 }"
-  x-init="adaptacion = await $fetch(`https://www.morfologia-vegetal.info/adaptacions/${$router.params.id}`); index = Math.floor(Math.random() * adaptacion.galeria.length)"
+  x-data="{adaptacion: { galeria: [], cabecera: [] }, index: -1 }"
+  x-init="adaptacion = await $fetch(`https://www.morfologia-vegetal.info/adaptacions/${$router.params.id}`); index = Math.floor(Math.random() * adaptacion.cabecera.length)"
 
 >
   <template x-if="adaptacion.titulo">
     <div>
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://www.morfologia-vegetal.info${adaptacion.galeria[index].url}')`" >
+           :style="`background-image: url('https://www.morfologia-vegetal.info${adaptacion.cabecera[index].url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">
