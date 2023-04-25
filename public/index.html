@@ -40,10 +40,10 @@
 <body class="index-page sidebar-collapse"
       x-data="{contenidos: {}, estructuras: {}, funciones: {}, adaptaciones: {}, loading: false}"
       x-init="loading = true; $router.config({ mode: 'hash' });
-        contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`);
-        estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`);
-        funciones = await $fetch(`https://www.morfologia-vegetal.info/funcions`);
-        adaptaciones = await $fetch(`https://www.morfologia-vegetal.info/adaptacions`);
+        contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos?_sort=orden:ASC`);
+        estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras?_sort=orden:ASC`);
+        funciones = await $fetch(`https://www.morfologia-vegetal.info/funcions?_sort=orden:ASC`);
+        adaptaciones = await $fetch(`https://www.morfologia-vegetal.info/adaptacions?_sort=orden:ASC`);
         loading = false;">
 
   <template x-if="loading">
