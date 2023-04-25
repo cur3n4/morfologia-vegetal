@@ -3,7 +3,7 @@
   x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.cabecera.length)"
 >
   <template x-if="subestructura.nombre">
-    <div>
+    <div x-data="{ activeTab:  'descripcion' }">
       <div class="page-header page-header-xs section-dark"
            :style="`background-image: url('https://www.morfologia-vegetal.info${subestructura.cabecera[index].url}')`" >
         <div class="filter"></div>
@@ -13,83 +13,94 @@
           </div>
         </div>
       </div>
-      <nav  class="navbar navbar-expand-sm bg-dark d-none d-sm-block">
-        <div  class="container">
-          <div  >
-            <a x-link href="/" class="text-white">Inicio</a> <i class="fa fa-chevron-right align-middle text-secondary" ></i>
-            <span class="text-white">Estructuras</span> <i class="fa fa-chevron-right align-middle text-secondary" ></i>
-            <div class="dropdown" style="display: inline">
-              <a class="nav-link dropdown-toggle text-white pl-0 pr-0" data-toggle="dropdown" style="cursor:pointer; display:inline;"><span x-text="subestructura.estructura.nombre"></span></a> <i class="fa fa-chevron-right align-middle text-secondary" ></i>
-              <ul class="dropdown-menu ">
-                <template x-for="unaEstructura in estructuras">
-                  <li><a class="dropdown-item" x-link :href="`/estructura/` + unaEstructura.id" x-text="unaEstructura.nombre"></a></li>
-                </template>
-              </ul>
-            </div>
-            <div class="dropdown" style="display: inline">
-              <a class="nav-link dropdown-toggle text-white active pl-0 pr-0" data-toggle="dropdown" style="cursor:pointer; display:inline;"><b x-text="subestructura.nombre"></b></a><template x-if="subestructura.sub_subestructuras.length > 0">  <i class="fa fa-chevron-right align-middle text-secondary" ></i></template>
-              <ul class="dropdown-menu ">
-                <template x-for="unaEstructura in estructuras">
-                  <template x-if="unaEstructura.id == subestructura.estructura.id">
-                    <template x-for="unaSubestructura in unaEstructura.subestructuras">
-                      <li><a class="dropdown-item" x-link :href="`/subestructura/` + unaSubestructura.id" x-text="unaSubestructura.nombre"></a></li>
-                    </template>
-                  </template>
-                </template>
-              </ul>
-            </div>
-            <template x-if="subestructura.sub_subestructuras.length > 0">
-              <div class="dropdown" style="display: inline">
-                <a class="nav-link dropdown-toggle text-white pl-0" data-toggle="dropdown" style="cursor:pointer; display:inline;">Partes</a>
-                <ul class="dropdown-menu ">
-                  <template x-for="subsubestructura in subestructura.sub_subestructuras">
-                    <li><a class="dropdown-item" x-link :href="`/sub-subestructura/${subsubestructura.id}`" x-text="subsubestructura.nombre"></a></li>
-                  </template>
-                </ul>
-              </div>
-            </template>
-
-          </div>
-          <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link">&nbsp;</a></li></ul>
-        </div>
-      </nav>
-      <div class="section-navigation section-gray pb-5">
+      <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="nav-tabs-navigation text-left">
-                <div class="nav-tabs-wrapper">
-                  <ul id="tabs" class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#descripcion" role="tab"><h3>Descripción</h3></a>
-                    </li>
-                    <template x-if="subestructura.caracteristicas != null && subestructura.caracteristicas.length > 0">
-                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#caracteristicas" role="tab"><h3>Características</h3></a>
-                      </li>
-                    </template>
-                    <template x-if="subestructura.funciones != null && subestructura.funciones.length > 0">
-                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#funciones" role="tab"><h3>Funciones</h3></a>
-                      </li>
-                    </template>
-                    <template x-if="subestructura.adaptaciones != null && subestructura.adaptaciones.length > 0">
-                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#adaptaciones" role="tab"><h3>Adaptaciones</h3></a>
-                      </li>
-                    </template>
-                    <template x-if="subestructura.tipos != null && subestructura.tipos.length > 0">
-                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#morfologias" role="tab"><h3>Tipos</h3></a>
-                      </li>
+          <a class="navbar-brand" href="#" x-text="subestructura.nombre"></a>
+          <div class="dropdown small" style="display: inline">
+            <a class="nav-link font-italic text-white pl-0 pr-0" x-link :href="`/estructura/` + subestructura.estructura.id" style="cursor:pointer; display:inline;"><span class="text-w" x-text="subestructura.estructura.nombre"></span></a> <i class="fa fa-chevron-right align-middle text-secondary" ></i>
+          </div>
+          <div class="dropdown small font-italic" style="display: inline">
+            <a class="nav-link dropdown-toggle font-italic text-white pl-0 pr-0" data-toggle="dropdown" style="cursor:pointer; display:inline;"><span x-text="subestructura.nombre"></span></a>
+            <ul class="dropdown-menu ">
+              <template x-for="unaEstructura in estructuras">
+                <template x-if="unaEstructura.id == subestructura.estructura.id">
+                  <template x-for="unaSubestructura in unaEstructura.subestructuras">
+                    <li><a class="dropdown-item" x-link :href="`/subestructura/` + unaSubestructura.id" x-text="unaSubestructura.nombre"></a></li>
+                  </template>
+                </template>
+              </template>
+            </ul>
+          </div>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-danger" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar"></span>
+            <span class="navbar-toggler-bar"></span>
+            <span class="navbar-toggler-bar"></span>
+          </button>
+          <div class="navbar-collapse collapse show" id="navbar-danger" style="">
+            <ul class="navbar-nav ml-auto">
+              <template x-if="subestructura.sub_subestructuras.length > 0">
+                <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Partes</a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <template x-for="sub_subestructura in subestructura.sub_subestructuras">
+                      <li><a class="dropdown-item" x-link :href="`/sub-subestructura/${sub_subestructura.id}`" x-text="sub_subestructura.nombre"></a></li>
                     </template>
                   </ul>
                 </div>
-              </div>
-
-            </div>
+              </template>
+              <li class="nav-item">
+                <a class="nav-link" @click="activeTab = 'descripcion'" :class="{ 'active': activeTab === 'descripcion' }">Descripción</a>
+              </li>
+              <template x-if="subestructura.caracteristicas != null && subestructura.caracteristicas.length > 0">
+                <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('caracteristica') }">
+                    Características
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right ">
+                    <template x-for="caracteristica in subestructura.caracteristicas">
+                      <li><a class="dropdown-item" @click="activeTab = 'caracteristica' + caracteristica.id" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id' }" x-text="caracteristica.nombre"></a></li>
+                    </template>
+                  </ul>
+                </div>
+              </template>
+              <template x-if="subestructura.funciones != null && subestructura.funciones.length > 0">
+                <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('funcion') }">Funciones</a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <template x-for="funcion in subestructura.funciones">
+                      <li><a class="dropdown-item" @click="activeTab = 'funcion' + funcion.id" :class="{ 'active': activeTab === 'funcion' + funcion.id }" x-text="funcion.titulo"></a></li>
+                    </template>
+                  </ul>
+                </div>
+              </template>
+              <template x-if="subestructura.adaptaciones != null && subestructura.adaptaciones.length > 0">
+                <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('adaptaction') }">Adaptaciones</a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <template x-for="adaptacion in subestructura.adaptaciones">
+                      <li><a class="dropdown-item" @click="activeTab = 'adaptacion' + adaptacion.id" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }" x-text="adaptacion.titulo"></a></li>
+                    </template>
+                  </ul>
+                </div>
+              </template>
+              <template x-if="subestructura.tipos != null && subestructura.tipos.length > 0">
+                <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('morfologia') }">Tipos</a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <template x-for="morfologia in subestructura.tipos">
+                      <li><a class="dropdown-item" @click="activeTab = 'morfologia' + morfologia.id" :class="{ 'active': activeTab === 'morfologia' + morfologia.id' }" x-text="morfologia.titulo"></a></li>
+                    </template>
+                  </ul>
+                </div>
+              </template>
+            </ul>
           </div>
-          <div class="row">
+        </div>
+      </nav>
+
+      <div class="section-navigation section-gray pb-5">
+        <div class="container">
+          <div class="row pt-5">
             <div class="col-md-3" x-show="subestructura.galeria.length > 0">
               <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in subestructura.galeria" >
@@ -101,117 +112,48 @@
             </div>
             <div :class="{'col-md-9': subestructura.galeria.length > 0, 'col-md-12': subestructura.galeria.length === 0 }">
               <div class="tab-content text-left">
-                <div class="tab-pane active" id="descripcion" role="tabpanel">
+                <div class="tab-pane" id="descripcion" :class="{ 'active': activeTab === 'descripcion' }">
                   <p x-markdown="subestructura.descripcion"></p>
                   <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subestructura.secciones }" ></x-component-wrapper>
                 </div>
-                <template x-if="subestructura.caracteristicas != null && subestructura.caracteristicas.length > 0">
-                  <div class="tab-pane" id="caracteristicas" role="tabpanel">
-                    <div class="tab-content text-left">
-                      <template x-for="(caracteristica, index) in subestructura.caracteristicas">
-                        <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'caracteristicas' + caracteristica.id" role="tabpanel">
-                          <div class="title" style="margin-top: 0;">
-                            <div class="nav-item dropdown d-inline-block">
-                              <a class="dropdown-toggle h3" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false" x-text="caracteristica.nombre">
-                              </a>
-                              <ul class="dropdown-menu dropdown-info">
-                                <li class="dropdown-header">Características</li>
-                                <template x-for="caracteristica in subestructura.caracteristicas">
-                                  <a class="dropdown-item" data-toggle="tab" :href="'#caracteristicas' + caracteristica.id" role="tab" x-text="caracteristica.nombre">Action</a>
-                                </template>
-                              </ul>
-                            </div>
-
-                          </div>
-                          <p x-markdown="caracteristica.descripcion"></p>
-                          <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones }" ></x-component-wrapper>
-                          <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: caracteristica.galeria }" ></x-component-wrapper>
-                        </div>
-                      </template>
-                    </div>
+                <template x-for="(caracteristica, index) in subestructura.caracteristicas">
+                  <div class="tab-pane" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id }">
+                    <h2 class="mb-3 mt-0" x-text="caracteristica.nombre"></h2>
+                    <p x-markdown="caracteristica.descripcion"></p>
+                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones }" ></x-component-wrapper>
+                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: caracteristica.galeria }" ></x-component-wrapper>
                   </div>
                 </template>
-                <template x-if="subestructura.adaptaciones != null && subestructura.adaptaciones.length > 0">
-                  <div class="tab-pane" id="adaptaciones" role="tabpanel">
-                    <div class="tab-content text-left">
-                      <template x-for="(adaptacion, index) in subestructura.adaptaciones">
-                        <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'adaptaciones' + adaptacion.id" role="tabpanel">
-                          <div class="title" style="margin-top: 0;">
-                            <div class="nav-item dropdown d-inline-block">
-                              <a class="dropdown-toggle h3" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false" x-text="adaptacion.titulo">
-                              </a>
-                              <ul class="dropdown-menu dropdown-info">
-                                <li class="dropdown-header">Adaptaciones</li>
-                                <template x-for="adaptacion in subestructura.adaptaciones">
-                                  <a class="dropdown-item" data-toggle="tab" :href="'#adaptaciones' + adaptacion.id" role="tab" x-text="adaptacion.titulo"></a>
-                                </template>
-                              </ul>
-                            </div>
-                          </div>
-                          <p x-markdown="adaptacion.descripcion"></p>
-                          <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
-                          <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
-                        </div>
-                      </template>
-                    </div>
+                <template x-for="(adaptacion, index) in subestructura.adaptaciones">
+                  <div class="tab-pane" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }">
+                    <h2 class="mb-3 mt-0" x-text="adaptacion.titulo"></h2>
+                    <p x-markdown="adaptacion.descripcion"></p>
+                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
+                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
                   </div>
                 </template>
-                <template x-if="subestructura.funciones != null && subestructura.funciones.length > 0">
-                  <div class="tab-pane" id="funciones" role="tabpanel">
-                    <div class="tab-content text-left">
-                      <template x-for="(funcion, index) in subestructura.funciones">
-                        <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'funciones' + funcion.id" role="tabpanel">
-                          <div class="title" style="margin-top: 0;">
-                            <div class="nav-item dropdown d-inline-block">
-                              <a class="dropdown-toggle h3" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false" x-text="funcion.titulo">
-                              </a>
-                              <ul class="dropdown-menu dropdown-info">
-                                <li class="dropdown-header">Funciones</li>
-                                <template x-for="funcion in subestructura.funciones">
-                                  <a class="dropdown-item" data-toggle="tab" :href="'#funciones' + funcion.id" role="tab" x-text="funcion.titulo"></a>
-                                </template>
-                              </ul>
-                            </div>
-                          </div>
-                          <p x-markdown="funcion.description"></p>
-                          <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
-                          <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: funcion.galeria }" ></x-component-wrapper>
-                        </div>
-                      </template>
-                    </div>
+                <template x-for="(funcion, index) in subestructura.funciones">
+                  <div class="tab-pane" :class="{ 'active': activeTab === 'funcion' + funcion.id }">
+                    <h2 class="mb-3 mt-0" x-text="function.titulo"></h2>
+                    <p x-markdown="funcion.description"></p>
+                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
+                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: funcion.galeria }" ></x-component-wrapper>
                   </div>
                 </template>
-                <template x-if="subestructura.tipos != null && subestructura.tipos.length > 0">
-                  <div class="tab-pane" id="morfologias" role="tabpanel">
-                    <div class="tab-content text-left">
-                      <template x-for="(morfologia, index) in subestructura.tipos">
-                        <div class="tab-pane" :class="index == 0 ? 'active': ''" x-bind:id="'morfologias' + morfologia.id" role="tabpanel">
-                          <div class="title" style="margin-top: 0;">
-                            <div class="nav-item dropdown d-inline-block">
-                              <a class="dropdown-toggle h3" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false" x-text="morfologia.titulo">
-                              </a>
-                              <ul class="dropdown-menu dropdown-info">
-                                <li class="dropdown-header">Tipos</li>
-                                <template x-for="morfologia in subestructura.tipos">
-                                  <a class="dropdown-item" data-toggle="tab" :href="'#morfologias' + morfologia.id" role="tab" x-text="morfologia.titulo"></a>
-                                </template>
-                              </ul>
-                            </div>
-                          </div>
-                          <p x-markdown="morfologia.descripcion"></p>
-                          <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
-                          <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
-                          <div x-data="{ unaMorfologia: { subtipos: [] } }"
-                               x-init="unaMorfologia = await $fetch(`https://www.morfologia-vegetal.info/morfologias/${morfologia.id}`);">
-                            <template x-for="subtipo in unaMorfologia.subtipos">
-                              <div class="pt-5 pb-3">
-                                <h4 x-text="subtipo.titulo"></h4>
-                                <p x-markdown="subtipo.description"></p>
-                                <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subtipo.secciones }" ></x-component-wrapper>
-                                <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: subtipo.galeria }" ></x-component-wrapper>
-                              </div>
-                            </template>
-                          </div>
+                <template x-for="(morfologia, index) in subestructura.tipos">
+                  <div class="tab-pane" :class="{ 'active': activeTab === 'morfologia' + morfologia.id }">
+                    <h2 class="mb-3 mt-0" x-text="morfologia.titulo"></h2>
+                    <p x-markdown="morfologia.descripcion"></p>
+                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
+                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
+                    <div x-data="{ unaMorfologia: { subtipos: [] } }"
+                         x-init="unaMorfologia = await $fetch(`https://www.morfologia-vegetal.info/morfologias/${morfologia.id}`);">
+                      <template x-for="subtipo in unaMorfologia.subtipos">
+                        <div class="pt-5 pb-3">
+                          <h4 x-text="subtipo.titulo"></h4>
+                          <p x-markdown="subtipo.description"></p>
+                          <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subtipo.secciones }" ></x-component-wrapper>
+                          <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: subtipo.galeria }" ></x-component-wrapper>
                         </div>
                       </template>
                     </div>
