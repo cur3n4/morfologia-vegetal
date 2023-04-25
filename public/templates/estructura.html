@@ -26,7 +26,7 @@
               <template x-if="estructura.subestructuras.length > 0">
                 <div class="nav-item dropdown ">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Partes</a>
-                  <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+                  <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="subestructura in estructura.subestructuras">
                       <li><a class="dropdown-item" x-link :href="`/subestructura/${subestructura.id}`" x-text="subestructura.nombre"></a></li>
                     </template>
@@ -38,8 +38,10 @@
               </li>
               <template x-if="estructura.caracteristicas != null && estructura.caracteristicas.length > 0">
                 <div class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Características</a>
-                  <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('caracteristica') }">
+                    Características
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right ">
                     <template x-for="caracteristica in estructura.caracteristicas">
                         <li><a class="dropdown-item" @click="activeTab = 'caracteristica' + caracteristica.id" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id' }" x-text="caracteristica.nombre"></a></li>
                     </template>
@@ -48,8 +50,8 @@
               </template>
               <template x-if="estructura.funciones != null && estructura.funciones.length > 0">
                 <div class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Funciones</a>
-                  <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('funcion') }">Funciones</a>
+                  <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="funcion in estructura.funciones">
                       <li><a class="dropdown-item" @click="activeTab = 'funcion' + funcion.id" :class="{ 'active': activeTab === 'funcion' + funcion.id }" x-text="funcion.titulo"></a></li>
                     </template>
@@ -58,8 +60,8 @@
               </template>
               <template x-if="estructura.adaptaciones != null && estructura.adaptaciones.length > 0">
                 <div class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Adaptaciones</a>
-                  <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('adaptaction') }">Adaptaciones</a>
+                  <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="adaptacion in estructura.adaptaciones">
                       <li><a class="dropdown-item" @click="activeTab = 'adaptacion' + adaptacion.id" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }" x-text="adaptacion.titulo"></a></li>
                     </template>
@@ -68,8 +70,8 @@
               </template>
               <template x-if="estructura.tipos != null && estructura.tipos.length > 0">
                 <div class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Tipos</a>
-                  <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+                  <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('morfologia') }">Tipos</a>
+                  <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="morfologia in estructura.tipos">
                       <li><a class="dropdown-item" @click="activeTab = 'morfologia' + morfologia.id" :class="{ 'active': activeTab === 'morfologia' + morfologia.id' }" x-text="morfologia.titulo"></a></li>
                     </template>
