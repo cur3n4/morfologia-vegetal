@@ -39,8 +39,8 @@
       "component": "general.seccion"
     },
     "adaptaciones": {
-      "collection": "adaptacion",
-      "via": "estructuras"
+      "via": "estructuras",
+      "collection": "adaptacion"
     },
     "caracteristicas": {
       "via": "estructuras",
@@ -59,12 +59,15 @@
       "pluginOptions": {}
     },
     "funciones": {
-      "collection": "funcion",
-      "via": "estructuras"
+      "via": "estructuras",
+      "collection": "funcion"
     },
     "tipos": {
       "via": "estructuras",
       "collection": "morfologia"
+    },
+    "orden": {
+      "type": "integer"
     }
   }
 }

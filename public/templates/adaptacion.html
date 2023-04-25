@@ -1,0 +1,42 @@
+
+<div
+  x-data="{adaptacion: { galeria: [] }, index: -1 }"
+  x-init="adaptacion = await $fetch(`https://www.morfologia-vegetal.info/adaptacions/${$router.params.id}`); index = Math.floor(Math.random() * adaptacion.galeria.length)"
+
+>
+  <template x-if="adaptacion.titulo">
+    <div>
+      <div class="page-header page-header-xs section-dark"
+           :style="`background-image: url('https://www.morfologia-vegetal.info${adaptacion.galeria[index].url}')`" >
+        <div class="filter"></div>
+        <div class="content-center">
+          <div class="container">
+            <div class="title-brand"><h1 x-text="adaptacion.titulo"></h1></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section section-gray">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
+                <template x-for="(imagen, index) in adaptacion.galeria" >
+                  <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + (imagen.url)" :title="imagen.caption">
+                    <img width="200" style="max-height: 90vh" class="" x-bind :src="'https://www.morfologia-vegetal.info' + (imagen.formats.medium?.url ?? imagen.formats.thumbnail?.url)" />
+                  </a>
+                </template>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <p x-markdown="adaptacion.descripcion"></p>
+              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </template>
+
+</div>

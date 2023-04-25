@@ -4486,7 +4486,7 @@ License - nucleoapp.com/license/
   font-weight: 600;
   margin: 5px 0px;
   padding: 20px 15px;
-  font-size: 14px;
+  font-size: 16px;
   color: #66615B;
   text-transform: uppercase;
 }
@@ -4508,7 +4508,7 @@ License - nucleoapp.com/license/
   margin: 15px 3px;
   padding: 10px 15px;
   opacity: .8;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   font-weight: 600;
   color: #706b65;
@@ -4518,7 +4518,7 @@ License - nucleoapp.com/license/
   margin: 0px 0px;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5em;
   padding: 15px 0;
 }
@@ -6639,7 +6639,7 @@ License - nucleoapp.com/license/
 }
 
 .page-header .filter::after {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   content: "";
   display: block;
   height: 100%;

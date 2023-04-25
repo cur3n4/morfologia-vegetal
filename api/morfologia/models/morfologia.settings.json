@@ -45,8 +45,8 @@
       "dominant": true
     },
     "caracteristicas": {
-      "collection": "caracteristica",
       "via": "tipos",
+      "collection": "caracteristica",
       "dominant": true
     },
     "subtipos": {
@@ -54,8 +54,8 @@
       "collection": "subtipo"
     },
     "adaptaciones": {
-      "collection": "adaptacion",
-      "via": "tipos"
+      "via": "tipos",
+      "collection": "adaptacion"
     },
     "estructuras": {
       "via": "tipos",
@@ -63,9 +63,12 @@
       "dominant": true
     },
     "funciones": {
-      "collection": "funcion",
       "via": "tipos",
+      "collection": "funcion",
       "dominant": true
+    },
+    "orden": {
+      "type": "integer"
     }
   }
 }

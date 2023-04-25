@@ -38,15 +38,20 @@
 
 </head>
 <body class="index-page sidebar-collapse"
-      x-data="{contenidos: {}, estructuras: {}, loading: false}"
-      x-init="loading = true; $router.config({ mode: 'hash' }); contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`); estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`); loading = false;">
+      x-data="{contenidos: {}, estructuras: {}, funciones: {}, adaptaciones: {}, loading: false}"
+      x-init="loading = true; $router.config({ mode: 'hash' });
+        contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos`);
+        estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras`);
+        funciones = await $fetch(`https://www.morfologia-vegetal.info/funcions`);
+        adaptaciones = await $fetch(`https://www.morfologia-vegetal.info/adaptacions`);
+        loading = false;">
 
   <template x-if="loading">
     <div class="spinner-overlay"><div class="spinner-spin"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
   </template>
 
-  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="100">
+    <div class="container-fluid">
       <div class="navbar-translate">
         <a x-link class="navbar-brand" href="/" rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" target="_blank">
           Morfología Vegetal
@@ -67,6 +72,22 @@
               </template>
             </ul>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Funciones</a>
+            <ul class="dropdown-menu">
+              <template x-for="funcion in funciones">
+                <a class="dropdown-item" x-link :href="'/funcion/' + funcion.id" x-text="funcion.titulo"></a>
+              </template>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Adaptaciones</a>
+            <ul class="dropdown-menu">
+              <template x-for="adaptacion in adaptaciones">
+                <a class="dropdown-item" x-link :href="'/adaptacion/' + adaptacion.id" x-text="adaptacion.titulo"></a>
+              </template>
+            </ul>
+          </li>
           <template x-for="contenido in contenidos">
             <template x-if="contenido.id != 1 && contenido.id != 7">
               <li class="nav-item">
@@ -82,6 +103,8 @@
   <div class="main">
     <template x-route="/" template.preload="/templates/home.html"></template>
     <template x-route="/estructura/:id" template.preload="/templates/estructura.html"></template>
+    <template x-route="/funcion/:id" template.preload="/templates/funcion.html"></template>
+    <template x-route="/adaptacion/:id" template.preload="/templates/adaptacion.html"></template>
     <template x-route="/subestructura/:id" template.preload="/templates/subestructura.html"></template>
     <template x-route="/sub-subestructura/:id" template.preload="/templates/sub-subestructura.html"></template>
     <template x-route="/contenido/:id" template.preload="/templates/contenido.html"></template>
@@ -92,7 +115,7 @@
   </div>
 
   <footer class="footer" >
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="credits ml-auto">
             <span class="copyright">

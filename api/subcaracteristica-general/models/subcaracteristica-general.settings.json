@@ -37,6 +37,9 @@
     "caracteristica_generals": {
       "via": "subcaracteristicas_generales",
       "collection": "caracteristica"
+    },
+    "orden": {
+      "type": "integer"
     }
   }
 }

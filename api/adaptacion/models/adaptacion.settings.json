@@ -58,6 +58,9 @@
       "via": "adaptaciones",
       "collection": "subtipo",
       "dominant": true
+    },
+    "orden": {
+      "type": "integer"
     }
   }
 }

@@ -43,12 +43,12 @@
       "collection": "sub-subestructura"
     },
     "adaptaciones": {
-      "collection": "adaptacion",
-      "via": "subestructuras"
+      "via": "subestructuras",
+      "collection": "adaptacion"
     },
     "caracteristicas": {
-      "collection": "caracteristica",
-      "via": "subestructuras"
+      "via": "subestructuras",
+      "collection": "caracteristica"
     },
     "cabecera": {
       "collection": "file",
@@ -63,12 +63,15 @@
       "pluginOptions": {}
     },
     "funciones": {
-      "collection": "funcion",
-      "via": "subestructuras"
+      "via": "subestructuras",
+      "collection": "funcion"
     },
     "tipos": {
       "via": "subestructuras",
       "collection": "morfologia"
+    },
+    "orden": {
+      "type": "integer"
     }
   }
 }

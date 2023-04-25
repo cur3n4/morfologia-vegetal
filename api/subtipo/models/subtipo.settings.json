@@ -39,18 +39,21 @@
       "model": "morfologia"
     },
     "adaptaciones": {
-      "collection": "adaptacion",
-      "via": "subtipos"
+      "via": "subtipos",
+      "collection": "adaptacion"
     },
     "caracteristicas": {
-      "collection": "caracteristica",
       "via": "subtipos",
+      "collection": "caracteristica",
       "dominant": true
     },
     "funciones": {
-      "collection": "funcion",
       "via": "subtipos",
+      "collection": "funcion",
       "dominant": true
+    },
+    "orden": {
+      "type": "integer"
     }
   }
 }
