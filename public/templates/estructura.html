@@ -85,7 +85,7 @@
       <div class="section-navigation section-gray pb-5">
         <div class="container">
           <div class="row pt-5" >
-            <div class="col-md-3">
+            <div class="col-md-3" x-show="estructura.galeria.length > 0">
               <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen #%curr%...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in estructura.galeria" >
                   <a class="gallery-item" x-bind :href="'https://www.morfologia-vegetal.info' + (imagen.url)" :title="imagen.caption">
@@ -94,10 +94,9 @@
                 </template>
               </div>
             </div>
-            <div class="col-md-9">
+            <div :class="{'col-md-9': estructura.galeria.length > 0, 'col-md-12': estructura.galeria.length === 0 }">
               <div class="tab-content text-left">
                 <div class="tab-pane" id="descripcion" :class="{ 'active': activeTab === 'descripcion' }">
-                  <h2 class="mb-3 mt-0">Descripción</h2>
                   <p x-markdown="estructura.descripcion"></p>
                   <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: estructura.secciones }" ></x-component-wrapper>
                 </div>
