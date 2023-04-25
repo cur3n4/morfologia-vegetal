@@ -3,7 +3,7 @@
   x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`); index = Math.floor(Math.random() * estructura.cabecera.length)"
 >
   <template x-if="estructura.nombre">
-    <div>
+    <div x-data="{ activeTab:  'descripcion' }">
       <div class="page-header page-header-xs section-dark"
            :style="`background-image: url('https://www.morfologia-vegetal.info${estructura.cabecera[index].url}')`" >
         <div class="filter"></div>
@@ -25,7 +25,7 @@
             <ul class="navbar-nav ml-auto">
               <template x-if="estructura.subestructuras.length > 0">
                 <div class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Partes</a>
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Partes</a>
                   <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
                     <template x-for="subestructura in estructura.subestructuras">
                       <li><a class="dropdown-item" x-link :href="`/subestructura/${subestructura.id}`" x-text="subestructura.nombre"></a></li>
@@ -34,39 +34,48 @@
                 </div>
               </template>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" :href="'#descripcion'">Descripción</a>
+                <a class="nav-link" @click="activeTab = 'descripcion'" :class="{ 'active': activeTab === 'descripcion' }">Descripción</a>
               </li>
               <template x-if="estructura.caracteristicas != null && estructura.caracteristicas.length > 0">
                 <div class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Características</a>
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Características</a>
                   <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
                     <template x-for="caracteristica in estructura.caracteristicas">
-                        <li><a class="dropdown-item" data-toggle="tab" :href="'#caracteristicas' + caracteristica.id" role="tab" x-text="caracteristica.nombre"></a></li>
+                        <li><a class="dropdown-item" @click="activeTab = 'caracteristica' + caracteristica.id" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id' }" x-text="caracteristica.nombre"></a></li>
                     </template>
                   </ul>
                 </div>
               </template>
               <template x-if="estructura.funciones != null && estructura.funciones.length > 0">
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#funciones" role="tab">Funciones</a>
-                </li>
+                <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Funciones</a>
+                  <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+                    <template x-for="funcion in estructura.funciones">
+                      <li><a class="dropdown-item" @click="activeTab = 'funcion' + funcion.id" :class="{ 'active': activeTab === 'funcion' + funcion.id }" x-text="funcion.titulo"></a></li>
+                    </template>
+                  </ul>
+                </div>
               </template>
               <template x-if="estructura.adaptaciones != null && estructura.adaptaciones.length > 0">
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#adaptaciones" role="tab">Adaptaciones</a>
-                </li>
+                <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Adaptaciones</a>
+                  <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+                    <template x-for="adaptacion in estructura.adaptaciones">
+                      <li><a class="dropdown-item" @click="activeTab = 'adaptacion' + adaptacion.id" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }" x-text="adaptacion.titulo"></a></li>
+                    </template>
+                  </ul>
+                </div>
               </template>
               <template x-if="estructura.tipos != null && estructura.tipos.length > 0">
                 <div class="nav-item dropdown ">
                   <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Tipos</a>
                   <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
                     <template x-for="morfologia in estructura.tipos">
-                      <li><a class="dropdown-item" data-toggle="tab" :href="'#morfologias' + morfologia.id" role="tab" x-text="morfologia.titulo"></a></li>
+                      <li><a class="dropdown-item" @click="activeTab = 'morfologia' + morfologia.id" :class="{ 'active': activeTab === 'morfologia' + morfologia.id' }" x-text="morfologia.titulo"></a></li>
                     </template>
                   </ul>
                 </div>
               </template>
-              \
             </ul>
           </div>
         </div>
@@ -85,13 +94,13 @@
             </div>
             <div class="col-md-9">
               <div class="tab-content text-left">
-                <div class="tab-pane active" id="descripcion" role="tabpanel">
+                <div class="tab-pane" id="descripcion" :class="{ 'active': activeTab === 'descripcion' }">
                   <h2 class="mb-3 mt-0">Descripción</h2>
                   <p x-markdown="estructura.descripcion"></p>
                   <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: estructura.secciones }" ></x-component-wrapper>
                 </div>
                 <template x-for="(caracteristica, index) in estructura.caracteristicas">
-                  <div class="tab-pane" x-bind:id="'caracteristicas' + caracteristica.id" role="tabpanel">
+                  <div class="tab-pane" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id }">
                     <h2 class="mb-3 mt-0" x-text="caracteristica.nombre"></h2>
                     <p x-markdown="caracteristica.descripcion"></p>
                     <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones }" ></x-component-wrapper>
@@ -99,7 +108,7 @@
                   </div>
                 </template>
                 <template x-for="(adaptacion, index) in estructura.adaptaciones">
-                  <div class="tab-pane" x-bind:id="'adaptaciones' + adaptacion.id" role="tabpanel">
+                  <div class="tab-pane" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }">
                     <h2 class="mb-3 mt-0" x-text="adaptacion.titulo"></h2>
                     <p x-markdown="adaptacion.descripcion"></p>
                     <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
@@ -107,7 +116,7 @@
                   </div>
                 </template>
                 <template x-for="(funcion, index) in estructura.funciones">
-                  <div class="tab-pane" x-bind:id="'funciones' + funcion.id" role="tabpanel">
+                  <div class="tab-pane" :class="{ 'active': activeTab === 'funcion' + funcion.id }">
                     <h2 class="mb-3 mt-0" x-text="function.titulo"></h2>
                     <p x-markdown="funcion.description"></p>
                     <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
@@ -115,7 +124,7 @@
                   </div>
                 </template>
                 <template x-for="(morfologia, index) in estructura.tipos">
-                  <div class="tab-pane hidden" x-bind:id="'morfologias' + morfologia.id" role="tabpanel">
+                  <div class="tab-pane hidden" :class="{ 'active': activeTab === 'morfologia' + morfologia.id }">
                     <h2 class="mb-3 mt-0" x-text="morfologia.titulo"></h2>
                     <p x-markdown="morfologia.descripcion"></p>
                     <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
