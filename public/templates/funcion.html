@@ -5,7 +5,7 @@
 
 >
   <template x-if="funcion.titulo">
-    <div>
+    <div x-head.title="'Morfología Vegetal - ' + funcion.titulo">
       <div class="page-header page-header-xs section-dark"
            :style="`background-image: url('https://www.morfologia-vegetal.info${funcion.cabecera[index].url}')`" >
         <div class="filter"></div>

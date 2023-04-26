@@ -1,7 +1,7 @@
 <div x-data="{ index: 0, headerImages : []}"
      x-init="headerImages = await $fetch(`https://www.morfologia-vegetal.info/upload/files?caption=Portada`); index = Math.floor(Math.random() * headerImages.length)">
   <template x-if="headerImages">
-    <div>
+    <div x-head.title="'Morfología Vegetal - Inicio'">
       <div
         class="page-header section-dark"
         :style="`background-image: url(https://www.morfologia-vegetal.info${headerImages[index]?.url})`">

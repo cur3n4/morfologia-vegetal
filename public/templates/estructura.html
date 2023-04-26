@@ -1,9 +1,10 @@
 <div
   x-data="{estructura: { galeria: [], cabecera: [] }, index: -1 }"
-  x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`); index = Math.floor(Math.random() * estructura.cabecera.length)"
+  x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`);
+  index = Math.floor(Math.random() * estructura.cabecera.length);"
 >
-  <template x-if="estructura.nombre">
-    <div x-data="{ activeTab:  'descripcion' }">
+  <template x-if="estructura.nombre" >
+    <div x-data="{ activeTab:  'descripcion' }" x-head.title="'Morfología Vegetal - ' + estructura.nombre">
       <div class="page-header page-header-xs section-dark"
            :style="`background-image: url('https://www.morfologia-vegetal.info${estructura.cabecera[index].url}')`" >
         <div class="filter"></div>
@@ -43,7 +44,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-right ">
                     <template x-for="caracteristica in estructura.caracteristicas">
-                        <li><a class="dropdown-item" @click="activeTab = 'caracteristica' + caracteristica.id" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id' }" x-text="caracteristica.nombre"></a></li>
+                        <li><a class="dropdown-item" @click="activeTab = 'caracteristica' + caracteristica.id; $head('title', estructura.nombre + ' - ' + caracteristica.nombre)" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id' }" x-text="caracteristica.nombre"></a></li>
                     </template>
                   </ul>
                 </div>

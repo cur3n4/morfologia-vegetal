@@ -3,7 +3,7 @@
   x-init="subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${$router.params.id}`); index = Math.floor(Math.random() * subestructura.cabecera.length)"
 >
   <template x-if="subestructura.nombre">
-    <div x-data="{ activeTab:  'descripcion' }">
+    <div x-data="{ activeTab:  'descripcion' }" x-head.title="'Morfología Vegetal - ' + subestructura.nombre">
       <div class="page-header page-header-xs section-dark"
            :style="`background-image: url('https://www.morfologia-vegetal.info${subestructura.cabecera[index].url}')`" >
         <div class="filter"></div>
@@ -19,8 +19,8 @@
           <div class="dropdown small" style="display: inline">
             <a class="nav-link font-italic text-white pl-0 pr-0" x-link :href="`/estructura/` + subestructura.estructura.id" style="cursor:pointer; display:inline;"><span class="text-w" x-text="subestructura.estructura.nombre"></span></a> <i class="fa fa-chevron-right align-middle text-secondary" ></i>
           </div>
-          <div class="dropdown small font-italic" style="display: inline">
-            <a class="nav-link dropdown-toggle font-italic text-white pl-0 pr-0" data-toggle="dropdown" style="cursor:pointer; display:inline;"><span x-text="subestructura.nombre"></span></a>
+          <div class="dropdown small" style="display: inline">
+            <a class="nav-link font-italic dropdown-toggle font-italic text-white pl-0 pr-0" data-toggle="dropdown" style="cursor:pointer; display:inline;"><span x-text="subestructura.nombre"></span></a>
             <ul class="dropdown-menu ">
               <template x-for="unaEstructura in estructuras">
                 <template x-if="unaEstructura.id == subestructura.estructura.id">
@@ -58,7 +58,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-right ">
                     <template x-for="caracteristica in subestructura.caracteristicas">
-                      <li><a class="dropdown-item" @click="activeTab = 'caracteristica' + caracteristica.id" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id' }" x-text="caracteristica.nombre"></a></li>
+                      <li><a class="dropdown-item" @click="activeTab = 'caracteristica' + caracteristica.id; $head('title', subestructura.nombre + ' - ' + caracteristica.nombre)" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id' }" x-text="caracteristica.nombre"></a></li>
                     </template>
                   </ul>
                 </div>
@@ -68,7 +68,7 @@
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('funcion') }">Funciones</a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="funcion in subestructura.funciones">
-                      <li><a class="dropdown-item" @click="activeTab = 'funcion' + funcion.id" :class="{ 'active': activeTab === 'funcion' + funcion.id }" x-text="funcion.titulo"></a></li>
+                      <li><a class="dropdown-item" @click="activeTab = 'funcion' + funcion.id; $head('title', subestructura.nombre + ' - ' + funcion.titulo) " :class="{ 'active': activeTab === 'funcion' + funcion.id }" x-text="funcion.titulo"></a></li>
                     </template>
                   </ul>
                 </div>
@@ -78,7 +78,7 @@
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('adaptaction') }">Adaptaciones</a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="adaptacion in subestructura.adaptaciones">
-                      <li><a class="dropdown-item" @click="activeTab = 'adaptacion' + adaptacion.id" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }" x-text="adaptacion.titulo"></a></li>
+                      <li><a class="dropdown-item" @click="activeTab = 'adaptacion' + adaptacion.id; $head('title', subestructura.nombre + ' - ' + adaptacion.titulo)" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }" x-text="adaptacion.titulo"></a></li>
                     </template>
                   </ul>
                 </div>
@@ -88,7 +88,7 @@
                   <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('morfologia') }">Tipos</a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="morfologia in subestructura.tipos">
-                      <li><a class="dropdown-item" @click="activeTab = 'morfologia' + morfologia.id" :class="{ 'active': activeTab === 'morfologia' + morfologia.id' }" x-text="morfologia.titulo"></a></li>
+                      <li><a class="dropdown-item" @click="activeTab = 'morfologia' + morfologia.id; $head('title', subestructura.nombre + ' - ' + morfologia.titulo)" :class="{ 'active': activeTab === 'morfologia' + morfologia.id' }" x-text="morfologia.titulo"></a></li>
                     </template>
                   </ul>
                 </div>
