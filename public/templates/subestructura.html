@@ -38,6 +38,9 @@
           </button>
           <div class="navbar-collapse collapse show" id="navbar-danger" style="">
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" @click="activeTab = 'descripcion'" :class="{ 'active': activeTab === 'descripcion' }">Descripción</a>
+              </li>
               <template x-if="subestructura.sub_subestructuras.length > 0">
                 <div class="nav-item dropdown ">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Partes</a>
@@ -48,9 +51,6 @@
                   </ul>
                 </div>
               </template>
-              <li class="nav-item">
-                <a class="nav-link" @click="activeTab = 'descripcion'" :class="{ 'active': activeTab === 'descripcion' }">Descripción</a>
-              </li>
               <template x-if="subestructura.caracteristicas != null && subestructura.caracteristicas.length > 0">
                 <div class="nav-item dropdown ">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('caracteristica') }">
