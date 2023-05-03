@@ -1,7 +1,8 @@
 
 <div
   x-data="{adaptacion: { galeria: [], cabecera: [] }, index: -1 }"
-  x-init="adaptacion = await $fetch(`https://www.morfologia-vegetal.info/adaptacions/${$router.params.id}`); index = Math.floor(Math.random() * adaptacion.cabecera.length)"
+  x-init="adaptacion = (await $fetch(`https://www.morfologia-vegetal.info/adaptacions?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
+  index = Math.floor(Math.random() * adaptacion.cabecera.length)"
 
 >
   <template x-if="adaptacion.titulo">

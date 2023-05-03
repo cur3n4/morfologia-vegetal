@@ -65,14 +65,14 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Estructuras</a>
             <ul class="dropdown-menu">
               <template x-for="estructura in estructuras">
-                <a class="dropdown-item" x-link :href="'/estructura/' + estructura.id" x-text="estructura.nombre"></a>
+                <a class="dropdown-item" x-link :href="'/estructura/' + estructura.nombre.replaceAll(' ' , '-')" x-text="estructura.nombre"></a>
               </template>
             </ul>
           </li>
           <template x-for="contenido in contenidos">
             <template x-if="contenido.id != 1 && contenido.id != 7">
               <li class="nav-item">
-                <a x-link x-bind:href="`/contenido/${contenido.id}`" class="nav-link" x-text="contenido.titulo"></a>
+                <a x-link x-bind:href="`/contenido/${contenido.titulo.replaceAll(' ' , '-')}`" class="nav-link" x-text="contenido.titulo"></a>
               </li>
             </template>
           </template>
@@ -80,7 +80,7 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Adaptaciones</a>
             <ul class="dropdown-menu dropdown-menu-right">
               <template x-for="adaptacion in adaptaciones">
-                <a class="dropdown-item" x-link :href="'/adaptacion/' + adaptacion.id" x-text="adaptacion.titulo"></a>
+                <a class="dropdown-item" x-link :href="'/adaptacion/' + adaptacion.titulo.replaceAll(' ' , '-')" x-text="adaptacion.titulo"></a>
               </template>
             </ul>
           </li>

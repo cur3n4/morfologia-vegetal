@@ -1,11 +1,11 @@
 <div
   x-data="{ subsubestructura: { galeria: [], cabecera: [] }, index: -1,
   subestructura : { cabecera: [], estructura: {}, sub_subestructuras: [] } }"
-  x-init="subsubestructura = await $fetch(`https://www.morfologia-vegetal.info/sub-subestructuras/${$router.params.id}`);
+  x-init="subsubestructura = (await $fetch(`https://www.morfologia-vegetal.info/sub-subestructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
   subestructura = await $fetch(`https://www.morfologia-vegetal.info/subestructuras/${subsubestructura.subestructura.id}`);
   index = Math.floor(Math.random() * subsubestructura.cabecera.length)"
 >
-  <template x-if="subsubestructura.nombre">
+  <template x-if="subsubestructura.nombre && subestructura.nombre">
     <div x-data="{ activeTab:  'descripcion' }" x-head.title="'Morfología Vegetal - ' + subsubestructura.nombre">
       <div class="page-header page-header-xs section-dark"
            :style="`background-image: url('https://www.morfologia-vegetal.info${subsubestructura.cabecera[index].url}')`" >
@@ -20,7 +20,7 @@
         <div class="container">
           <a class="navbar-brand" href="#" x-text="subsubestructura.nombre"></a>
           <div class="dropdown small" style="display: inline">
-            <a class="nav-link font-italic text-white pl-0 pr-0" x-link :href="`/estructura/` + subsubestructura.subestructura.id" style="cursor:pointer; display:inline;"><span class="text-w" x-text="subestructura.estructura.nombre"></span></a> <i class="fa fa-chevron-right align-middle text-secondary" ></i>
+            <a class="nav-link font-italic text-white pl-0 pr-0" x-link :href="`/estructura/` + subestructura.estructura.nombre.replaceAll(' ' , '-')" style="cursor:pointer; display:inline;"><span class="text-w" x-text="subestructura.estructura.nombre"></span></a> <i class="fa fa-chevron-right align-middle text-secondary" ></i>
           </div>
           <div class="dropdown small " style="display: inline">
             <a class="nav-link dropdown-toggle font-italic text-white pl-0 pr-0" data-toggle="dropdown" style="cursor:pointer; display:inline;"><span x-text="subestructura.nombre"></span></a>  <i class="fa fa-chevron-right align-middle text-secondary" ></i>
@@ -28,7 +28,7 @@
               <template x-for="unaEstructura in estructuras">
                 <template x-if="unaEstructura.id == subestructura.estructura.id">
                   <template x-for="unaSubestructura in unaEstructura.subestructuras">
-                    <li><a class="dropdown-item" x-link :href="`/subestructura/` + unaSubestructura.id" x-text="unaSubestructura.nombre"></a></li>
+                    <li><a class="dropdown-item" x-link :href="`/subestructura/` + unaSubestructura.nombre.replaceAll(' ' , '-')" x-text="unaSubestructura.nombre"></a></li>
                   </template>
                 </template>
               </template>
@@ -39,7 +39,7 @@
             <template x-if="subestructura.sub_subestructuras.length > 1">
               <ul class="dropdown-menu " >
                 <template x-for="unaSubsubestructura in subestructura.sub_subestructuras">
-                  <li><a class="dropdown-item" x-link :href="`/sub-subestructura/` + unaSubsubestructura.id" x-text="unaSubsubestructura.nombre"></a></li>
+                  <li><a class="dropdown-item" x-link :href="`/sub-subestructura/` + unaSubsubestructura.nombre.replaceAll(' ' , '-')" x-text="unaSubsubestructura.nombre"></a></li>
                 </template>
               </ul>
             </template>

@@ -1,6 +1,6 @@
 <div
   x-data="{estructura: { galeria: [], cabecera: [] }, index: -1 }"
-  x-init="estructura = await $fetch(`https://www.morfologia-vegetal.info/estructuras/${$router.params.id}`);
+  x-init="estructura = (await $fetch(`https://www.morfologia-vegetal.info/estructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
   index = Math.floor(Math.random() * estructura.cabecera.length);"
 >
   <template x-if="estructura.nombre" >
@@ -32,7 +32,7 @@
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Partes</a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="subestructura in estructura.subestructuras">
-                      <li><a class="dropdown-item" x-link :href="`/subestructura/${subestructura.id}`" x-text="subestructura.nombre"></a></li>
+                      <li><a class="dropdown-item" x-link :href="`/subestructura/${subestructura.nombre.replaceAll(' ' , '-')}`" x-text="subestructura.nombre"></a></li>
                     </template>
                   </ul>
                 </div>
