@@ -36,7 +36,7 @@
 </head>
 <body class="index-page sidebar-collapse"
       x-data="{contenidos: {}, estructuras: {}, funciones: {}, adaptaciones: {}, loading: false}"
-      x-init="loading = true; $router.config({ mode: 'web' });
+      x-init="loading = true; $router.config({ mode: 'hash' });
         contenidos = await $fetch(`https://www.morfologia-vegetal.info/contenidos?_sort=orden:ASC`);
         estructuras = await $fetch(`https://www.morfologia-vegetal.info/estructuras?_sort=orden:ASC`);
         funciones = await $fetch(`https://www.morfologia-vegetal.info/funcions?_sort=orden:ASC`);
@@ -97,7 +97,28 @@
     <template x-route="/subestructura/:id" template.preload="/templates/subestructura.html"></template>
     <template x-route="/sub-subestructura/:id" template.preload="/templates/sub-subestructura.html"></template>
     <template x-route="/contenido/:id" template.preload="/templates/contenido.html"></template>
-    <template x-route.notfound template.preload="/templates/home.html">
+    <template x-route="" template.preload="/templates/home.html"></template>
+    <template x-route.notfound>
+      <div>
+        <div class="page-header page-header-xs section-dark">
+          <div class="filter"></div>
+          <div class="content-center">
+            <div class="container">
+              <div class="title-brand"><h1>Página no encontrada</h1></div>
+            </div>
+          </div>
+        </div>
+        <div class="section section-gray">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center mt-5 mb-5">
+                <p>Lo lamentamos pero la página solicitada no puede encontrarse en Morfología Vegetal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </template>
 
   </div>
