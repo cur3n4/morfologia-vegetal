@@ -88,7 +88,7 @@
               </template>
               <template x-if="subsubestructura.tipos != null && subsubestructura.tipos.length > 0">
                 <div class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('morfologia') }">Tipos</a>
+                  <a class="nav-link dropdown-toggle" href="#pk" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('morfologia') }">Tipos</a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="morfologia in subsubestructura.tipos">
                       <li><a class="dropdown-item" @click="activeTab = 'morfologia' + morfologia.id; $head('title', estructura.nombre + ' - ' + morfologia.titulo)" :class="{ 'active': activeTab === 'morfologia' + morfologia.id' }" x-text="morfologia.titulo"></a></li>
