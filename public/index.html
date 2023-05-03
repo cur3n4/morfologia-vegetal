@@ -74,6 +74,13 @@
               </template>
             </ul>
           </li>
+          <template x-for="contenido in contenidos">
+            <template x-if="contenido.id != 1 && contenido.id != 7">
+              <li class="nav-item">
+                <a x-link x-bind:href="`/contenido/${contenido.id}`" class="nav-link" x-text="contenido.titulo"></a>
+              </li>
+            </template>
+          </template>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Adaptaciones</a>
             <ul class="dropdown-menu">
@@ -82,13 +89,6 @@
               </template>
             </ul>
           </li>
-          <template x-for="contenido in contenidos">
-            <template x-if="contenido.id != 1 && contenido.id != 7">
-              <li class="nav-item">
-                <a x-link x-bind:href="`/contenido/${contenido.id}`" class="nav-link" x-text="contenido.titulo"></a>
-              </li>
-            </template>
-          </template>
         </ul>
       </div>
     </div>
