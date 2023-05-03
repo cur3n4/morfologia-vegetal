@@ -1,10 +1,5 @@
 <html>
 <head>
-  <script>
-    if (!window.location.hash) {
-      window.location = window.location + '#/'
-    }
-  </script>
   <title >Morfología Vegetal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://unpkg.com/htmx.org"></script>
@@ -102,8 +97,7 @@
     <template x-route="/subestructura/:id" template.preload="/templates/subestructura.html"></template>
     <template x-route="/sub-subestructura/:id" template.preload="/templates/sub-subestructura.html"></template>
     <template x-route="/contenido/:id" template.preload="/templates/contenido.html"></template>
-    <template x-route.notfound>
-      <div>Página no encontrada</div>
+    <template x-route.notfound template.preload="/templates/home.html">
     </template>
 
   </div>
