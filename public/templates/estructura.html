@@ -54,7 +54,7 @@
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" :class="{ 'active': activeTab.startsWith('funcion') }">Funciones</a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <template x-for="funcion in estructura.funciones">
-                      <li><a class="dropdown-item" @click="activeTab = 'funcion' + funcion.id; $head('title', estructura.nombre + ' - ' + funcion.tituloe)" :class="{ 'active': activeTab === 'funcion' + funcion.id }" x-text="funcion.titulo"></a></li>
+                      <li><a class="dropdown-item" @click="activeTab = 'funcion' + funcion.id; $head('title', estructura.nombre + ' - ' + funcion.titulo)" :class="{ 'active': activeTab === 'funcion' + funcion.id }" x-text="funcion.titulo"></a></li>
                     </template>
                   </ul>
                 </div>

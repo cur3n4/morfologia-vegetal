@@ -129,7 +129,6 @@
                 </template>
                 <template x-for="(adaptacion, index) in subsubestructura.adaptaciones">
                   <div class="tab-pane" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }">
-                    <h2 class="mb-3 mt-0" x-text="adaptacion.titulo"></h2>
                     <p x-markdown="adaptacion.descripcion"></p>
                     <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
                     <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
@@ -137,7 +136,6 @@
                 </template>
                 <template x-for="(funcion, index) in subsubestructura.funciones">
                   <div class="tab-pane" :class="{ 'active': activeTab === 'funcion' + funcion.id }">
-                    <h2 class="mb-3 mt-0" x-text="function.titulo"></h2>
                     <p x-markdown="funcion.description"></p>
                     <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
                     <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: funcion.galeria }" ></x-component-wrapper>
