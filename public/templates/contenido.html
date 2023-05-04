@@ -1,14 +1,14 @@
 
 <div
   x-data="{contenido: { galeria: [], cabecera: [] }, index: -1 }"
-  x-init="contenido = (await $fetch(`https://strapi.morfologia-vegetal.info/contenidos?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
+  x-init="contenido = (await $fetch(`https://strapi.morfologiavegetal.info/contenidos?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
   index = Math.floor(Math.random() * contenido.cabecera.length)"
 
 >
   <template x-if="contenido.titulo">
     <div x-head.title="'Morfología Vegetal - ' + contenido.titulo">
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://strapi.morfologia-vegetal.info${contenido.cabecera[index].url}')`" >
+           :style="`background-image: url('https://strapi.morfologiavegetal.info${contenido.cabecera[index].url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">
@@ -23,8 +23,8 @@
             <div class="col-md-3" x-show="contenido.galeria.length > 0">
               <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in contenido.galeria" >
-                  <a class="gallery-item" x-bind :href="'https://strapi.morfologia-vegetal.info' + (imagen.url)" :title="imagen.caption">
-                    <img class="img-fluid" x-bind :src="'https://strapi.morfologia-vegetal.info' + (imagen.formats.medium?.url ?? imagen.formats.thumbnail?.url)" />
+                  <a class="gallery-item" x-bind :href="'https://strapi.morfologiavegetal.info' + (imagen.url)" :title="imagen.caption">
+                    <img class="img-fluid" x-bind :src="'https://strapi.morfologiavegetal.info' + (imagen.formats.medium?.url ?? imagen.formats.thumbnail?.url)" />
                   </a>
                 </template>
               </div>

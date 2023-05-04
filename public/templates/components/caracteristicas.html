@@ -41,8 +41,8 @@
           <template x-if="caracteristica.galeria != null && caracteristica.galeria.length > 0">
             <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
               <template x-for="imagen in caracteristica.galeria">
-                <a class="gallery-item" x-bind :href="`https://strapi.morfologia-vegetal.info${(imagen.url)}`" :title="imagen.caption">
-                  <img x-bind class="img-thumbnail" :src="`https://strapi.morfologia-vegetal.info${imagen.formats.thumbnail.url}`" />
+                <a class="gallery-item" x-bind :href="`https://strapi.morfologiavegetal.info${(imagen.url)}`" :title="imagen.caption">
+                  <img x-bind class="img-thumbnail" :src="`https://strapi.morfologiavegetal.info${imagen.formats.thumbnail.url}`" />
                 </a>
               </template>
             </div>

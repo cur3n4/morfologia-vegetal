@@ -1,12 +1,12 @@
 <div
   x-data="{ subestructura: { galeria: [], cabecera: [] }, index: -1 }"
-  x-init="subestructura = (await $fetch(`https://strapi.morfologia-vegetal.info/subestructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
+  x-init="subestructura = (await $fetch(`https://strapi.morfologiavegetal.info/subestructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
   index = Math.floor(Math.random() * subestructura.cabecera.length)"
 >
   <template x-if="subestructura.nombre">
     <div x-data="{ activeTab:  'descripcion' }" x-head.title="'Morfología Vegetal - ' + subestructura.nombre">
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://strapi.morfologia-vegetal.info${subestructura.cabecera[index].url}')`" >
+           :style="`background-image: url('https://strapi.morfologiavegetal.info${subestructura.cabecera[index].url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">
@@ -105,8 +105,8 @@
             <div class="col-md-3" x-show="subestructura.galeria.length > 0">
               <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
                 <template x-for="(imagen, index) in subestructura.galeria" >
-                  <a class="gallery-item" x-bind :href="'https://strapi.morfologia-vegetal.info' + (imagen.url)" :title="imagen.caption">
-                    <img class="img-fluid" x-bind :src="'https://strapi.morfologia-vegetal.info' + imagen.formats.medium.url" />
+                  <a class="gallery-item" x-bind :href="'https://strapi.morfologiavegetal.info' + (imagen.url)" :title="imagen.caption">
+                    <img class="img-fluid" x-bind :src="'https://strapi.morfologiavegetal.info' + imagen.formats.medium.url" />
                   </a>
                 </template>
               </div>
@@ -147,7 +147,7 @@
                     <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
                     <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
                     <div x-data="{ unaMorfologia: { subtipos: [] } }"
-                         x-init="unaMorfologia = await $fetch(`https://strapi.morfologia-vegetal.info/morfologias/${morfologia.id}`);">
+                         x-init="unaMorfologia = await $fetch(`https://strapi.morfologiavegetal.info/morfologias/${morfologia.id}`);">
                       <template x-for="subtipo in unaMorfologia.subtipos">
                         <div class="pt-5 pb-3">
                           <h4 x-text="subtipo.titulo"></h4>
