@@ -1,8 +1,11 @@
 
 <div
   x-data="{contenido: { galeria: [], cabecera: [] }, index: -1 }"
-  x-init="contenido = (await $fetch(`https://strapi.morfologiavegetal.info/contenidos?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
-  index = Math.floor(Math.random() * contenido.cabecera.length)"
+  x-init="
+  loading = true;
+  contenido = (await $fetch(`https://strapi.morfologiavegetal.info/contenidos?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
+  index = Math.floor(Math.random() * contenido.cabecera.length);
+  loading = false;"
 
 >
   <template x-if="contenido.titulo">
@@ -21,13 +24,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3" x-show="contenido.galeria.length > 0">
-              <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
-                <template x-for="(imagen, index) in contenido.galeria" >
-                  <a class="gallery-item" x-bind :href="'https://strapi.morfologiavegetal.info' + (imagen.url)" :title="imagen.caption">
-                    <img class="img-fluid" x-bind :src="'https://strapi.morfologiavegetal.info' + (imagen.formats.medium?.url ?? imagen.formats.thumbnail?.url)" />
-                  </a>
-                </template>
-              </div>
+              <x-component-wrapper x-component url="/templates/components/columna-galeria.html" x-data="{ galeria: contenido.galeria }" ></x-component-wrapper>
             </div>
             <div :class="{'col-md-9': contenido.galeria.length > 0, 'col-md-12': contenido.galeria.length === 0 }">
               <p x-markdown="contenido.descripcion"></p>

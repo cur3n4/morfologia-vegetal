@@ -11,11 +11,11 @@
   <!-- END : Need to include all the styles in here -->
 
   <template x-if="galeria != null && galeria.length > 0">
-    <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
-      <template x-for="imagen in galeria">
+    <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
+      <template x-for="(imagen, index) in galeria" >
         <template x-if="imagen.url">
-          <a class="gallery-item" x-bind :href="`https://strapi.morfologiavegetal.info${(imagen.url)}`" :title="imagen.caption">
-            <img x-bind class="img-thumbnail" :src="`https://strapi.morfologiavegetal.info${imagen.formats.thumbnail.url}`" />
+          <a class="gallery-item" x-bind :href="'https://strapi.morfologiavegetal.info' + (imagen.url)" :title="imagen.caption">
+            <img class="img-fluid" x-bind :src="'https://strapi.morfologiavegetal.info' + imagen.formats.medium.url" />
           </a>
         </template>
       </template>

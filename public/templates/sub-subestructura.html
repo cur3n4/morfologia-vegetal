@@ -1,9 +1,11 @@
 <div
   x-data="{ subsubestructura: { galeria: [], cabecera: [] }, index: -1,
   subestructura : { cabecera: [], estructura: {}, sub_subestructuras: [] } }"
-  x-init="subsubestructura = (await $fetch(`https://strapi.morfologiavegetal.info/sub-subestructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
+  x-init="loading = true;
+  subsubestructura = (await $fetch(`https://strapi.morfologiavegetal.info/sub-subestructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
   subestructura = await $fetch(`https://strapi.morfologiavegetal.info/subestructuras/${subsubestructura.subestructura.id}`);
-  index = Math.floor(Math.random() * subsubestructura.cabecera.length)"
+  index = Math.floor(Math.random() * subsubestructura.cabecera.length);
+  loading = false;"
 >
   <template x-if="subsubestructura.nombre && subestructura.nombre">
     <div x-data="{ activeTab:  'descripcion' }" x-head.title="'Morfología Vegetal - ' + subsubestructura.nombre">
@@ -104,60 +106,86 @@
       <div class="section-navigation section-gray pb-5">
         <div class="container">
           <div class="row pt-5">
-            <div class="col-md-3" x-show="subsubestructura.galeria.length > 0">
-              <div x-init="$nextTick(() => $($el).find('.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
-                <template x-for="(imagen, index) in subsubestructura.galeria" >
-                  <a class="gallery-item" x-bind :href="'https://strapi.morfologiavegetal.info' + (imagen.url)" :title="imagen.caption">
-                    <img class="img-fluid" x-bind :src="'https://strapi.morfologiavegetal.info' + imagen.formats.medium.url" />
-                  </a>
-                </template>
-              </div>
-            </div>
-            <div :class="{'col-md-9': subsubestructura.galeria.length > 0, 'col-md-12': subsubestructura.galeria.length === 0 }">
+            <div class="col-md-12">
               <div class="tab-content text-left">
-                <div class="tab-pane active" id="descripcion" :class="{ 'active': activeTab === 'descripcion' }">
-                  <p x-markdown="subsubestructura.descripcion"></p>
-                  <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subsubestructura.secciones }" ></x-component-wrapper>
+                <div class="tab-pane" id="descripcion" :class="{ 'active': activeTab === 'descripcion' }">
+                  <div class="row">
+                    <div class="col-md-3" x-show="subsubestructura.galeria.length > 0">
+                      <x-component-wrapper x-component url="/templates/components/columna-galeria.html" x-data="{ galeria: subsubestructura.galeria }" ></x-component-wrapper>
+                    </div>
+                    <div :class="{'col-md-9': subsubestructura.galeria.length > 0, 'col-md-12': subsubestructura.galeria.length === 0 }">
+                      <p x-markdown="subsubestructura.descripcion"></p>
+                      <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subsubestructura.secciones }" ></x-component-wrapper>
+                    </div>
+                  </div>
                 </div>
                 <template x-for="(caracteristica, index) in subsubestructura.caracteristicas">
                   <div class="tab-pane" :class="{ 'active': activeTab === 'caracteristica' + caracteristica.id }">
-                    <h2 class="mb-3 mt-0" x-text="caracteristica.nombre"></h2>
-                    <p x-markdown="caracteristica.descripcion"></p>
-                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones }" ></x-component-wrapper>
-                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: caracteristica.galeria }" ></x-component-wrapper>
+                    <div class="row">
+                      <div class="col-md-3" x-show="caracteristica.galeria.length > 0">
+                        <x-component-wrapper x-component url="/templates/components/columna-galeria.html" x-data="{ galeria: caracteristica.galeria }" ></x-component-wrapper>
+                      </div>
+                      <div :class="{'col-md-9': caracteristica.galeria.length > 0, 'col-md-12': caracteristica.galeria.length === 0 }">
+                        <h2 class="mb-3 mt-0" x-text="caracteristica.nombre"></h2>
+                        <p x-markdown="caracteristica.descripcion"></p>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones }" ></x-component-wrapper>
+                      </div>
+                    </div>
                   </div>
                 </template>
                 <template x-for="(adaptacion, index) in subsubestructura.adaptaciones">
                   <div class="tab-pane" :class="{ 'active': activeTab === 'adaptacion' + adaptacion.id }">
-                    <p x-markdown="adaptacion.descripcion"></p>
-                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
-                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
+                    <div class="row">
+                      <div class="col-md-3" x-show="adaptacion.galeria.length > 0">
+                        <x-component-wrapper x-component url="/templates/components/columna-galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
+                      </div>
+                      <div :class="{'col-md-9': adaptacion.galeria.length > 0, 'col-md-12': adaptacion.galeria.length === 0 }">
+                        <h2 class="mb-3 mt-0" x-text="adaptacion.titulo"></h2>
+                        <p x-markdown="adaptacion.descripcion"></p>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
+                      </div>
+                    </div>
                   </div>
                 </template>
                 <template x-for="(funcion, index) in subsubestructura.funciones">
                   <div class="tab-pane" :class="{ 'active': activeTab === 'funcion' + funcion.id }">
-                    <p x-markdown="funcion.description"></p>
-                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
-                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: funcion.galeria }" ></x-component-wrapper>
+                    <div class="row">
+                      <div class="col-md-3" x-show="funcion.galeria.length > 0">
+                        <x-component-wrapper x-component url="/templates/components/columna-galeria.html" x-data="{ galeria: funcion.galeria }" ></x-component-wrapper>
+                      </div>
+                      <div :class="{'col-md-9': funcion.galeria.length > 0, 'col-md-12': funcion.galeria.length === 0 }">
+                        <h2 class="mb-3 mt-0" x-text="funcion.titulo"></h2>
+                        <p x-markdown="funcion.description"></p>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
+                      </div>
+                    </div>
                   </div>
                 </template>
                 <template x-for="(morfologia, index) in subsubestructura.tipos">
-                  <div class="tab-pane" :class="{ 'active': activeTab === 'morfologia' + morfologia.id }">
-                    <h2 class="mb-3 mt-0" x-text="morfologia.titulo"></h2>
-                    <p x-markdown="morfologia.descripcion"></p>
-                    <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
-                    <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
-                    <div x-data="{ unaMorfologia: { subtipos: [] } }"
-                         x-init="unaMorfologia = await $fetch(`https://strapi.morfologiavegetal.info/morfologias/${morfologia.id}`);">
-                      <template x-for="subtipo in unaMorfologia.subtipos">
-                        <div class="pt-5 pb-3">
-                          <h4 x-text="subtipo.titulo"></h4>
-                          <p x-markdown="subtipo.description"></p>
-                          <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subtipo.secciones }" ></x-component-wrapper>
-                          <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: subtipo.galeria }" ></x-component-wrapper>
+                  <div class="tab-pane hidden" :class="{ 'active': activeTab === 'morfologia' + morfologia.id }">
+                    <div class="row">
+                      <div class="col-md-3" x-show="morfologia.galeria.length > 0">
+                        <x-component-wrapper x-component url="/templates/components/columna-galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
+                      </div>
+                      <div :class="{'col-md-9': morfologia.galeria.length > 0, 'col-md-12': morfologia.galeria.length === 0 }">
+                        <h2 class="mb-3 mt-0" x-text="morfologia.titulo"></h2>
+                        <p x-markdown="morfologia.descripcion"></p>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
+                        <div x-data="{ unaMorfologia: { subtipos: [] } }"
+                             x-init="unaMorfologia = await $fetch(`https://strapi.morfologiavegetal.info/morfologias/${morfologia.id}`);
+                                            unaMorfologia.subtipos.sort((a, b) => { if(a.titulo < b.titulo) return -1; if(a.titulo > b.titulo) return 1; return 0; });">
+                          <template x-for="subtipo in unaMorfologia.subtipos">
+                            <div class="">
+                              <h4 x-text="subtipo.titulo"></h4>
+                              <p x-markdown="subtipo.description"></p>
+                              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subtipo.secciones }" ></x-component-wrapper>
+                            </div>
+                          </template>
                         </div>
-                      </template>
+                      </div>
                     </div>
+
                   </div>
                 </template>
               </div>
