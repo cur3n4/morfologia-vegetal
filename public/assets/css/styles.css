@@ -1,8 +1,8 @@
 /* fluid 5 columns */
 .grid-sizer,
-.grid-item { width: 200px; margin-bottom: 20px }
+.grid-item { width: 200px; margin-bottom: 10px }
 
-.grid-item-x2 { width: 400px; margin-bottom: 20px }
+.grid-item-x2 { width: 400px; margin-bottom: 10px }
 
 .g-image-item {
   background-size: contain;

@@ -115,7 +115,7 @@
                     </div>
                     <div :class="{'col-md-9': subsubestructura.galeria.length > 0, 'col-md-12': subsubestructura.galeria.length === 0 }">
                       <p x-markdown="subsubestructura.descripcion"></p>
-                      <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subsubestructura.secciones }" ></x-component-wrapper>
+                      <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subsubestructura.secciones, colored: false }" ></x-component-wrapper>
                     </div>
                   </div>
                 </div>
@@ -128,7 +128,7 @@
                       <div :class="{'col-md-9': caracteristica.galeria.length > 0, 'col-md-12': caracteristica.galeria.length === 0 }">
                         <h2 class="mb-3 mt-0" x-text="caracteristica.nombre"></h2>
                         <p x-markdown="caracteristica.descripcion"></p>
-                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: caracteristica.secciones, colored: false }" ></x-component-wrapper>
                       </div>
                     </div>
                   </div>
@@ -142,7 +142,7 @@
                       <div :class="{'col-md-9': adaptacion.galeria.length > 0, 'col-md-12': adaptacion.galeria.length === 0 }">
                         <h2 class="mb-3 mt-0" x-text="adaptacion.titulo"></h2>
                         <p x-markdown="adaptacion.descripcion"></p>
-                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones, colored: false }" ></x-component-wrapper>
                       </div>
                     </div>
                   </div>
@@ -156,7 +156,7 @@
                       <div :class="{'col-md-9': funcion.galeria.length > 0, 'col-md-12': funcion.galeria.length === 0 }">
                         <h2 class="mb-3 mt-0" x-text="funcion.titulo"></h2>
                         <p x-markdown="funcion.description"></p>
-                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones, colored: false }" ></x-component-wrapper>
                       </div>
                     </div>
                   </div>
@@ -170,7 +170,7 @@
                       <div :class="{'col-md-9': morfologia.galeria.length > 0, 'col-md-12': morfologia.galeria.length === 0 }">
                         <h2 class="mb-3 mt-0" x-text="morfologia.titulo"></h2>
                         <p x-markdown="morfologia.descripcion"></p>
-                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
+                        <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones, colored: false }" ></x-component-wrapper>
                         <div x-data="{ unaMorfologia: { subtipos: [] } }"
                              x-init="unaMorfologia = await $fetch(`https://strapi.morfologiavegetal.info/morfologias/${morfologia.id}`);
                                             unaMorfologia.subtipos.sort((a, b) => { if(a.titulo < b.titulo) return -1; if(a.titulo > b.titulo) return 1; return 0; });">
@@ -178,7 +178,7 @@
                             <div class="">
                               <h4 x-text="subtipo.titulo"></h4>
                               <p x-markdown="subtipo.description"></p>
-                              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subtipo.secciones }" ></x-component-wrapper>
+                              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: subtipo.secciones, colored: false }" ></x-component-wrapper>
                               <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: subtipo.galeria }" ></x-component-wrapper>
                             </div>
                           </template>

@@ -35,7 +35,7 @@
           <p x-markdown="caracteristica.descripcion"></p>
           <template x-for="seccion in caracteristica.secciones">
             <x-component-wrapper x-component url="/templates/components/secciones.html"
-                                 x-data="{ seccion: seccion }" >
+                                 x-data="{ seccion: seccion, colored: false }" >
             </x-component-wrapper>
           </template>
           <template x-if="caracteristica.galeria != null && caracteristica.galeria.length > 0">

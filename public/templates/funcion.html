@@ -48,7 +48,7 @@
             </div>
             <div :class="{'col-md-9': funcion.galeria.length > 0, 'col-md-12': funcion.galeria.length === 0 }">
               <p x-markdown="funcion.description"></p>
-              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones }" ></x-component-wrapper>
+              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: funcion.secciones, colored: false }" ></x-component-wrapper>
             </div>
           </div>
 

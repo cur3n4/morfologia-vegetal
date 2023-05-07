@@ -46,7 +46,7 @@
             </div>
             <div :class="{'col-md-9': adaptacion.galeria.length > 0, 'col-md-12': adaptacion.galeria.length === 0 }">
               <p x-markdown="adaptacion.descripcion"></p>
-              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones }" ></x-component-wrapper>
+              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones, colored: false }" ></x-component-wrapper>
             </div>
           </div>
 
