@@ -171,7 +171,6 @@
                         <h2 class="mb-3 mt-0" x-text="morfologia.titulo"></h2>
                         <p x-markdown="morfologia.descripcion"></p>
                         <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones }" ></x-component-wrapper>
-                        <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: morfologia.galeria }" ></x-component-wrapper>
                         <div x-data="{ unaMorfologia: { subtipos: [] } }"
                              x-init="unaMorfologia = await $fetch(`https://strapi.morfologiavegetal.info/morfologias/${morfologia.id}`);
                                             unaMorfologia.subtipos.sort((a, b) => { if(a.titulo < b.titulo) return -1; if(a.titulo > b.titulo) return 1; return 0; });">
