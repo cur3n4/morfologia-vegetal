@@ -10,19 +10,25 @@
       <link rel="stylesheet" href="/assets/css/magnific-popup.css"/>
       <!-- END : Need to include all the styles in here -->
 
-      <template x-for="seccion in secciones">
-        <div class="">
-          <h4 x-text="seccion.titulo"></h4>
-          <p x-markdown="seccion.contenido"></p>
-          <template x-for="subseccion in seccion.subsecciones">
-            <div>
-              <h5 x-text="subseccion.titulo"></h5>
-              <p x-markdown="subseccion.contenido"></p>
-              <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: subseccion.galeria }" ></x-component-wrapper>
-            </div>
-          </template>
+      <template x-for="(seccion, index) in secciones">
+        <div :class="{'section': colored,
+          'section-brown': index % 4 == 0 && colored,
+          'section-dark-blue': index % 4 == 1 && colored,
+          'section-gold': index % 4 == 2 && colored,
+          'section-gray': index % 4 == 3 && colored }">
+          <div :class="{'container': colored}">
+            <h2 x-text="seccion.titulo"></h2>
+            <p x-markdown="seccion.contenido"></p>
+            <template x-for="subseccion in seccion.subsecciones">
+              <div>
+                <h5 x-text="subseccion.titulo"></h5>
+                <p x-markdown="subseccion.contenido"></p>
+                <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: subseccion.galeria }" ></x-component-wrapper>
+              </div>
+            </template>
 
-          <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: seccion.galeria }" ></x-component-wrapper>
+            <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: seccion.galeria }" ></x-component-wrapper>
+          </div>
         </div>
       </template>
     </div>

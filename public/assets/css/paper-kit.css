@@ -6948,6 +6948,10 @@ License - nucleoapp.com/license/
   color: #FFFFFF;
 }
 
+.section-brown h4  {
+  color: #FFFFFF;
+}
+
 .section-light-blue {
   background-color: #51cbce;
   color: #FFFFFF;
@@ -6960,6 +6964,11 @@ License - nucleoapp.com/license/
 
 .section-dark {
   background-color: #0b1011;
+  color: #FFFFFF;
+}
+
+.section-dark h4  {
+  color: #FFFFFF;
 }
 
 .section-image,
