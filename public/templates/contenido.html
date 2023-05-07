@@ -25,18 +25,10 @@
           <div class="section section-gray">
             <div class="container">
               <p x-markdown="contenido.descripcion"></p>
+              <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: contenido.galeria }" ></x-component-wrapper>
             </div>
           </div>
           <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: contenido.secciones, colored: true }" ></x-component-wrapper>
-          <template x-if="contenido.galeria.length > 0">
-            <div class="section section-dark">
-              <div class="container">
-                <h2>Imágenes</h2>
-                <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: contenido.galeria }" ></x-component-wrapper>
-              </div>
-            </div>
-          </template>
-
         </div>
       </div>
     </div>
