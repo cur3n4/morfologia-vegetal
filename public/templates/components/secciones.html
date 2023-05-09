@@ -17,7 +17,7 @@
           'section-gold': index % 4 == 2 && colored,
           'section-gray': index % 4 == 3 && colored }">
           <div :class="{'container': colored}">
-            <h2 x-text="seccion.titulo"></h2>
+            <h3 x-text="seccion.titulo"></h3>
             <p x-markdown="seccion.contenido"></p>
             <template x-for="subseccion in seccion.subsecciones">
               <div>

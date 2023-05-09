@@ -8,17 +8,103 @@
   <link rel="stylesheet" href="/assets/css/paper-kit.css"/>
   <link rel="stylesheet" href="/assets/css/styles.css"/>
   <link rel="stylesheet" href="/assets/css/magnific-popup.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
   <!-- END : Need to include all the styles in here -->
 
   <template x-if="galeria != null && galeria.length > 0">
-    <div x-init="$nextTick(() => $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } }))">
-      <template x-for="imagen in galeria">
-        <template x-if="imagen.url">
-          <a class="gallery-item" x-bind :href="`https://strapi.morfologiavegetal.info${(imagen.url)}`" :title="imagen.caption">
-            <img x-bind class="img-thumbnail" :src="`https://strapi.morfologiavegetal.info${imagen.formats.thumbnail.url}`" />
-          </a>
-        </template>
-      </template>
+    <div x-init="$nextTick(() => {
+        $($el).find('a.gallery-item').magnificPopup({ type: 'image', tLoading: 'Cargando imagen...', gallery:{ enabled:true } });
+        new Splide( $($el).find('.splide')[0], {
+            fixedWidth: 256,
+            fixedHeight : 256,
+            gap         : 10,
+            rewind      : true,
+            pagination  : false,
+            cover       : true,
+            isNavigation: true,
+
+         }).mount();
+         console.log('Are we done')
+      });">
+      <div class="pb-2" style="max-height: 280px">
+      <section
+        id="thumbnail-carousel"
+        class="splide"
+        aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
+      >
+        <div style="position: relative;max-height: 260px;">
+          <div class="splide__arrows"></div>
+          <div class="splide__track" style="max-height: 280px">
+            <ul class="splide__list">
+              <template x-for="imagen in galeria">
+                <template x-if="imagen.url">
+                  <li class="splide__slide">
+                    <a class="gallery-item" x-bind :href="`https://strapi.morfologiavegetal.info${(imagen.url)}`" :title="imagen.caption">
+                      <img x-bind class="img-thumbnail" :src="`https://strapi.morfologiavegetal.info${imagen.formats.small.url}`" />
+                    </a>
+                  </li>
+                </template>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </section>
+      </div>
+      <!--<section
+        class="splide thumbnail-carousel"
+        aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
+      >
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <img x-bind="" class="img-thumbnail"
+                   src="https://strapi.morfologiavegetal.info/uploads/thumbnail_Dioscorea_sp_003_67b177e419.png">
+            </li>
+            <li class="splide__slide">
+              <img x-bind="" class="img-thumbnail"
+                   src="https://strapi.morfologiavegetal.info/uploads/thumbnail_Dioscorea_sp_003_67b177e419.png">
+            </li>
+            <li class="splide__slide">
+              <img x-bind="" class="img-thumbnail"
+                   src="https://strapi.morfologiavegetal.info/uploads/thumbnail_Dioscorea_sp_003_67b177e419.png">
+            </li>
+            <li class="splide__slide">
+              <img x-bind="" class="img-thumbnail"
+                   src="https://strapi.morfologiavegetal.info/uploads/thumbnail_Dioscorea_sp_003_67b177e419.png">
+            </li>
+            <li class="splide__slide">
+              <img x-bind="" class="img-thumbnail"
+                   src="https://strapi.morfologiavegetal.info/uploads/thumbnail_Dioscorea_sp_003_67b177e419.png">
+            </li>
+            <li class="splide__slide">
+              <img x-bind="" class="img-thumbnail"
+                   src="https://strapi.morfologiavegetal.info/uploads/thumbnail_Dioscorea_sp_003_67b177e419.png">
+            </li>
+            <li class="splide__slide">
+              <img x-bind="" class="img-thumbnail"
+                   src="https://strapi.morfologiavegetal.info/uploads/thumbnail_Dioscorea_sp_003_67b177e419.png">
+            </li>
+          </ul>
+        </div>
+      </section>-->
+      <!--<section class="slidep" aria-label="Basic Structure Example">
+        <div class="splide__track">
+          <ul class="splide__list">
+
+            <template x-for="imagen in galeria">
+              <template x-if="imagen.url">
+                <li class="splide__slide"><img x-bind class="img-thumbnail" :src="`https://strapi.morfologiavegetal.info${imagen.formats.thumbnail.url}`" /></li>
+                &lt;!&ndash;<a class="gallery-item" x-bind :href="`https://strapi.morfologiavegetal.info${(imagen.url)}`" :title="imagen.caption">
+                  <img x-bind class="img-thumbnail" :src="`https://strapi.morfologiavegetal.info${imagen.formats.thumbnail.url}`" />
+                </a>&ndash;&gt;
+              </template>
+            </template>
+            &lt;!&ndash;<li class="splide__slide">Slide 01</li>
+            <li class="splide__slide">Slide 02</li>
+            <li class="splide__slide">Slide 03</li>&ndash;&gt;
+          </ul>
+        </div>
+      </section>-->
     </div>
   </template>
 </div>

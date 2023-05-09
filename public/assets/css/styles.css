@@ -219,3 +219,12 @@ img.mfp-img {
   pointer-events: none
 }
 
+.splide__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.splide__track--nav>.splide__list>.splide__slide.is-active {
+  border: 0 !important;
+}
