@@ -3094,23 +3094,18 @@ h3,
   font-size: 1.825em;
   line-height: 1.4;
   margin: 20px 0 0px;
-  /*font-weight: bold;*/
 }
 
 h4,
 .h4 {
   font-size: 1.6em;
   line-height: 1.2em;
-  color: #3d3d3d;
-  font-weight: bold;
 }
 
 h5,
 .h5 {
   font-size: 1.35em;
   line-height: 1.4em;
-  color: #3d3d3d;
-  font-weight: bold;
 }
 
 h6,

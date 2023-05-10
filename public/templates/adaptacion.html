@@ -38,15 +38,15 @@
         </div>
       </nav>
 
-      <div class="section section-gray">
-        <div class="container">
           <div class="row">
-            <div class="col-md-3" x-show="adaptacion.galeria.length > 0">
-              <x-component-wrapper x-component url="/templates/components/columna-galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
-            </div>
-            <div :class="{'col-md-9': adaptacion.galeria.length > 0, 'col-md-12': adaptacion.galeria.length === 0 }">
-              <p x-markdown="adaptacion.descripcion"></p>
-              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones, colored: false }" ></x-component-wrapper>
+            <div class="col-md-12">
+              <div class="section section-gray">
+                <div class="container">
+                  <p x-markdown="adaptacion.descripcion"></p>
+                  <x-component-wrapper x-component url="/templates/components/galeria.html" x-data="{ galeria: adaptacion.galeria }" ></x-component-wrapper>
+                </div>
+              </div>
+              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: adaptacion.secciones, colored: true }" ></x-component-wrapper>
             </div>
           </div>
 

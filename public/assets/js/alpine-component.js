@@ -5,7 +5,6 @@ document.addEventListener('alpine:init', () => {
 
       if (this.attributes.template) {
         let template = document.getElementById(this.attributes.template.value)
-        console.log('has tempalte')
         let component = new DOMParser().parseFromString(
           template.innerHTML,
           'text/html'
