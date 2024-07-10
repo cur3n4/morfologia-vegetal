@@ -95,7 +95,7 @@
             </ul>
           </li>
           <template x-for="contenido in contenidos">
-            <template x-if="contenido.id != 1 && contenido.id != 7">
+            <template x-if="contenido.id != 1 && contenido.id != 7 && contenido.id != 9">
               <li class="nav-item">
                 <a x-link x-bind:href="`/contenido/${contenido.titulo.replaceAll(' ' , '-')}`" class="nav-link" x-text="contenido.titulo"></a>
               </li>

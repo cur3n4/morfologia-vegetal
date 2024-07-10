@@ -44,6 +44,20 @@
           <div class="row">
             <div class="col-sm-12"
                  x-data="{contenido: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
+                 x-init="contenido = await $fetch(`https://strapi.morfologiavegetal.info/contenidos/9`);">
+              <div class="title"><h1 x-text="contenido.titulo"></h1></div>
+              <p x-markdown="contenido.descripcion"></p>
+              <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: contenido.secciones, colored: false }" ></x-component-wrapper>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="section-gray">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12"
+                 x-data="{contenido: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
                  x-init="contenido = await $fetch(`https://strapi.morfologiavegetal.info/contenidos/1`);">
               <div class="title"><h1 x-text="contenido.titulo"></h1></div>
               <p x-markdown="contenido.descripcion"></p>
