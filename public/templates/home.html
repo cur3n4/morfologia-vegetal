@@ -1,10 +1,10 @@
 <div x-data="{ index: 0, headerImages : []}"
-     x-init="headerImages = await $fetch(`https://strapi.morfologiavegetal.info/upload/files?caption=Portada`); index = Math.floor(Math.random() * headerImages.length)">
+     x-init="headerImages = await $fetch(`https://familias-vegetales-gu7l.onrender.com/upload/files?caption=Portada`); index = Math.floor(Math.random() * headerImages.length)">
   <template x-if="headerImages">
     <div x-head.title="'Familias Vegetales - Inicio'">
       <div
         class="page-header section-dark"
-        :style="`background-image: url(https://strapi.morfologiavegetal.info${headerImages[index]?.url})`">
+        :style="`background-image: url(https://familias-vegetales-gu7l.onrender.com${headerImages[index]?.url})`">
         <div class="filter"></div>
         <div class="content-center">
           <div class="container text-center">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-sm-6"
                  x-data="{contenido: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
-                 x-init="contenido = await $fetch(`https://strapi.morfologiavegetal.info/contenidos/7`);">
+                 x-init="contenido = await $fetch(`https://familias-vegetales-gu7l.onrender.com/contenidos/7`);">
               <p x-markdown="contenido.descripcion"></p>
               <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: contenido.secciones, colored: false }" ></x-component-wrapper>
             </div>
@@ -44,7 +44,7 @@
           <div class="row">
             <div class="col-sm-12"
                  x-data="{contenido: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
-                 x-init="contenido = await $fetch(`https://strapi.morfologiavegetal.info/contenidos/9`);">
+                 x-init="contenido = await $fetch(`https://familias-vegetales-gu7l.onrender.com/contenidos/9`);">
               <div class="title"><h1 x-text="contenido.titulo"></h1></div>
               <p x-markdown="contenido.descripcion"></p>
               <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: contenido.secciones, colored: false }" ></x-component-wrapper>
@@ -58,7 +58,7 @@
           <div class="row">
             <div class="col-sm-12"
                  x-data="{contenido: { imagen: { formats: { medium: { url: ''}, thumbnail: {url: ''}, large: {url: ''} } } } }"
-                 x-init="contenido = await $fetch(`https://strapi.morfologiavegetal.info/contenidos/1`);">
+                 x-init="contenido = await $fetch(`https://familias-vegetales-gu7l.onrender.com/contenidos/1`);">
               <div class="title"><h1 x-text="contenido.titulo"></h1></div>
               <p x-markdown="contenido.descripcion"></p>
               <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: contenido.secciones, colored: false }" ></x-component-wrapper>

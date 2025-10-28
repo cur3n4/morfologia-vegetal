@@ -3,7 +3,7 @@
   x-data="{contenido: { galeria: [], cabecera: [] }, index: -1 }"
   x-init="
   loading = true;
-  contenido = (await $fetch(`https://strapi.morfologiavegetal.info/contenidos?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
+  contenido = (await $fetch(`https://familias-vegetales-gu7l.onrender.com/contenidos?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
   index = Math.floor(Math.random() * contenido.cabecera.length);
   loading = false;"
 
@@ -11,7 +11,7 @@
   <template x-if="contenido.titulo">
     <div x-head.title="'Familias Vegetales - ' + contenido.titulo">
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://strapi.morfologiavegetal.info${contenido.cabecera[index].url}')`" >
+           :style="`background-image: url('https://familias-vegetales-gu7l.onrender.com${contenido.cabecera[index].url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">

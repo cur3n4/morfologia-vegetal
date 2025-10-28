@@ -2,7 +2,7 @@
 <div
   x-data="{adaptacion: { galeria: [], cabecera: [] }, index: -1 }"
   x-init="loading = true;
-    adaptacion = (await $fetch(`https://strapi.morfologiavegetal.info/adaptacions?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
+    adaptacion = (await $fetch(`https://familias-vegetales-gu7l.onrender.com/adaptacions?titulo=${$router.params.id.replaceAll('-', ' ')}`))[0];
     index = Math.floor(Math.random() * adaptacion.cabecera.length);
     loading = false;"
 
@@ -10,7 +10,7 @@
   <template x-if="adaptacion.titulo">
     <div x-head.title="'Familias Vegetales - ' + adaptacion.titulo">
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://strapi.morfologiavegetal.info${adaptacion.cabecera[index].url}')`" >
+           :style="`background-image: url('https://familias-vegetales-gu7l.onrender.com${adaptacion.cabecera[index].url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">

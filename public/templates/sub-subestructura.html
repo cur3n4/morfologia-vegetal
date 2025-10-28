@@ -2,15 +2,15 @@
   x-data="{ subsubestructura: { galeria: [], cabecera: [] }, index: -1,
   subestructura : { cabecera: [], estructura: {}, sub_subestructuras: [] } }"
   x-init="loading = true;
-  subsubestructura = (await $fetch(`https://strapi.morfologiavegetal.info/sub-subestructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
-  subestructura = await $fetch(`https://strapi.morfologiavegetal.info/subestructuras/${subsubestructura.subestructura.id}`);
+  subsubestructura = (await $fetch(`https://familias-vegetales-gu7l.onrender.com/sub-subestructuras?nombre=${$router.params.id.replaceAll('-', ' ')}`))[0];
+  subestructura = await $fetch(`https://familias-vegetales-gu7l.onrender.com/subestructuras/${subsubestructura.subestructura.id}`);
   index = Math.floor(Math.random() * subsubestructura.cabecera.length);
   loading = false;"
 >
   <template x-if="subsubestructura.nombre && subestructura.nombre">
     <div x-data="{ activeTab:  'descripcion' }" x-head.title="'Familias Vegetales - ' + subsubestructura.nombre">
       <div class="page-header page-header-xs section-dark"
-           :style="`background-image: url('https://strapi.morfologiavegetal.info${subsubestructura.cabecera[index].url}')`" >
+           :style="`background-image: url('https://familias-vegetales-gu7l.onrender.com${subsubestructura.cabecera[index].url}')`" >
         <div class="filter"></div>
         <div class="content-center">
           <div class="container">
@@ -163,7 +163,7 @@
                   </div>
                   <x-component-wrapper x-component url="/templates/components/secciones.html" x-data="{ secciones: morfologia.secciones, colored: true }" ></x-component-wrapper>
                   <div x-data="{ unaMorfologia: { subtipos: [] } }"
-                       x-init="unaMorfologia = await $fetch(`https://strapi.morfologiavegetal.info/morfologias/${morfologia.id}`);
+                       x-init="unaMorfologia = await $fetch(`https://familias-vegetales-gu7l.onrender.com/morfologias/${morfologia.id}`);
                                             unaMorfologia.subtipos.sort((a, b) => { if(a.titulo < b.titulo) return -1; if(a.titulo > b.titulo) return 1; return 0; });">
                     <template x-for="(subtipo, index) in unaMorfologia.subtipos">
                       <div :class="{'section': true,
