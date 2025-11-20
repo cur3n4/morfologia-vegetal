@@ -87,7 +87,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Estructuras</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Familias</a>
             <ul class="dropdown-menu">
               <template x-for="estructura in estructuras">
                 <a class="dropdown-item" x-link :href="'/estructura/' + estructura.nombre.replaceAll(' ' , '-')" x-text="estructura.nombre"></a>
