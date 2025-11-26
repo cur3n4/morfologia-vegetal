@@ -63,7 +63,7 @@
       x-data="{contenidos: {}, estructuras: {}, funciones: {}, adaptaciones: {}, loading: false}"
       x-init="loading = true; $router.config({ mode: 'web' });
         contenidos = await $fetch(`https://familias-vegetales-gu7l.onrender.com/contenidos?_sort=orden:ASC`);
-        estructuras = await $fetch(`https://familias-vegetales-gu7l.onrender.com/estructuras?_sort=orden:ASC`);
+        estructuras = await $fetch(`https://familias-vegetales-gu7l.onrender.com/estructuras?_sort=nombre:ASC`);
         funciones = await $fetch(`https://familias-vegetales-gu7l.onrender.com/funcions?_sort=orden:ASC`);
         adaptaciones = await $fetch(`https://familias-vegetales-gu7l.onrender.com/adaptacions?_sort=orden:ASC`);
         loading = false;">
