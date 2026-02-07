@@ -210,6 +210,8 @@ p {
   column-count: 2;
   column-gap: 0;
   padding: 8px 0;
+  right: 0;
+  left: auto;
 }
 
 .dropdown-menu.dropdown-menu-multi-column .dropdown-item {
@@ -232,6 +234,8 @@ p {
     min-width: auto;
     column-count: 1;
     max-height: 50vh;
+    right: auto;
+    left: 0;
   }
 }
 
