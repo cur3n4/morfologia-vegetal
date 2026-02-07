@@ -88,11 +88,11 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Familias</a>
-            <ul class="dropdown-menu dropdown-menu-left">
+            <div class="dropdown-menu dropdown-menu-left dropdown-menu-multi-column">
               <template x-for="estructura in estructuras">
                 <a class="dropdown-item" x-link :href="'/estructura/' + estructura.nombre.replaceAll(' ' , '-')" x-text="estructura.nombre"></a>
               </template>
-            </ul>
+            </div>
           </li>
           <template x-for="contenido in contenidos">
             <template x-if="contenido.id != 1 && contenido.id != 7 && contenido.id != 9">

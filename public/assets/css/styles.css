@@ -202,6 +202,39 @@ p {
   background-color: lightgray;
 }
 
+/* Multi-column dropdown for Familias (30+ items) */
+.dropdown-menu.dropdown-menu-multi-column {
+  min-width: 480px;
+  max-height: 70vh;
+  overflow-y: auto;
+  column-count: 2;
+  column-gap: 0;
+  padding: 8px 0;
+}
+
+.dropdown-menu.dropdown-menu-multi-column .dropdown-item {
+  display: block;
+  break-inside: avoid;
+  white-space: nowrap;
+  padding: 6px 20px;
+  font-size: 14px;
+}
+
+@media (min-width: 992px) {
+  .dropdown-menu.dropdown-menu-multi-column {
+    min-width: 680px;
+    column-count: 3;
+  }
+}
+
+@media (max-width: 991px) {
+  .dropdown-menu.dropdown-menu-multi-column {
+    min-width: auto;
+    column-count: 1;
+    max-height: 50vh;
+  }
+}
+
 .table-sm>tbody>tr>td {
   padding: 0px 2px;
   font-size: 10px;
