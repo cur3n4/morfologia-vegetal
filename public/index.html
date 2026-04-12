@@ -58,6 +58,20 @@
   <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
   <script src="/assets/js/paper-kit.min.js" type="text/javascript"></script>
 
+  <!-- Image download protection -->
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG' || e.target.closest('.splide__slide') || e.target.closest('.mfp-figure')) {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+  </script>
+
 </head>
 <body class="index-page sidebar-collapse"
       x-data="{contenidos: {}, estructuras: {}, funciones: {}, adaptaciones: {}, loading: false}"

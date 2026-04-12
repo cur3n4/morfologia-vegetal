@@ -253,7 +253,59 @@ p {
 
 img.mfp-img {
   max-height: 100vh !important;
-  pointer-events: none
+  pointer-events: none;
+}
+
+/* ── Image download protection ── */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
+/* Re-enable pointer events on interactive wrappers so links/buttons still work */
+a > img,
+button > img,
+.splide__slide > a > img {
+  pointer-events: none;
+}
+
+/* Transparent shield over gallery thumbnails */
+.splide__slide {
+  position: relative;
+}
+.splide__slide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Shield over Magnific Popup images */
+.mfp-figure::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Shield over page-header background images */
+.page-header {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .splide__slide img {
