@@ -216,7 +216,17 @@ p {
 
 img.mfp-img {
   max-height: 100vh !important;
-  pointer-events: none
+  pointer-events: none;
+}
+
+/* ── Image download protection ── */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 .splide__slide img {
