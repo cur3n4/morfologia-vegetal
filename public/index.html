@@ -70,6 +70,24 @@
         e.preventDefault();
       }
     });
+    // Prevent dropdown toggles from closing the mobile sidebar
+    $(document).ready(function() {
+      $('.navbar-collapse').off('click').on('click', function(e) {
+        if ($(e.target).hasClass('dropdown-toggle') || $(e.target).closest('.dropdown-toggle').length) {
+          return;
+        }
+        setTimeout(function() {
+          if (pk.misc.navbar_menu_visible === 1) {
+            $('html').removeClass('nav-open');
+            pk.misc.navbar_menu_visible = 0;
+            $('#bodyClick').remove();
+            setTimeout(function() {
+              $('.navbar-toggler').removeClass('toggled');
+            }, 550);
+          }
+        }, 550);
+      });
+    });
   </script>
 
 </head>
