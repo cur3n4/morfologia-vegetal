@@ -227,7 +227,7 @@ p {
 .mega-menu-inner {
   display: flex;
   width: 700px;
-  height: 520px;
+  height: 550px;
 }
 
 .mega-menu-list {
@@ -243,8 +243,8 @@ p {
   display: block;
   break-inside: avoid;
   white-space: normal;
-  padding: 5px 16px;
-  font-size: 12px;
+  padding: 7px 20px;
+  font-size: 13px;
   line-height: 1.4;
   color: #66615B;
   border-left: 3px solid transparent;
