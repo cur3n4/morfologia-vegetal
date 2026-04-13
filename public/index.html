@@ -100,12 +100,40 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" x-data="{ hovered: null }">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Familias</a>
-            <div class="dropdown-menu dropdown-menu-multi-column">
-              <template x-for="estructura in estructuras">
-                <a class="dropdown-item" x-link :href="'/estructura/' + estructura.nombre.replaceAll(' ' , '-')" x-text="estructura.nombre"></a>
-              </template>
+            <div class="dropdown-menu dropdown-menu-mega">
+              <div class="mega-menu-inner">
+                <div class="mega-menu-list">
+                  <template x-for="estructura in estructuras">
+                    <a class="dropdown-item" x-link
+                       :href="'/estructura/' + estructura.nombre.replaceAll(' ' , '-')"
+                       x-text="estructura.nombre"
+                       @mouseenter="hovered = estructura"></a>
+                  </template>
+                </div>
+                <div class="mega-menu-preview">
+                  <template x-if="hovered && hovered.cabecera && hovered.cabecera.length > 0">
+                    <div class="mega-menu-preview-image"
+                         :style="`background-image: url('https://familias-vegetales-gu7l.onrender.com${hovered.cabecera[0].formats && hovered.cabecera[0].formats.small ? hovered.cabecera[0].formats.small.url : hovered.cabecera[0].url}')`">
+                    </div>
+                  </template>
+                  <div class="mega-menu-preview-text">
+                    <template x-if="hovered">
+                      <div>
+                        <h5 class="mega-menu-preview-title" x-text="hovered.nombre"></h5>
+                        <p class="mega-menu-preview-desc" x-text="hovered.descripcion?.replace(/[#*_\[\]()>]/g, '').substring(0, 250) + '...'"></p>
+                      </div>
+                    </template>
+                    <template x-if="!hovered">
+                      <div class="mega-menu-preview-default">
+                        <i class="fa fa-leaf"></i>
+                        <p>Pasa el cursor sobre una familia para ver su descripci&oacute;n</p>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
           <template x-for="contenido in contenidos">
